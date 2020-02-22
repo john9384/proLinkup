@@ -1,0 +1,44 @@
+:root {
+  --deep-theme-color: rgb(0, 10, 34);
+  --button-color: rgb(12, 2, 200);
+  --button-text-color: white;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  height: 40px;
+  width: 150px;
+  display: inline-block;
+  margin: 20px 5px 40px 5px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--button-color);
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: var(--deep-theme-color);
+  transition: background-color 1s;
+}
+
+button:not(:hover) {
+  background-color: var(--button-color);
+  transition: background-color 1s;
+}
+
+.valid,
+.valid:focus {
+  border: 1.5px solid lightgreen;
+}
+
+.invalid,
+.invalid:focus {
+  border: 1.5px solid rgb(241, 106, 106);
+}

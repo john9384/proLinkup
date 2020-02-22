@@ -1,0 +1,11 @@
+footer {
+    height: 8%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: var(--deep-theme-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
