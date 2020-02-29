@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../../redux/actions/authActions";
+import InputField from "../../common/inputFieldGroup/InputTextField";
 
 class Login extends Component {
   constructor(props) {
@@ -8,7 +12,8 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -16,39 +21,52 @@ class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
-    const currentUser = {
+    const currentUserData = {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(currentUser);
+    this.props.loginUser(currentUserData);
   }
 
   render() {
+    const { errors } = this.state;
+    let errMessage = <p>{errors.message}</p>;
     return (
       <main className={styles.main}>
         <div className={styles.login}>
           <h2 className={styles.h2}>User Login</h2>
           <form onSubmit={this.onSubmit}>
-            <input
-              className={styles.input}
+            <InputField
               type="email"
-              placeholder="Email"
               name="email"
+              placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
+              classname={styles.input}
             />
-            <br />
-            <input
-              className={styles.input}
+            <InputField
               type="password"
-              placeholder="Password"
               name="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
+              classname={styles.input}
             />
-            <br />
             <button className={styles.btn} name="btn">
               Submit
             </button>
@@ -57,8 +75,18 @@ class Login extends Component {
             </Link>
           </form>
         </div>
+        {errors ? errMessage : <div></div>}
       </main>
     );
   }
 }
-export default Login;
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(mapStateToProps, { loginUser })(Login);

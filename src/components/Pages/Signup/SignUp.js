@@ -6,7 +6,8 @@ import { withRouter } from "react-router-dom";
 
 import styles from "./Signup.module.css";
 import { connect } from "react-redux";
-import { signupUser } from "../../redux/actions/authActions";
+import { signupUser } from "../../../redux/actions/authActions";
+import InputField from "../../common/inputFieldGroup/InputTextField";
 
 class SignUp extends Component {
   constructor(props) {
@@ -26,6 +27,11 @@ class SignUp extends Component {
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.error) {
@@ -54,61 +60,51 @@ class SignUp extends Component {
         <div className={styles.signup}>
           <h2 className={styles.h2}>New User SignUp</h2>
           <form onSubmit={this.onSubmit}>
-            <input
-              className={styles.input}
-              type="text"
-              placeholder="Firstname"
+            <InputField
               name="firstname"
+              placeholder="Firstname"
               value={this.state.firstname}
               onChange={this.onChange}
+              classname={styles.input}
             />
-            <br />
-            <input
-              className={styles.input}
-              type="text"
+            <InputField
+              name="firstname"
               placeholder="Lastname"
-              name="lastname"
               value={this.state.lastname}
               onChange={this.onChange}
+              classname={styles.input}
             />
-
-            <br />
-            <input
-              className={styles.input}
+            <InputField
               type="email"
-              placeholder="Email"
               name="email"
+              placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
+              classname={styles.input}
             />
-
-            <br />
-            <input
-              className={styles.input}
+            <InputField
               type="tel"
-              placeholder="Phone number"
               name="phone"
+              placeholder="Phone Number"
               value={this.state.phone}
               onChange={this.onChange}
+              classname={styles.input}
             />
-
-            <br />
-            <input
-              className={styles.input}
+            <InputField
               type="password"
-              placeholder="Password"
               name="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
+              classname={styles.input}
             />
-            <br />
-            <input
-              className={styles.input}
+            <InputField
               type="password"
-              placeholder="Confirm Password"
               name="password2"
+              placeholder="Confirm Password"
               value={this.state.password2}
               onChange={this.onChange}
+              classname={styles.input}
             />
             <br />
             <button className={styles.btn} name="btn">

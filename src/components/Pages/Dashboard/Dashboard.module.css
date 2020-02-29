@@ -1,0 +1,43 @@
+.dashboard {
+    width: 83%;
+    margin: 0 auto 0 auto;
+    margin: 1px grey;
+}
+
+.dashboard h2 {
+    margin: 0;
+}
+
+.profile-intro {
+    height: 200px;
+    width: 85%;
+    display: flex;
+}
+
+.profile-img {
+    display: inline-block;
+    width: 300px;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid grey;
+    margin: 0;
+}
+
+.basic-info {
+    height: 100%;
+    width: 1000px;
+    margin: 0 0 0 50px;
+}
+
+.basic-info_div {
+    font-size: 20px;
+    color: var(--deep-theme-color);
+    margin: 0;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.basic-info_content {
+    margin: 0 0 0 0;
+}
