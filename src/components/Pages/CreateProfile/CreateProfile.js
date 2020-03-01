@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import styles from "./CreateProfile.module.css";
+import { postCurrentProfile } from "../../../redux/actions/profileActions";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -29,9 +31,28 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
-    console.log("Submit");
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram
+    };
+    this.props.postCurrentProfile(profileData, this.props.history);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -150,6 +171,7 @@ class CreateProfile extends Component {
               { label: "Proffessional", value: "proffessional" },
               { label: "Expert", value: "expert" }
             ]}
+            onChange={this.onChange}
             info="Select your current status"
           />
           <InputField
@@ -173,6 +195,7 @@ class CreateProfile extends Component {
 
           <div>
             <button
+              type="button"
               className="btn"
               onClick={() => {
                 this.setState(prevState => ({
@@ -199,4 +222,6 @@ const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors
 });
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(mapStateToProps, { postCurrentProfile })(
+  withRouter(CreateProfile)
+);

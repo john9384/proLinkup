@@ -18,23 +18,19 @@ class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
-      <div>
+      <div className={styles.logout}>
+        <img
+          src={user.avatar}
+          alt=""
+          className={styles.logout_img}
+          title="you must have a gravitar connected to you email account"
+        />
         <a
           href="/"
-          className={styles.logout}
           onClick={this.onClickLogout.bind(this)}
+          className={styles.logout_a}
         >
-          <img
-            src={user.avatar}
-            alt=""
-            style={{
-              width: "25px",
-              margin: "0",
-              borderRadius: "50%"
-            }}
-            title="you must have a gravitar connected to you email account"
-          />
-          <p>Logout</p>
+          Logout
         </a>
       </div>
     );
@@ -44,12 +40,10 @@ class Header extends Component {
           Prolinkup
         </Link>
         <div className={styles.navbar}>
-          <div className={styles.pros_div}>
-            <Link to="/pros" className={styles.pros}>
-              Pros
-            </Link>
-          </div>
-          {isAuthenticated ? authLinks : <div></div>}
+          <Link to="/pros" className={styles.pros}>
+            Pros
+          </Link>
+          {isAuthenticated ? authLinks : null}
         </div>
       </div>
     );

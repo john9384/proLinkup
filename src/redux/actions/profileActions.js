@@ -24,6 +24,18 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
+export const postCurrentProfile = (profileData, history) => dispatch => {
+  axios
+    .post("http://localhost:4000/profiles")
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
