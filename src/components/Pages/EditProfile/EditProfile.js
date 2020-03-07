@@ -5,8 +5,12 @@ import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
-import styles from "./CreateProfile.module.css";
-import { postCurrentProfile } from "../../../redux/actions/profileActions";
+import styles from "./EditProfile.module.css";
+import {
+  postCurrentProfile,
+  getCurrentProfile
+} from "../../../redux/actions/profileActions";
+import isEmpty from "../../../helpers/isEmpty";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -19,7 +23,6 @@ class CreateProfile extends Component {
       website: "",
       location: "",
       status: "",
-      skills: [],
       githubusername: "",
       bio: "",
       twitter: "",
@@ -32,9 +35,67 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
+
+      const skillsCSV = profile.skill.join(",");
+
+      profile.company = !isEmpty(profile.company) ? profile.company : "";
+
+      profile.website = !isEmpty(profile.website) ? profile.website : "";
+
+      profile.location = !isEmpty(profile.location) ? profile.location : "";
+
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
+        : "";
+
+      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+
+      profile.social = !isEmpty(profile.social) ? profile.social : {};
+
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : "";
+
+      profile.facebook = !isEmpty(profile.social.facebook)
+        ? profile.social.facebook
+        : "";
+
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
+        : "";
+
+      profile.youtube = !isEmpty(profile.social.youtube)
+        ? profile.social.youtube
+        : "";
+
+      profile.instagram = !isEmpty(profile.social.instagram)
+        ? profile.social.instagram
+        : "";
+
+      this.setState({
+        handle: profile.handle,
+        company: profile.company,
+        website: profile.website,
+        location: profile.location,
+        status: profile.status,
+        skills: skillsCSV,
+        githubusername: profile.githubusername,
+        bio: profile.bio,
+        twitter: profile.twitter,
+        facebook: profile.facebook,
+        linkedin: profile.linkedin,
+        youtube: profile.youtube,
+        instagram: profile.instagram
+      });
     }
   }
   onSubmit(e) {
@@ -115,7 +176,7 @@ class CreateProfile extends Component {
 
     return (
       <div className={styles.createProfile}>
-        <h1 className={styles.createProfile_h1}> Create your profile</h1>
+        <h1 className={styles.createProfile_h1}> Edit your profile</h1>
         <p> * = required field</p>
         <form onSubmit={this.onSubmit}>
           <InputField
@@ -218,6 +279,7 @@ class CreateProfile extends Component {
 }
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  getCurrrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -225,6 +287,7 @@ const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors
 });
-export default connect(mapStateToProps, { postCurrentProfile })(
-  withRouter(CreateProfile)
-);
+export default connect(mapStateToProps, {
+  postCurrentProfile,
+  getCurrentProfile
+})(withRouter(CreateProfile));

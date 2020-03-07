@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../../redux/actions/profileActions";
+import {
+  getCurrentProfile,
+  deleteAccount
+} from "../../../redux/actions/profileActions";
 import Spinner from "../../common/spinner/Spinner";
 import styles from "./Dashboard.module.css";
+import ProfileActions from "./ProfileActions";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
+  }
+  onDeleteClick(e) {
+    this.props.deleteAccount();
   }
   render() {
     const { user } = this.props.auth;
@@ -32,7 +39,28 @@ class Dashboard extends Component {
           </div>
         );
       } else {
-        dashboardContent = <h2>Hellow still works</h2>;
+        dashboardContent = (
+          <div>
+            <h1 className={styles.h1}>Dashboard</h1>
+            <p>
+              Welcome{" "}
+              <Link
+                to={`/profile/${profile.content.handle}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {user.firstname} {user.lastname}
+              </Link>
+            </p>
+            <ProfileActions />
+            <div style={{ marginBottom: "10px" }}></div>
+            <button
+              onClick={this.onDeleteClick.bind(this)}
+              className="btn-danger"
+            >
+              Delete Account
+            </button>
+          </div>
+        );
       }
     }
     return <div className={styles.dashboard}>{dashboardContent}</div>;
@@ -45,7 +73,10 @@ const mapStateToProps = state => ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);

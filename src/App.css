@@ -1,6 +1,7 @@
 :root {
   --deep-theme-color: rgb(0, 10, 34);
   --button-color: rgb(12, 2, 200);
+  --button-danger-color: rgb(126, 15, 15);
   --light-theme-color: white;
   --button-text-color: white;
   --info-text-color: grey;
@@ -40,13 +41,25 @@
   text-transform: uppercase;
 }
 
+.btn-danger {
+  height: 40px;
+  width: 150px;
+  display: inline-block;
+  margin: 20px 5px 40px 5px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--button-danger-color);
+  text-transform: uppercase;
+}
+
+
 button:hover {
   background-color: var(--deep-theme-color);
   transition: background-color 1s;
 }
 
 button:not(:hover) {
-  background-color: var(--button-color);
   transition: background-color 1s;
 }
 
@@ -75,4 +88,9 @@ small {
 
 .visible {
   display: block;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

@@ -14,6 +14,11 @@
     display: flex;
 }
 
+.h1 {
+    color: var(--deep-theme-color);
+    margin: 0;
+}
+
 .profile-img {
     display: inline-block;
     width: 300px;

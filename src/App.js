@@ -18,6 +18,9 @@ import SignUp from "./components/Pages/Signup/SignUp";
 import Login from "./components/Pages/Login/Login";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import CreateProfile from "./components/Pages/CreateProfile/CreateProfile";
+import EditProfile from "./components/Pages/EditProfile/EditProfile";
+import AddExp from "./components/Pages/AddCred/AddExp";
+import AddEdu from "./components/Pages/AddCred/AddEdu";
 import { clearCurrentUserProfile } from "./redux/actions/profileActions";
 
 try {
@@ -54,6 +57,13 @@ class App extends Component {
                 path="/create-profile"
                 component={CreateProfile}
               />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+              <PrivateRoute exact path="/add-exp" component={AddExp} />
+              <PrivateRoute exact path="/add-edu" component={AddEdu} />
             </Switch>
 
             <Footer />

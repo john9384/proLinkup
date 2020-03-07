@@ -18,6 +18,7 @@ class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
+      //TODO: add Dashboard link
       <div className={styles.logout}>
         <img
           src={user.avatar}
