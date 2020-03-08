@@ -5,7 +5,7 @@ import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./Form.module.css";
-
+import { addExp } from "../../../redux/actions/profileActions";
 class AddExp extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,16 @@ class AddExp extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("submit");
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current,
+      description: this.state.description
+    };
+    this.addExp(expData, this.props.history);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -103,10 +112,11 @@ class AddExp extends Component {
 }
 AddExp.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  addExp: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors
 });
-export default connect(mapStateToProps)(withRouter(AddExp));
+export default connect(mapStateToProps, addExp)(withRouter(AddExp));

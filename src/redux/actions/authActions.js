@@ -48,3 +48,15 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   dispatch(setCurrentUser({}));
 };
+
+export const addExp = (expData, history) => dispatch => {
+  axios
+    .post("http://localhost:4000/users/login", expData)
+    .then(res => history.push("/dashboard"))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
