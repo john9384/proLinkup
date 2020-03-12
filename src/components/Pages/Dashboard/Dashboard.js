@@ -9,6 +9,8 @@ import {
 import Spinner from "../../common/spinner/Spinner";
 import styles from "./Dashboard.module.css";
 import ProfileActions from "./ProfileActions";
+import ExpCard from "./ExpCard";
+import EduCard from "./EduCard";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -52,6 +54,8 @@ class Dashboard extends Component {
               </Link>
             </p>
             <ProfileActions />
+            <ExpCard experience={this.state.experience} />
+            <EduCard education={this.state.education} />
             <div style={{ marginBottom: "10px" }}></div>
             <button
               onClick={this.onDeleteClick.bind(this)}

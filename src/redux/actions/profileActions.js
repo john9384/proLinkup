@@ -62,3 +62,47 @@ export const deleteAccount = () => dispatch => {
     );
   }
 };
+export const addExp = (expData, history) => dispatch => {
+  axios
+    .post("http://localhost:4000/profiles/experience", expData)
+    .then(res => history.push("/dashboard"))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+export const addEdu = (expData, history) => dispatch => {
+  axios
+    .post("http://localhost:4000/profiles/education", expData)
+    .then(res => history.push("/dashboard"))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+export const deleteExp = id => dispatch => {
+  axios
+    .delete(`http://localhost:4000/profiles/experience/${id}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+export const deleteEdu = id => dispatch => {
+  axios
+    .delete(`http://localhost:4000/profiles/education/${id}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
