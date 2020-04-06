@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 
 export const signupUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/users/sign-up", userData)
+    .post("http://localhost:4000/user/sign-up", userData)
     .then(res => {
       history.push("/login");
     })
@@ -18,7 +18,7 @@ export const signupUser = (userData, history) => dispatch => {
 };
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:4000/users/login", userData)
+    .post("http://localhost:4000/user/login", userData)
     .then(res => {
       const { token } = res.data.content;
       localStorage.setItem("jwtToken", token);

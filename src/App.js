@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./helpers/setAuthToken";
 import { setCurrentUser } from "./redux/actions/authActions";
 import { logoutUser } from "./redux/actions/authActions";
+import { clearCurrentUserProfile } from "./redux/actions/profileActions";
 
 import PrivateRoute from "./helpers/PrivateRoute";
 
@@ -21,7 +22,8 @@ import CreateProfile from "./components/Pages/CreateProfile/CreateProfile";
 import EditProfile from "./components/Pages/EditProfile/EditProfile";
 import AddExp from "./components/Pages/AddCred/AddExp";
 import AddEdu from "./components/Pages/AddCred/AddEdu";
-import { clearCurrentUserProfile } from "./redux/actions/profileActions";
+import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
+import Profile from "./components/Pages/Profile/Profile";
 
 try {
   if (localStorage.jwtToken) {
@@ -50,6 +52,7 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/sign_up" component={SignUp} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile/:handle" component={Profile} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
@@ -64,8 +67,8 @@ class App extends Component {
               />
               <PrivateRoute exact path="/add-exp" component={AddExp} />
               <PrivateRoute exact path="/add-edu" component={AddEdu} />
+              <PrivateRoute exact path="/profiles" component={BasicProfiles} />
             </Switch>
-
             <Footer />
           </div>
         </BrowserRouter>

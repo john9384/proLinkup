@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deletExp } from "../../../redux/actions/profileActions";
+import { deleteExp } from "../../../redux/actions/profileActions";
 
 class ExpCard extends Component {
   onDelClick(id) {
@@ -41,6 +41,6 @@ class ExpCard extends Component {
   }
 }
 ExpCard.propTypes = {
-  deletExp: PropTypes.func.isRequired
+  deleteExp: PropTypes.func.isRequired
 };
-export default connect(null, { deletExp })(ExpCard);
+export default connect(null, { deleteExp })(ExpCard);

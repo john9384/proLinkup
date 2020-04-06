@@ -22,8 +22,10 @@ const InputField = ({
         name={name}
         value={value}
         onChange={onChange}
+        error={error}
       />
       <small style={{ display: "block" }}>{info}</small>
+      <small style={{ display: "block" }}>{error}</small>
     </div>
   );
 };

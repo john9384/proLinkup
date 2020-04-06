@@ -34,7 +34,7 @@ class SignUp extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.error) {
+    if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
       });
@@ -55,6 +55,7 @@ class SignUp extends Component {
 
   render() {
     // const { errors } = this.state;
+
     return (
       <main className={styles.main}>
         <div className={styles.signup}>
@@ -67,8 +68,9 @@ class SignUp extends Component {
               onChange={this.onChange}
               classname={styles.input}
             />
+
             <InputField
-              name="firstname"
+              name="lastname"
               placeholder="Lastname"
               value={this.state.lastname}
               onChange={this.onChange}
@@ -126,7 +128,7 @@ SignUp.propTypes = {
 };
 const mapStateToProp = state => ({
   auth: state.auth,
-  err: state.errors
+  errors: state.errors
 });
 
 export default connect(mapStateToProp, { signupUser })(withRouter(SignUp));

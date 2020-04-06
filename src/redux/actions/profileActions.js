@@ -4,13 +4,31 @@ import {
   PROFILE_LOADING,
   GET_ERRORS,
   CLEAR_CURRENT_PROFILE,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  GET_PROFILES
 } from "./types";
 
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get("http://localhost:4000/profiles")
+    .get("http://localhost:4000/profile")
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    );
+};
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`http://localhost:4000/profile/handle/${handle}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -27,7 +45,7 @@ export const getCurrentProfile = () => dispatch => {
 
 export const postCurrentProfile = (profileData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/profiles")
+    .post("http://localhost:4000/profile")
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({
@@ -49,7 +67,7 @@ export const clearCurrentUserProfile = () => {
 };
 export const deleteAccount = () => dispatch => {
   if (window.confirm("Are you sure? This can Not be undown!")) {
-    axios.delete("http://localhost:4000/profiles").then(res =>
+    axios.delete("http://localhost:4000/profile").then(res =>
       dispatch({
         type: SET_CURRENT_USER,
         payload: {}
@@ -64,7 +82,7 @@ export const deleteAccount = () => dispatch => {
 };
 export const addExp = (expData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/profiles/experience", expData)
+    .post("http://localhost:4000/profile/experience", expData)
     .then(res => history.push("/dashboard"))
     .catch(err => {
       dispatch({
@@ -75,7 +93,7 @@ export const addExp = (expData, history) => dispatch => {
 };
 export const addEdu = (expData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/profiles/education", expData)
+    .post("http://localhost:4000/profile/education", expData)
     .then(res => history.push("/dashboard"))
     .catch(err => {
       dispatch({
@@ -86,7 +104,7 @@ export const addEdu = (expData, history) => dispatch => {
 };
 export const deleteExp = id => dispatch => {
   axios
-    .delete(`http://localhost:4000/profiles/experience/${id}`)
+    .delete(`http://localhost:4000/profile/experience/${id}`)
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => {
       dispatch({
@@ -97,7 +115,7 @@ export const deleteExp = id => dispatch => {
 };
 export const deleteEdu = id => dispatch => {
   axios
-    .delete(`http://localhost:4000/profiles/education/${id}`)
+    .delete(`http://localhost:4000/profile/education/${id}`)
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => {
       dispatch({
@@ -105,4 +123,21 @@ export const deleteEdu = id => dispatch => {
         payload: err.response.data
       });
     });
+};
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get("http://localhost:4000/profile/all")
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
+      })
+    );
 };
