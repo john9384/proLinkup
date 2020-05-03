@@ -11,6 +11,7 @@ import styles from "./Dashboard.module.css";
 import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
+import Profile from "../Profile/Profile";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -20,9 +21,8 @@ class Dashboard extends Component {
     this.props.deleteAccount();
   }
   render() {
-    const { user } = this.props.auth;
+    const { firstname, lastname } = this.props.auth.user.payload;
     const { profile, loading } = this.props.profile;
-
     let dashboardContent;
 
     if (profile === null || loading) {
@@ -32,7 +32,7 @@ class Dashboard extends Component {
         dashboardContent = (
           <div style={{ textAlign: "center" }}>
             <h1>
-              Welcome {user.firstname} {user.lastname}
+              Welcome {firstname} {lastname}
             </h1>
             <p className="lead text-muted">You have no profile yet</p>
             <Link to="/create-profile">
@@ -50,12 +50,13 @@ class Dashboard extends Component {
                 to={`/profile/${profile.content.handle}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                {user.firstname} {user.lastname}
+                {firstname} {lastname}
               </Link>
             </p>
             <ProfileActions />
-            <ExpCard experience={this.state.experience} />
-            <EduCard education={this.state.education} />
+            {/* <Profile /> */}
+            <ExpCard experience={profile.content.experience} />
+            <EduCard education={profile.content.education} />
             <div style={{ marginBottom: "10px" }}></div>
             <button
               onClick={this.onDeleteClick.bind(this)}

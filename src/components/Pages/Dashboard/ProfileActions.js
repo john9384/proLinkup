@@ -5,7 +5,7 @@ const ProfileActions = () => {
   return (
     <div>
       <button class="btn">
-        <Link to="/edit-profile">Add Experience</Link>
+        <Link to="/edit-profile">Edit Profile</Link>
       </button>
       <button class="btn">
         <Link to="/add-experience">Add Experience</Link>

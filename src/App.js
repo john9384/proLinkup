@@ -65,8 +65,8 @@ class App extends Component {
                 path="/edit-profile"
                 component={EditProfile}
               />
-              <PrivateRoute exact path="/add-exp" component={AddExp} />
-              <PrivateRoute exact path="/add-edu" component={AddEdu} />
+              <PrivateRoute exact path="/add-experience" component={AddExp} />
+              <PrivateRoute exact path="/add-education" component={AddEdu} />
               <PrivateRoute exact path="/profiles" component={BasicProfiles} />
             </Switch>
             <Footer />

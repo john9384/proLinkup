@@ -6,7 +6,7 @@ import ProfileHeader from "./ProfileHeader";
 import ProfileAbout from "./ProfileAbout";
 import ProfileCreds from "./ProfileCreds";
 //import ProfileGithub from "./ProfileGithub";
-import Spinner from "../../common/spinner";
+import Spinner from "../../common/spinner/Spinner";
 import { getProfileByHandle } from "../../../redux/actions/profileActions";
 
 class Profile extends Component {

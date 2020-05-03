@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import styles from "./EditProfile.module.css";
 import {
   postCurrentProfile,
-  getCurrentProfile
+  getCurrentProfile,
 } from "../../../redux/actions/profileActions";
 import isEmpty from "../../../helpers/isEmpty";
 
-class CreateProfile extends Component {
+class EditProfile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       displaySocialInputs: false,
       handle: "",
       company: "",
       website: "",
       location: "",
+      skills: "",
       status: "",
       githubusername: "",
       bio: "",
@@ -30,7 +30,7 @@ class CreateProfile extends Component {
       linkedin: "",
       youtube: "",
       instagram: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -43,9 +43,9 @@ class CreateProfile extends Component {
       this.setState({ errors: nextProps.errors });
     }
     if (nextProps.profile.profile) {
-      const profile = nextProps.profile.profile;
+      const profile = nextProps.profile.profile.content;
 
-      const skillsCSV = profile.skill.join(",");
+      const skillsCSV = profile.skills.join(",");
 
       profile.company = !isEmpty(profile.company) ? profile.company : "";
 
@@ -94,7 +94,7 @@ class CreateProfile extends Component {
         facebook: profile.facebook,
         linkedin: profile.linkedin,
         youtube: profile.youtube,
-        instagram: profile.instagram
+        instagram: profile.instagram,
       });
     }
   }
@@ -113,7 +113,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      instagram: this.state.instagram
+      instagram: this.state.instagram,
     };
     this.props.postCurrentProfile(profileData, this.props.history);
   }
@@ -176,6 +176,9 @@ class CreateProfile extends Component {
 
     return (
       <div className={styles.createProfile}>
+        <Link to="/dashboard" className={styles.head}>
+          <button className={styles.btn}>Back</button>
+        </Link>
         <h1 className={styles.createProfile_h1}> Edit your profile</h1>
         <p> * = required field</p>
         <form onSubmit={this.onSubmit}>
@@ -232,7 +235,7 @@ class CreateProfile extends Component {
               { label: "Junior", value: "junior" },
               { label: "Intermediate", value: "intermidiate" },
               { label: "Proffessional", value: "proffessional" },
-              { label: "Expert", value: "expert" }
+              { label: "Expert", value: "expert" },
             ]}
             onChange={this.onChange}
             info="Select your current status"
@@ -261,8 +264,8 @@ class CreateProfile extends Component {
               type="button"
               className="btn"
               onClick={() => {
-                this.setState(prevState => ({
-                  displaySocialInputs: !prevState.displaySocialInputs
+                this.setState((prevState) => ({
+                  displaySocialInputs: !prevState.displaySocialInputs,
                 }));
               }}
             >
@@ -277,17 +280,17 @@ class CreateProfile extends Component {
     );
   }
 }
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, {
   postCurrentProfile,
-  getCurrentProfile
-})(withRouter(CreateProfile));
+  getCurrentProfile,
+})(withRouter(EditProfile));
