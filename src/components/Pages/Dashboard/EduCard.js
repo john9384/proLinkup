@@ -5,10 +5,10 @@ import { deleteEdu } from "../../../redux/actions/profileActions";
 
 class EduCard extends Component {
   onDelClick(id) {
-    this.props.deletEdu(id);
+    this.props.deleteEdu(id);
   }
   render() {
-    const education = this.props.education.map(edu => (
+    const education = this.props.education.map((edu) => (
       <tr key={edu._id}>
         <td>{edu.school}</td>
         <td>{edu.degree}</td>
@@ -41,6 +41,6 @@ class EduCard extends Component {
   }
 }
 EduCard.propTypes = {
-  deleteEdu: PropTypes.func.isRequired
+  deleteEdu: PropTypes.func.isRequired,
 };
 export default connect(null, { deleteEdu })(EduCard);

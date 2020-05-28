@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/authActions";
 import InputField from "../../common/inputFieldGroup/InputTextField";
-
+import Popup from "../../common/popup/Popup";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -38,14 +38,13 @@ class Login extends Component {
     e.preventDefault();
     const currentUserData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     this.props.loginUser(currentUserData);
   }
 
   render() {
     const { errors } = this.state;
-    let errMessage = <p>{errors.message}</p>;
     return (
       <main className={styles.main}>
         <div className={styles.login}>
@@ -71,11 +70,11 @@ class Login extends Component {
               Submit
             </button>
             <Link to="/sign_up" className={(styles.p, styles.link)}>
-              Not a member,sign up
+              Not registered
             </Link>
           </form>
         </div>
-        {errors ? errMessage : <div></div>}
+        {errors ? <Popup error={errors} /> : <div></div>}
       </main>
     );
   }
@@ -83,10 +82,10 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { loginUser })(Login);

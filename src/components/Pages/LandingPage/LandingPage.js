@@ -20,14 +20,8 @@ class LandingPage extends Component {
             Welcome to the social network for the Pro's.
           </p>
           <button className={styles.btn}>
-            {" "}
             <Link to="/login" className={styles.link}>
               Sign in
-            </Link>
-          </button>
-          <button className={styles.btn}>
-            <Link to="/sign_up" className={styles.link}>
-              sign up
             </Link>
           </button>
         </div>
@@ -36,9 +30,9 @@ class LandingPage extends Component {
   }
 }
 LandingPage.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 export default connect(mapStateToProps)(LandingPage);

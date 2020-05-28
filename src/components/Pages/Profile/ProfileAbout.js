@@ -4,10 +4,10 @@ import isEmpty from "../../../helpers/isEmpty";
 
 class ProfileAbout extends Component {
   render() {
-    const { profile } = this.props;
+    const { profile, user } = this.props;
 
-    const firstname = profile.user.name.trim().split(" ")[0];
-    const skills = profile.skills.map((skill, index) => (
+    const firstname = user.firstname;
+    const skills = profile.content.skills.map((skill, index) => (
       <div key={index}>{skill}</div>
     ));
     return (
@@ -15,10 +15,10 @@ class ProfileAbout extends Component {
         <div>
           <h2>{firstname}'s Bio</h2>
           <p>
-            {isEmpty(profile.bio) ? (
+            {isEmpty(profile.content.bio) ? (
               <span>You have no bio</span>
             ) : (
-              <span>{profile.bio}</span>
+              <span>{profile.content.bio}</span>
             )}
           </p>
         </div>

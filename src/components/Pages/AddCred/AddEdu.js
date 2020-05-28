@@ -34,9 +34,9 @@ class AddEdu extends Component {
   onSubmit(e) {
     e.preventDefault();
     const eduData = {
-      company: this.state.school,
-      title: this.state.degree,
-      location: this.state.fieldofstudy,
+      school: this.state.school,
+      degree: this.state.degree,
+      fieldofstudy: this.state.fieldofstudy,
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
@@ -46,6 +46,7 @@ class AddEdu extends Component {
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.value);
   }
   onCheck(e) {
     this.setState({

@@ -5,10 +5,10 @@ import { deleteExp } from "../../../redux/actions/profileActions";
 
 class ExpCard extends Component {
   onDelClick(id) {
-    this.props.deletExp(id);
+    this.props.deleteExp(id);
   }
   render() {
-    const experience = this.props.experience.map(exp => (
+    const experience = this.props.experience.map((exp) => (
       <tr key={exp._id}>
         <td>{exp.company}</td>
         <td>{exp.title}</td>
@@ -41,6 +41,6 @@ class ExpCard extends Component {
   }
 }
 ExpCard.propTypes = {
-  deleteExp: PropTypes.func.isRequired
+  deleteExp: PropTypes.func.isRequired,
 };
 export default connect(null, { deleteExp })(ExpCard);

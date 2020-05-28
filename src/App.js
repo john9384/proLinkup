@@ -24,6 +24,8 @@ import AddExp from "./components/Pages/AddCred/AddExp";
 import AddEdu from "./components/Pages/AddCred/AddEdu";
 import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
 import Profile from "./components/Pages/Profile/Profile";
+import Posts from "./components/Pages/Posts/Posts";
+import Post from "./components/Pages/Post/Post";
 
 try {
   if (localStorage.jwtToken) {
@@ -47,28 +49,37 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="container">
+          <div>
             <Header />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/sign_up" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/profile/:handle" component={Profile} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute
-                exact
-                path="/create-profile"
-                component={CreateProfile}
-              />
-              <PrivateRoute
-                exact
-                path="/edit-profile"
-                component={EditProfile}
-              />
-              <PrivateRoute exact path="/add-experience" component={AddExp} />
-              <PrivateRoute exact path="/add-education" component={AddEdu} />
-              <PrivateRoute exact path="/profiles" component={BasicProfiles} />
-            </Switch>
+            <div className="container">
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/sign_up" component={SignUp} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/profile/handle/:handle" component={Profile} />
+              <Route exact path="/pros" component={BasicProfiles} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+                <PrivateRoute
+                  exact
+                  path="/edit-profile"
+                  component={EditProfile}
+                />
+                <PrivateRoute exact path="/add-experience" component={AddExp} />
+                <PrivateRoute exact path="/add-education" component={AddEdu} />
+                <PrivateRoute
+                  exact
+                  path="/profiles"
+                  component={BasicProfiles}
+                />
+                <PrivateRoute exact path="/feeds" component={Posts} />
+                <PrivateRoute exact path="/post/:id" component={Post} />
+              </Switch>
+            </div>
             <Footer />
           </div>
         </BrowserRouter>

@@ -7,6 +7,7 @@ import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import styles from "./CreateProfile.module.css";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
+import Popup from "../../common/popup/Popup";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class CreateProfile extends Component {
       linkedin: "",
       youtube: "",
       instagram: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -52,7 +53,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      instagram: this.state.instagram
+      instagram: this.state.instagram,
     };
     this.props.postCurrentProfile(profileData, this.props.history);
   }
@@ -61,7 +62,7 @@ class CreateProfile extends Component {
   }
 
   render() {
-    let { displaySocialInputs } = this.state;
+    let { displaySocialInputs, errors } = this.state;
     let socials;
     if (displaySocialInputs) {
       socials = (
@@ -171,7 +172,7 @@ class CreateProfile extends Component {
               { label: "Junior", value: "junior" },
               { label: "Intermediate", value: "intermidiate" },
               { label: "Proffessional", value: "proffessional" },
-              { label: "Expert", value: "expert" }
+              { label: "Expert", value: "expert" },
             ]}
             onChange={this.onChange}
             info="Select your current status"
@@ -200,8 +201,8 @@ class CreateProfile extends Component {
               type="button"
               className="btn"
               onClick={() => {
-                this.setState(prevState => ({
-                  displaySocialInputs: !prevState.displaySocialInputs
+                this.setState((prevState) => ({
+                  displaySocialInputs: !prevState.displaySocialInputs,
                 }));
               }}
             >
@@ -212,6 +213,7 @@ class CreateProfile extends Component {
           </div>
           <input type="submit" value="Submit" className={styles.submit_btn} />
         </form>
+        {errors ? <Popup error={errors} /> : <div></div>}
       </div>
     );
   }
@@ -219,11 +221,11 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { postCurrentProfile })(
   withRouter(CreateProfile)

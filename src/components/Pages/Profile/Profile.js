@@ -17,21 +17,23 @@ class Profile extends Component {
   }
   render() {
     const { profile, loading } = this.props.profile;
+    const { user } = this.props.auth;
     let profileContent;
     if (profile === null || loading) {
       profileContent = <Spinner />;
     } else {
       profileContent = (
         <div>
-          <Link to="/profiles">Back to profiles</Link>
+          <Link to="/profiles" className="btn">
+            Back to profiles
+          </Link>
           <div>
-            <ProfileHeader profile={profile} />
-            <ProfileAbout profile={profile} />
-            <ProfileCreds
-              education={profile.education}
-              experience={profile.experience}
-            />
-            {/* <ProfileGithub /> */}
+            <ProfileHeader profile={profile} user={user.payload} />
+            <ProfileAbout profile={profile} user={user.payload} />
+            {/* <ProfileCreds
+              education={profile.content.education}
+              experience={profile.content.experience}
+            /> */}
           </div>
         </div>
       );
@@ -39,9 +41,14 @@ class Profile extends Component {
     return <div>{profileContent}</div>;
   }
 }
+
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  auth: state.auth,
+});
 Profile.propTypes = {
+  getProfileByHandle: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  getProfileByHandle: PropTypes.func.isRequired
 };
-const mapStateToProps = state => ({});
 export default connect(mapStateToProps, { getProfileByHandle })(Profile);

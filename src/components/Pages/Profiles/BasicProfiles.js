@@ -11,23 +11,26 @@ class BasicProfiles extends Component {
   }
   render() {
     const { profiles, loading } = this.props.profile;
+
+    let allProfiles;
     let profileItems;
 
     if (profiles === null || loading) {
       profileItems = <Spinner />;
     } else {
-      if (profiles.length > 0) {
-        profileItems = <h1>Profile goes here </h1>;
-      } else {
-        profileItems = profiles.map(profile => (
+      if (profiles.content.length > 0) {
+        allProfiles = profiles.content;
+        profileItems = allProfiles.map((profile) => (
           <ProfileItems key={profile._id} profile={profile} />
         ));
+      } else {
+        console.log("else statement", profiles);
       }
     }
     return (
-      <div>
-        <h1> Pros Profiles</h1>
-        <p> Browse and connect with pros</p>
+      <div className="container">
+        <h1 className="container__title"> Pros Profiles</h1>
+        <p className="container__note"> Browse and connect with pros</p>
         {profileItems}
       </div>
     );
@@ -36,10 +39,10 @@ class BasicProfiles extends Component {
 
 BasicProfiles.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfiles: PropTypes.func.isRequired
+  getProfiles: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getProfiles })(BasicProfiles);

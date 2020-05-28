@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   getCurrentProfile,
-  deleteAccount
+  deleteAccount,
 } from "../../../redux/actions/profileActions";
 import Spinner from "../../common/spinner/Spinner";
 import styles from "./Dashboard.module.css";
@@ -12,6 +12,7 @@ import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
 import Profile from "../Profile/Profile";
+//import Profile from "../Profiles/ProfileItems";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class Dashboard extends Component {
     this.props.deleteAccount();
   }
   render() {
-    const { firstname, lastname } = this.props.auth.user.payload;
+    const { firstname, lastname, avatar } = this.props.auth.user.payload;
     const { profile, loading } = this.props.profile;
     let dashboardContent;
 
@@ -47,14 +48,18 @@ class Dashboard extends Component {
             <p>
               Welcome{" "}
               <Link
-                to={`/profile/${profile.content.handle}`}
+                to={`/profile/handle/${profile.content.handle}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 {firstname} {lastname}
               </Link>
             </p>
-            <ProfileActions />
-            {/* <Profile /> */}
+            <div className={styles.profileActions}>
+              <ProfileActions />
+            </div>
+            <div className={styles.skills}>
+              <h2>Skills</h2>
+            </div>
             <ExpCard experience={profile.content.experience} />
             <EduCard education={profile.content.education} />
             <div style={{ marginBottom: "10px" }}></div>
@@ -71,16 +76,16 @@ class Dashboard extends Component {
     return <div className={styles.dashboard}>{dashboardContent}</div>;
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth
+  auth: state.auth,
 });
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
   Dashboard
