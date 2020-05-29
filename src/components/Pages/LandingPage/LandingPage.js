@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-
+import classnames from "classnames";
 import styles from "./LandingPage.module.css";
 
 class LandingPage extends Component {
@@ -19,10 +19,8 @@ class LandingPage extends Component {
           <p className={styles.note}>
             Welcome to the social network for the Pro's.
           </p>
-          <button className={styles.btn}>
-            <Link to="/login" className={styles.link}>
-              Sign in
-            </Link>
+          <button className={classnames("btn", styles.btn)}>
+            <Link to="/login">Sign in</Link>
           </button>
         </div>
       </main>

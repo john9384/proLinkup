@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Spinner from "../../common/spinner/Spinner";
 import { getProfiles } from "../../../redux/actions/profileActions";
 import ProfileItems from "./ProfileItems";
+import styles from "./Profiles.module.css";
 
 class BasicProfiles extends Component {
   componentDidMount() {
@@ -24,13 +25,13 @@ class BasicProfiles extends Component {
           <ProfileItems key={profile._id} profile={profile} />
         ));
       } else {
-        console.log("else statement", profiles);
+        profileItems = <Spinner />;
       }
     }
     return (
-      <div className="container">
-        <h1 className="container__title"> Pros Profiles</h1>
-        <p className="container__note"> Browse and connect with pros</p>
+      <div className={styles.main}>
+        <h1 className={styles.main__title}> Pros Profiles</h1>
+        <p className={styles.main_note}> Browse and connect with pros</p>
         {profileItems}
       </div>
     );

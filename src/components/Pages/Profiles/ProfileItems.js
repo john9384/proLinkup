@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import isEmpty from "../../../helpers/isEmpty";
-import styles from "./ProfileItems.module.css";
+import styles from "./Profiles.module.css";
 
 class ProfileItems extends Component {
   render() {

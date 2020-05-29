@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -56,11 +56,11 @@ class PostItem extends Component {
                   type="button"
                   className="btn btn-light mr-1"
                 >
-                  <i
+                  {/* <i
                     className={classnames("fas fa-thumbs-up", {
                       "text-info": this.findUserLike(post.likes),
                     })}
-                  />
+                  /> */}
                   <span className="badge badge-light">{post.likes.length}</span>
                 </button>
                 <button

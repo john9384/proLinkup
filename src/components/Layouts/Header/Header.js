@@ -53,18 +53,9 @@ class Header extends Component {
     return (
       <div className={styles.header}>
         <Link to="/" className={styles.title}>
-          Prolinkup
+          ProLinkup
         </Link>
         <div className={styles.navbar}>
-          <Link to="/pros" className={styles.pros}>
-            Pros
-          </Link>
-          <div className={styles.userlinks}>
-            {isAuthenticated ? postFeeds : null}
-            {isAuthenticated ? dashboardLink : null}
-            {isAuthenticated ? avatar : null}
-            {isAuthenticated ? logout : null}
-          </div>
           <div className={styles.dropdown}>
             {isAuthenticated ? avatar : <span>Menu</span>}
             <div className={styles.ddcontent}>
