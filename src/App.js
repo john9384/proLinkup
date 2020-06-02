@@ -23,6 +23,7 @@ import EditProfile from "./components/Pages/EditProfile/EditProfile";
 import AddExp from "./components/Pages/AddCred/AddExp";
 import AddEdu from "./components/Pages/AddCred/AddEdu";
 import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
+import NotFound from "./components/Layouts/NotFound/NotFound";
 import Profile from "./components/Pages/Profile/Profile";
 import Posts from "./components/Pages/Posts/Posts";
 import Post from "./components/Pages/Post/Post";
@@ -56,6 +57,7 @@ class App extends Component {
               <Route exact path="/sign_up" component={SignUp} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profile/handle/:handle" component={Profile} />
+              <Route exact path="/not-found" component={NotFound} />
               <Route exact path="/pros" component={BasicProfiles} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />

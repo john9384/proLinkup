@@ -7,6 +7,8 @@ import ProfileAbout from "./ProfileAbout";
 import ProfileCreds from "./ProfileCreds";
 //import ProfileGithub from "./ProfileGithub";
 import Spinner from "../../common/spinner/Spinner";
+import classnames from "classnames";
+import styles from "./Profile.module.css";
 import { getProfileByHandle } from "../../../redux/actions/profileActions";
 
 class Profile extends Component {
@@ -15,40 +17,43 @@ class Profile extends Component {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/not-found");
+    }
+  }
   render() {
     const { profile, loading } = this.props.profile;
-    const { user } = this.props.auth;
     let profileContent;
     if (profile === null || loading) {
       profileContent = <Spinner />;
     } else {
       profileContent = (
         <div>
-          <Link to="/profiles" className="btn">
-            Back to profiles
-          </Link>
-          <div>
-            <ProfileHeader profile={profile} user={user.payload} />
-            <ProfileAbout profile={profile} user={user.payload} />
-            {/* <ProfileCreds
+          <button className={classnames("btn", styles.btn)}>
+            <Link to="/pros">Back</Link>
+          </button>
+
+          <div className={styles.main__content}>
+            <ProfileHeader profile={profile} />
+            <ProfileAbout profile={profile} />
+            <ProfileCreds
               education={profile.content.education}
               experience={profile.content.experience}
-            /> */}
+            />
           </div>
         </div>
       );
     }
-    return <div>{profileContent}</div>;
+    return <div className={styles.main}>{profileContent}</div>;
   }
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth,
 });
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, { getProfileByHandle })(Profile);

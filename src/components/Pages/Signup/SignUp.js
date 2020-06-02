@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-//import { classnames } from "classnames";
+import classnames from "classnames";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-
 import styles from "./Signup.module.css";
 import { connect } from "react-redux";
 import { signupUser } from "../../../redux/actions/authActions";
@@ -67,7 +66,8 @@ class SignUp extends Component {
               placeholder="Firstname"
               value={this.state.firstname}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
+              info="Includes letters only"
             />
 
             <InputField
@@ -75,7 +75,8 @@ class SignUp extends Component {
               placeholder="Lastname"
               value={this.state.lastname}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
+              info="Includes letters only"
             />
             <InputField
               type="email"
@@ -83,7 +84,8 @@ class SignUp extends Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
+              info="Must be valid email"
             />
             <InputField
               type="tel"
@@ -91,7 +93,8 @@ class SignUp extends Component {
               placeholder="Phone Number"
               value={this.state.phone}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
+              info="Must be valid phone number"
             />
             <InputField
               type="password"
@@ -99,7 +102,8 @@ class SignUp extends Component {
               placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
+              info="Can include letters numbers and symbols"
             />
             <InputField
               type="password"
@@ -107,13 +111,13 @@ class SignUp extends Component {
               placeholder="Confirm Password"
               value={this.state.password2}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
             />
             <br />
-            <button className={styles.btn} name="btn">
+            <button className={classnames("btn", styles.btn)} name="btn">
               Submit
             </button>
-            <Link to="/login" className={(styles.p, styles.link)}>
+            <Link to="/login" className="link">
               Already a member
             </Link>
           </form>

@@ -4,99 +4,61 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .login {
-  max-height: 100%;
-  width: 35%;
-  color: black;
-  border-radius: 5px;
+  height: 250px;
+  width: 50%;
+  margin: 0;
+  padding: 0 30px 0 30px;
   border: none;
-  box-shadow: 2px 2px 10px 1px grey;
-  padding-left: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 1px var(--shadow-color);
+  background-color: var(--div-color);
 }
 
 .h2 {
   text-transform: uppercase;
-  color: rgb(0, 10, 34);
+  color: var(--deep-theme-color);
 }
-
 .input {
-  margin: 5px 5px 5px 0;
-  width: 90%;
-  height: 30px;
-  border: 1px solid lightblue;
-  border-radius: 3px;
-  padding: 2px;
-  padding-left: 4px;
+  margin: 5px 0 10px 0;
 }
-
-.input:focus {
-  box-shadow: 2px 2px 10px 1px grey;
-  border: 1px solid white;
-}
-
 .btn {
-  height: 40px;
-  width: 150px;
-  display: inline-block;
-  margin: 20px 20px 40px 0px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: var(--button-color);
-  text-transform: uppercase;
+  margin: 10px 20px 0 0;
 }
 
-.btn:hover {
-  background-color: var(--deep-theme-color);
-  transition: background-color 1s;
-}
-
-.btn:not(:hover) {
-  background-color: var(--button-color);
-  transition: background-color 1s;
-}
-
-.link {
-  font-style: italic;
-  margin: 0;
-  color: white;
-}
-
-.link:hover {
-  color: black;
-  transition: color 1s;
-}
-
-.link:not(:hover) {
-  color: grey;
-  transition: color 1s;
-}
 @media screen and (max-width: 800px) {
   .login {
-    height: 30%;
-    width: 50%;
-    color: black;
-    border-radius: 5px;
-    border: none;
-    margin: -20vh 0 0 0;
-    /* box-shadow: 2px 2px 10px 1px grey; */
-    box-shadow: 0px 0px 0px 0px;
-    padding-left: 30px;
+    height: 250px;
+    width: 70%;
+    background-color: var(--div-color);
+  }
+  .input {
+    margin: 5px 0 10px 0;
+  }
+  .btn {
+    margin: 10px 20px 0 0;
   }
 }
 @media screen and (max-width: 450px) {
+  .main {
+    display: block;
+  }
   .login {
     height: 40%;
     width: 100%;
-    margin-top: 0;
-    color: black;
+    margin: 40% 0 0 0;
+    color: var(--primary-text-color);
     border-radius: 5px;
     border: none;
     box-shadow: 0 0 0 0;
-    padding-left: 30px;
+    padding: 0;
+    background-color: white;
+  }
+  .btn {
+    margin: 20px 20px 0 0;
   }
 }

@@ -26,6 +26,7 @@ export const getCurrentProfile = () => (dispatch) => {
     );
 };
 export const getProfileByHandle = (handle) => (dispatch) => {
+  console.log(handle);
   dispatch(setProfileLoading());
   axios
     .get(`http://localhost:4000/profile/handle/${handle}`)

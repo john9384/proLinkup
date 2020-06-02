@@ -18,7 +18,6 @@ class Header extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const avatar = (
-      //TODO: add Dashboard link
       <img
         src={user.avatar}
         alt=""
@@ -59,6 +58,9 @@ class Header extends Component {
           <div className={styles.dropdown}>
             {isAuthenticated ? avatar : <span>Menu</span>}
             <div className={styles.ddcontent}>
+              <Link to="/" className={styles.ddlink}>
+                Home
+              </Link>
               <Link to="/pros" className={styles.ddlink}>
                 Pros
               </Link>

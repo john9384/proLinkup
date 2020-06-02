@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import Spinner from "../../common/spinner/Spinner";
 import { getProfiles } from "../../../redux/actions/profileActions";
 import ProfileItems from "./ProfileItems";
@@ -31,7 +32,7 @@ class BasicProfiles extends Component {
     return (
       <div className={styles.main}>
         <h1 className={styles.main__title}> Pros Profiles</h1>
-        <p className={styles.main_note}> Browse and connect with pros</p>
+        <p className={styles.main__note}> Browse and connect with pros</p>
         {profileItems}
       </div>
     );

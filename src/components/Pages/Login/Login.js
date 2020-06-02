@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
+import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/authActions";
@@ -40,6 +41,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+    console.log(this.state.errors);
     this.props.loginUser(currentUserData);
   }
 
@@ -56,7 +58,7 @@ class Login extends Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
             />
             <InputField
               type="password"
@@ -64,12 +66,12 @@ class Login extends Component {
               placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
-              classname={styles.input}
+              classname={classnames("input", styles.input)}
             />
-            <button className={styles.btn} name="btn">
+            <button className={classnames("btn", styles.btn)} name="btn">
               Submit
             </button>
-            <Link to="/sign_up" className={(styles.p, styles.link)}>
+            <Link to="/sign_up" className="link">
               Not registered
             </Link>
           </form>

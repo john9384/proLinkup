@@ -11,7 +11,7 @@ const InputField = ({
   type,
   onChange,
   disabled,
-  classname
+  classname,
 }) => {
   return (
     <div>
@@ -24,8 +24,7 @@ const InputField = ({
         onChange={onChange}
         error={error}
       />
-      <small style={{ display: "block" }}>{info}</small>
-      <small style={{ display: "block" }}>{error}</small>
+      <small className="input__info">{info}</small>
     </div>
   );
 };
@@ -36,9 +35,9 @@ InputField.propTypes = {
   type: PropTypes.string.isRequired,
   onChange: PropTypes.string.isRequired,
   disabled: PropTypes.string,
-  classname: PropTypes.string
+  classname: PropTypes.string,
 };
 InputField.defaultProps = {
-  type: "text"
+  type: "text",
 };
 export default InputField;

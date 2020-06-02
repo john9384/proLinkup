@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import styles from "./Profile.module.css";
 
 class ProfileCreds extends Component {
   render() {
     const { experience, education } = this.props;
-    const expList = experience.map(exp => (
+    const expList = experience.map((exp) => (
       <li key={exp._id}>
         <h4>{exp.company}</h4>
         <p>
@@ -34,7 +35,7 @@ class ProfileCreds extends Component {
         </p>
       </li>
     ));
-    const eduList = education.map(edu => (
+    const eduList = education.map((edu) => (
       <li key={edu._id}>
         <h4>{edu.company}</h4>
         <p>
@@ -61,14 +62,15 @@ class ProfileCreds extends Component {
       </li>
     ));
     return (
-      <div>
-        <h3>Experience</h3>
-        <div>
-          {expList.length > 0 ? <ul>{expList}</ul> : <span>No Experience</span>}
+      <div className={styles.profile__creds}>
+        <div className={styles.creds__exp}>
+          <h3>Experience</h3>
+          {expList.length > 0 ? <ul>{expList}</ul> : <h4>No Experience</h4>}
         </div>
-        <h3>Education</h3>
-        <div>
-          {eduList.length > 0 ? <ul>{eduList}</ul> : <span>No Education</span>}
+
+        <div className={styles.creds__edu}>
+          <h3>Education</h3>
+          {eduList.length > 0 ? <ul>{eduList}</ul> : <h4>No Education</h4>}
         </div>
       </div>
     );

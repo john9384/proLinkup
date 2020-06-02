@@ -11,9 +11,10 @@
 .wel {
   width: 40vw;
   margin: 25vh 0 25vh 0;
-  color: black;
+  color: var(--primary-text-color);
   border-radius: 5px;
   text-align: center;
+  background-color: var(--div-color);
 }
 
 .title {
@@ -59,6 +60,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: var(--div-color);
   }
 
   .title {
@@ -94,6 +96,7 @@
     border: none;
     box-shadow: 0 0 0 0;
     margin: 28vh 0 28vh 0;
+    background-color: white;
   }
 
   .title {

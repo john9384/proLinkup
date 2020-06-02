@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import isEmpty from "../../../helpers/isEmpty";
 import styles from "./Profiles.module.css";
 
@@ -9,12 +10,12 @@ class ProfileItems extends Component {
   render() {
     const { profile } = this.props;
     return (
-      <div>
-        <div>
-          <img src={profile.user.avatar} alt="" className={styles.avatar} />
+      <div className={styles.profile}>
+        <div className={styles.profile__img}>
+          <img src={profile.avatar} alt="" className={styles.profile__avatar} />
         </div>
-        <div>
-          <h3> {profile.user.name}</h3>
+        <div className={styles.profile__intro}>
+          <h3> {profile.username}</h3>
           <p>
             {profile.status}
             {isEmpty(profile.company) ? null : (
@@ -22,16 +23,19 @@ class ProfileItems extends Component {
             )}
           </p>
           <p>
-            {isEmpty(profile.loacation) ? null : (
-              <span>{profile.location}</span>
-            )}
+            {isEmpty(profile.location) ? null : <span>{profile.location}</span>}
           </p>
-          <Link to={`/profile/${profile.handle}`} className={styles.btn}>
-            View Profile
-          </Link>
+          <button className={classnames("btn", styles.btn)}>
+            <Link
+              to={`/profile/handle/${profile.handle}`}
+              className={styles.btn}
+            >
+              View Profile
+            </Link>
+          </button>
         </div>
-        <div>
-          <h4>Skill Set </h4>
+        <div className={styles.profile__skills}>
+          <h3>Skill Set </h3>
           <ul>
             {profile.skills.slice(0, 4).map((skill, index) => (
               <li key={index}>{skill}</li>

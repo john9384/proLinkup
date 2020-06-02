@@ -31,11 +31,12 @@ class Dashboard extends Component {
     } else {
       if (Object.keys(profile).length <= 0) {
         dashboardContent = (
-          <div style={{ textAlign: "center" }}>
+          <div className>
+            <h1 className={styles.h1}>Dashboard</h1>
             <h1>
               Welcome {firstname} {lastname}
             </h1>
-            <p className="lead text-muted">You have no profile yet</p>
+            <p styl>You have no profile yet</p>
             <Link to="/create-profile">
               <button className="btn">Create Profile</button>
             </Link>
