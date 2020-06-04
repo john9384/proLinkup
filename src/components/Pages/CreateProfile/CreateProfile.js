@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import styles from "./CreateProfile.module.css";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
+import classnames from "classnames";
 import Popup from "../../common/popup/Popup";
 
 class CreateProfile extends Component {
@@ -72,7 +73,7 @@ class CreateProfile extends Component {
             name="twitter"
             value={this.state.twitter}
             placeholder="Twitter"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             onChange={this.onChange}
           />
 
@@ -81,7 +82,7 @@ class CreateProfile extends Component {
             name="linkedin"
             value={this.state.linkedin}
             placeholder="Linkedin"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             onChange={this.onChange}
           />
 
@@ -90,7 +91,7 @@ class CreateProfile extends Component {
             name="facebook"
             value={this.state.facebook}
             placeholder="Facebook"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             onChange={this.onChange}
           />
           <InputField
@@ -98,7 +99,7 @@ class CreateProfile extends Component {
             name="youtube"
             value={this.state.youtube}
             placeholder="Youtube"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             onChange={this.onChange}
           />
           <InputField
@@ -106,7 +107,7 @@ class CreateProfile extends Component {
             name="instagram"
             value={this.state.instagram}
             placeholder="Instagram"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             onChange={this.onChange}
           />
         </div>
@@ -115,8 +116,13 @@ class CreateProfile extends Component {
     }
 
     return (
-      <div className={styles.createProfile}>
-        <h1 className={styles.createProfile_h1}> Create your profile</h1>
+      <div className={styles.main}>
+        <button className={classnames("btn", styles.btn)}>
+          <Link to="/dashboard" className="link">
+            Back
+          </Link>
+        </button>
+        <h1 className={styles.main__title}> Create your profile</h1>
         <p> * = required field</p>
         <form onSubmit={this.onSubmit}>
           <InputField
@@ -124,7 +130,7 @@ class CreateProfile extends Component {
             name="handle"
             value={this.state.handle}
             placeholder="* Handle"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="  A unique handle for you profile. Name, company name (Cannot be used)"
             onChange={this.onChange}
           />
@@ -133,7 +139,7 @@ class CreateProfile extends Component {
             name="company"
             value={this.state.company}
             placeholder="Company"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="This should include th name of your company. only strings"
             onChange={this.onChange}
           />
@@ -142,7 +148,7 @@ class CreateProfile extends Component {
             name="website"
             value={this.state.website}
             placeholder="Website"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="This should include the name of your website ."
             onChange={this.onChange}
           />
@@ -151,7 +157,7 @@ class CreateProfile extends Component {
             name="location"
             value={this.state.location}
             placeholder="Location"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="This should include your current location in the format (state country)"
             onChange={this.onChange}
           />
@@ -160,12 +166,12 @@ class CreateProfile extends Component {
             name="skills"
             value={this.state.skills}
             placeholder="Skills"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="Multiple skills should be sperated with a comma. eg(html, css, javascript)"
             onChange={this.onChange}
           />
           <InputSelect
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             name="status"
             value={this.state.status}
             options={[
@@ -182,7 +188,7 @@ class CreateProfile extends Component {
             name="githubusername"
             value={this.state.githubusername}
             placeholder="Githubusername"
-            classname={styles.input}
+            classname={classnames("input", styles.input)}
             info="Share your githubusername so people can view you public repositories"
             onChange={this.onChange}
           />
@@ -191,27 +197,34 @@ class CreateProfile extends Component {
             name="bio"
             value={this.state.bio}
             placeholder="bio"
-            classname={styles.textarea}
+            classname={classnames("textarea", styles.textarea)}
             info="Tell a little about yourself"
             onChange={this.onChange}
           />
 
-          <div>
+          <div className={styles.social}>
             <button
               type="button"
-              className="btn"
+              className={classnames(styles.add__social)}
               onClick={() => {
                 this.setState((prevState) => ({
                   displaySocialInputs: !prevState.displaySocialInputs,
                 }));
               }}
             >
-              Add Social Links
+              <span>+</span>
+              Add Socials
             </button>
-            <small style={{ display: "inline" }}>Optional</small>
+            <small className={classnames("input__info", styles.info__social)}>
+              Optional
+            </small>
             {socials}
           </div>
-          <input type="submit" value="Submit" className={styles.submit_btn} />
+          <input
+            type="submit"
+            value="Submit"
+            className={classnames("btn", styles.btn_submit)}
+          />
         </form>
         {errors ? <Popup error={errors} /> : <div></div>}
       </div>

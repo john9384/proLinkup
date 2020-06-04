@@ -5,14 +5,17 @@ import styles from "./Dashboard.module.css";
 const ProfileActions = () => {
   return (
     <div className={styles.profileActions}>
-      <button className={styles.btn}>
+      <button className={styles.pa__btn}>
+        <span>+</span>
         <Link to="/edit-profile">Edit Profile</Link>
       </button>
-      <button className={styles.btn}>
-        <Link to="/add-experience">Add Experience</Link>
+      <button className={styles.pa__btn}>
+        <span>+</span>
+        <Link to="/add-experience">Add Exp</Link>
       </button>
-      <button className={styles.btn}>
-        <Link to="/add-education">Add Education</Link>
+      <button className={styles.pa__btn}>
+        <span>+</span>
+        <Link to="/add-education">Add Edu</Link>
       </button>
     </div>
   );

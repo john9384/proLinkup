@@ -11,8 +11,6 @@ import styles from "./Dashboard.module.css";
 import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
-import Profile from "../Profile/Profile";
-//import Profile from "../Profiles/ProfileItems";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -31,36 +29,28 @@ class Dashboard extends Component {
     } else {
       if (Object.keys(profile).length <= 0) {
         dashboardContent = (
-          <div className>
-            <h1 className={styles.h1}>Dashboard</h1>
+          <div className={styles.dashboard}>
+            <h1 className={styles.dashboard__title}>Dashboard</h1>
             <h1>
               Welcome {firstname} {lastname}
             </h1>
             <p styl>You have no profile yet</p>
-            <Link to="/create-profile">
-              <button className="btn">Create Profile</button>
-            </Link>
+            <button className="btn">
+              <Link to="/create-profile">Create Profile</Link>
+            </button>
           </div>
         );
       } else {
         dashboardContent = (
-          <div>
-            <h1 className={styles.h1}>Dashboard</h1>
+          <div className={styles.dashboard}>
+            <h1 className={styles.dashboard__title}>Dashboard</h1>
             <p>
               Welcome{" "}
-              <Link
-                to={`/profile/handle/${profile.content.handle}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to={`/profile/handle/${profile.content.handle}`}>
                 {firstname} {lastname}
               </Link>
             </p>
-            <div className={styles.profileActions}>
-              <ProfileActions />
-            </div>
-            <div className={styles.skills}>
-              <h2>Skills</h2>
-            </div>
+            <ProfileActions />
             <ExpCard experience={profile.content.experience} />
             <EduCard education={profile.content.education} />
             <div style={{ marginBottom: "10px" }}></div>
@@ -74,7 +64,7 @@ class Dashboard extends Component {
         );
       }
     }
-    return <div className={styles.dashboard}>{dashboardContent}</div>;
+    return <div className={styles.main}>{dashboardContent}</div>;
   }
 }
 const mapStateToProps = (state) => ({

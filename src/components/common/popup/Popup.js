@@ -13,6 +13,9 @@ class Popup extends Component {
     };
     this.onClick = this.onClick.bind(this);
   }
+  componentDidMount() {
+    this.setState({ errState: false });
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errState: true, errMessage: this.props.errors.message });

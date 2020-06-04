@@ -9,9 +9,9 @@ const InputSelect = ({
   info,
   onChange,
   classname,
-  options
+  options,
 }) => {
-  const selectOptions = options.map(option => (
+  const selectOptions = options.map((option) => (
     <option key={option.value} value={option.value}>
       {option.label}
     </option>
@@ -29,9 +29,10 @@ const InputSelect = ({
         <option hidden value="#">
           Select Status
         </option>
+        <option value="N/A">None</option>
         {selectOptions}
       </select>
-      <small style={{ display: "block" }}>{info}</small>
+      <small className="input__info">{info}</small>
     </div>
   );
 };
@@ -41,7 +42,7 @@ InputSelect.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.string.isRequired,
   classname: PropTypes.string,
-  options: PropTypes.array.isRequired
+  options: PropTypes.array.isRequired,
 };
 
 export default InputSelect;
