@@ -5,6 +5,7 @@ import PostForm from "./PostForm";
 import PostFeed from "./PostFeed";
 import Spinner from "../../common/spinner/Spinner";
 import { getPosts } from "../../../redux/actions/postActions";
+import styles from "./Post.module.css";
 
 class Posts extends Component {
   componentDidMount() {
@@ -12,16 +13,20 @@ class Posts extends Component {
   }
   render() {
     const { posts, loading } = this.props.post;
+    const { content } = posts;
+
     let postContent;
 
     if (posts === null || loading) {
       postContent = <Spinner />;
     } else {
-      postContent = <PostFeed posts={posts} />;
+      postContent = <PostFeed posts={content} />;
     }
     return (
-      <div>
+      <div className={styles.post_container}>
+        <h1 className={styles.h1}>Create Post</h1>
         <PostForm />
+        <h1 className={styles.h1}>Latest Feeds</h1>
         {postContent}
       </div>
     );

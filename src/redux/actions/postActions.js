@@ -22,7 +22,6 @@ export const addPost = (postData) => (dispatch) => {
       })
     )
     .catch((err) => {
-      console.log("this gets here", err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,

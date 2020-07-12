@@ -185,7 +185,7 @@ class EditProfile extends Component {
           <Link to="/dashboard">Back</Link>
         </button>
         <h1 className={styles.main__title}> Edit your profile</h1>
-        <p> * = required field</p>
+
         <form onSubmit={this.onSubmit}>
           <InputField
             type="text"

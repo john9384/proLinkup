@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import isEmpty from "../../../helpers/isEmpty";
 import { deleteExp } from "../../../redux/actions/profileActions";
 
 class ExpCard extends Component {
@@ -25,17 +26,21 @@ class ExpCard extends Component {
     return (
       <div>
         <h2>Experience</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Title</th>
-              <th>Years</th>
-              <th></th>
-            </tr>
-            {experience}
-          </thead>
-        </table>
+        {isEmpty(this.props.experience) ? (
+          <h4>No Experience added yet</h4>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Years</th>
+                <th></th>
+              </tr>
+              {experience}
+            </thead>
+          </table>
+        )}
       </div>
     );
   }

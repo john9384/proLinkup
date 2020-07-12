@@ -43,7 +43,24 @@ export const getProfileByHandle = (handle) => (dispatch) => {
       })
     );
 };
-
+export const getProfileById = (id) => (dispatch) => {
+  console.log(id);
+  dispatch(setProfileLoading());
+  axios
+    .get(`http://localhost:4000/profile/${id}`)
+    .then((res) =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {},
+      })
+    );
+};
 export const postCurrentProfile = (profileData, history) => (dispatch) => {
   axios
     .post("http://localhost:4000/profile", profileData)

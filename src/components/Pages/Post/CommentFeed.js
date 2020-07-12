@@ -5,10 +5,17 @@ import CommentItem from "./CommentItem";
 class CommentFeed extends Component {
   render() {
     const { comments, postId } = this.props;
-
-    return comments.map((comment) => (
-      <CommentItem key={comment._id} comment={comment} postId={postId} />
-    ));
+    let feeds;
+    if (comments == null || comments == "undefined") {
+      console.log("Undefined");
+    } else {
+      for (let [key, value] of Object.entries(comments)) {
+        feeds.push(
+          <CommentItem key={value.id} comment={value} postId={postId} />
+        );
+      }
+    }
+    return <div>{feeds}</div>;
   }
 }
 

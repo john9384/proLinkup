@@ -123,7 +123,6 @@ class CreateProfile extends Component {
           </Link>
         </button>
         <h1 className={styles.main__title}> Create your profile</h1>
-        <p> * = required field</p>
         <form onSubmit={this.onSubmit}>
           <InputField
             type="text"

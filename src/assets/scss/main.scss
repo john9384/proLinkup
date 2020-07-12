@@ -1,0 +1,206 @@
+$deep-theme-color: rgb(0, 10, 34);
+$button-color: rgb(12, 2, 200);
+$button-danger-color: rgb(126, 15, 15);
+$light-theme-color: white;
+$button-text-color: white;
+$info-text-color: grey;
+$shadow-color: grey;
+$input-border-color: lightblue;
+$input-border-focus-color: black;
+$underlines-color: black;
+$primary-text-color: black;
+$div-color: ghostwhite;
+.container {
+    min-height: 84vh;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0 15vw 0 15vw;
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ------ Links -----------------------*/
+
+a {
+    color: $light-theme-color;
+    font-style: normal;
+    text-decoration: none;
+}
+
+
+/* ------ Forms ---------------------- */
+
+form div {
+    margin: 0;
+    padding: 0;
+}
+
+.input {
+    margin: 5px 5px 5px 0;
+    width: 97%;
+    height: 30px;
+    border: 1px solid $input-border-color;
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 4px;
+}
+
+.input:focus {
+    box-shadow: 2px 2px 10px 1px $info-text-color;
+    border: 1px solid $input-border-focus-color;
+}
+
+.input__info {
+    display: block;
+    font-style: italic;
+    color: $info-text-color;
+    font-size: 10px;
+}
+
+.textarea {
+    margin: 5px 5px 5px 0;
+    width: 97%;
+    height: 200px;
+    border: 1px solid $input-border-color;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.textarea:focus {
+    box-shadow: 2px 2px 10px 1px $info-text-color;
+    border: 1px solid $input-border-focus-color;
+}
+
+
+/* ------ buttons -------------------------- */
+
+.btn {
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    color: $button-text-color;
+    background-color: $button-color;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 10px 1px $shadow-color;
+}
+
+.btn-danger {
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    color: $button-text-color;
+    background-color: $button-danger-color;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: $deep-theme-color;
+    transition: background-color 1s;
+}
+
+.btn:button:not(:hover) {
+    transition: background-color 1s;
+}
+
+.link {
+    font-style: italic;
+    margin: 0;
+    color: white;
+}
+
+.link:hover {
+    color: $primary-text-color;
+    transition: color 1s;
+}
+
+.link:not(:hover) {
+    color: $info-text-color;
+    transition: color 1s;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+    .container {
+        padding: 0 10vw 0 10vw;
+        font-size: 15px;
+    }
+    .btn {
+        height: 35px;
+        width: 100px;
+        border: none;
+        border-radius: 5px;
+        color: $button-text-color;
+        background-color: $button-color;
+        text-transform: uppercase;
+        box-shadow: 2px 2px 10px 1px $shadow-color;
+    }
+    .btn-danger {
+        height: 35px;
+        width: 100px;
+        border: none;
+        border-radius: 5px;
+        color: $button-text-color;
+        background-color: $button-danger-color;
+        text-transform: uppercase;
+        box-shadow: 2px 2px 10px 1px $shadow-color;
+    }
+    .input {
+        margin: 5px 5px 5px 0;
+        width: 98%;
+        height: 30px;
+        border: 1px solid $input-border-color;
+        border-radius: 3px;
+        padding: 2px;
+        padding-left: 4px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container {
+        padding: 0 10vw 0 10vw;
+        font-size: 12px;
+    }
+    .btn {
+        width: 70px;
+        height: 30px;
+        font-size: 8px;
+    }
+    .btn-danger {
+        width: 70px;
+        height: 30px;
+        font-size: 8px;
+    }
+    .input {
+        margin: 5px 0 5px 0;
+        width: 97%;
+        height: 30px;
+        border: 1px solid $input-border-color;
+        border-radius: 3px;
+        padding: 2px;
+        padding-left: 4px;
+    }
+    .textarea {
+        margin: 10px 0 5px 0;
+        padding: 2px;
+        padding-left: 4px;
+        max-width: 97%;
+        height: 100px;
+        border: 1px solid $input-border-color;
+        border-radius: 3px;
+    }
+}

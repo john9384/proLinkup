@@ -57,6 +57,7 @@ class App extends Component {
               <Route exact path="/sign_up" component={SignUp} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profile/handle/:handle" component={Profile} />
+              <Route exact path="/profile/:user_id" component={Profile} />
               <Route exact path="/not-found" component={NotFound} />
               <Route exact path="/pros" component={BasicProfiles} />
               <Switch>

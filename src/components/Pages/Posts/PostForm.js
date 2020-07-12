@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import InputField from "../../common/inputFieldGroup/InputTextField";
+import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import { addPost } from "../../../redux/actions/postActions";
+import Popup from "../../common/popup/Popup";
+import classnames from "classnames";
+import styles from "./Post.module.css";
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -41,16 +44,18 @@ class PostForm extends Component {
   render() {
     const errors = this.state.error;
     return (
-      <div>
+      <div className={styles.post_form}>
         <form onSubmit={this.onSubmit}>
-          <InputField
-            placeholder="Create Post"
+          <InputTextArea
+            classname={classnames("textarea", styles.textarea)}
+            placeholder="Say something"
             name="text"
             value={this.state.text}
             onChange={this.onChange}
           />
-          <button>Post</button>
+          <button className={classnames("btn", styles.btn)}>Post</button>
         </form>
+        {errors ? <Popup error={errors} /> : null}
       </div>
     );
   }

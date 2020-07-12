@@ -36,7 +36,9 @@ class Dashboard extends Component {
             </h1>
             <p styl>You have no profile yet</p>
             <button className="btn">
-              <Link to="/create-profile">Create Profile</Link>
+              <Link to="/create-profile" className="link">
+                Create Profile
+              </Link>
             </button>
           </div>
         );

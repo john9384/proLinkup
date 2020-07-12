@@ -9,12 +9,17 @@ import ProfileCreds from "./ProfileCreds";
 import Spinner from "../../common/spinner/Spinner";
 import classnames from "classnames";
 import styles from "./Profile.module.css";
-import { getProfileByHandle } from "../../../redux/actions/profileActions";
+import {
+  getProfileByHandle,
+  getProfileById,
+} from "../../../redux/actions/profileActions";
 
 class Profile extends Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
+    } else if (this.props.match.params.id) {
+      this.props.getProfileById(this.props.match.params.id);
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -54,6 +59,9 @@ const mapStateToProps = (state) => ({
 });
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
+  getProfileById: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
-export default connect(mapStateToProps, { getProfileByHandle })(Profile);
+export default connect(mapStateToProps, { getProfileByHandle, getProfileById })(
+  Profile
+);
