@@ -22,7 +22,7 @@
   border: none;
   border-radius: 5px;
   color: white;
-  background-color: var(--button-color);
+  background-color: var(--color-btn-pry);
   text-transform: uppercase;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .submit_btn:not(:hover) {
-  background-color: var(--button-color);
+  background-color: var(--color-btn-pry);
   transition: background-color 1s;
 }
 @media screen and (max-width: 800px) {

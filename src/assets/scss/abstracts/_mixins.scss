@@ -1,0 +1,43 @@
+@mixin resolution($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 30em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab {
+    @media (max-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == laptops {
+    @media (max-width: 64em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 75.01em) {
+      @content;
+    }
+  }
+}
+// }
+//     320px — 480px: Mobile devices.
+//     481px — 768px: iPads, Tablets.
+//     769px — 1024px: Small screens, laptops.
+//     1025px — 1200px: Desktops, large screens.
+//     1201px and more — Extra large screens, TV.
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin side-padding {
+  padding: 0 15vw;
+}

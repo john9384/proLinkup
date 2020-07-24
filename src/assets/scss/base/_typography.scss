@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.heading--pry {
+  font-size: 3rem;
+  color: $color-pry;
+}
+.heading--sec {
+  font-size: 2rem;
+  color: $color-pry;
+}
+
+@media screen and (max-width: 800px) {
+  .heading--pry {
+    font-size: 2rem;
+    color: $color-pry;
+  }
+  .heading--sec {
+    font-size: 1.5rem;
+    color: $color-pry;
+  }
+}
+@media screen and (max-width: 450px) {
+  .heading--pry {
+    font-size: 1.5rem;
+    color: $color-pry;
+  }
+  .heading--sec {
+    font-size: 1rem;
+    color: $color-pry;
+  }
+}

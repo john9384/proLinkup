@@ -70,7 +70,7 @@
     padding: 0;
     height: 200px;
     width: 40%;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
   }
   .header__avatar {
     margin: 0;
@@ -80,7 +80,7 @@
     width: 60%;
     margin: 0;
     padding: 0;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
   }
   .profile__about {
     margin: 0;
@@ -92,7 +92,7 @@
     margin: 20px 0 0 0;
     padding: 10px 0 20px 0;
     width: 100%;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .about__bio h3,
@@ -114,7 +114,7 @@
     margin: 20px 0 0 0;
     padding: 10px 0 20px 0;
     width: 100%;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .profile__creds {
@@ -125,14 +125,14 @@
   .creds__exp {
     padding: 10px 0 20px 0;
     margin: 20px 0 0 0;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
     width: 100%;
   }
   .creds__edu {
     padding: 10px 0 20px 0;
     margin: 20px 0 0 0;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
     width: 100%;
   }
@@ -154,7 +154,7 @@
     padding: 0;
     height: 250px;
     width: 100%;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .header__avatar {
@@ -165,7 +165,7 @@
     margin: 10px 0 0 0;
     padding: 10px;
     text-align: center;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .header__basic p {
@@ -178,13 +178,13 @@
   .about__bio {
     margin: 10px 0 0 0;
     padding: 10px;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .about__skills {
     margin: 10px 0 0 0;
     padding: 10px;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .profile__creds {
@@ -194,13 +194,13 @@
   .creds__exp {
     margin: 10px 0 0 0;
     padding: 10px;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .creds__edu {
     margin: 10px 0 0 0;
     padding: 10px;
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
   }
   .btn {

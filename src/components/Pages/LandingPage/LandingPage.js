@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
-import styles from "./LandingPage.module.css";
 
 class LandingPage extends Component {
   componentDidMount() {
@@ -13,24 +11,28 @@ class LandingPage extends Component {
   }
   render() {
     return (
-      <main className={styles.main}>
-        <div className={styles.wel}>
-          <p className={styles.title}>proLinkUp</p>
-          <p className={styles.note}>
-            Welcome to the social network for the Pro's.
-          </p>
-          <button className={classnames("btn", styles.btn)}>
-            <Link to="/login">Sign in</Link>
-          </button>
+      <div className="landing">
+        <div className="row">
+          <div className="landing__main">
+            <p className="landing__title"> Prolinkup </p>
+            <p className="landing__note">
+              Welcome to the social network for Pro 's.
+            </p>
+            <div className="u-margin-bottom-small">
+              <Link to="/login" className="btn btn--pry">
+                Sign in
+              </Link>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
     );
   }
 }
 LandingPage.propTypes = {
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 export default connect(mapStateToProps)(LandingPage);

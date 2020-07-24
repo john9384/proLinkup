@@ -1,19 +1,18 @@
 import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-
-import styles from "./Header.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../redux/actions/authActions";
 import { clearCurrentUserProfile } from "../../../redux/actions/profileActions";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Header extends Component {
   onClickLogout(e) {
     e.preventDefault();
     this.props.clearCurrentUserProfile();
     this.props.logoutUser();
-    // this.props.history.push("/");
+    this.props.history.push("/");
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -21,22 +20,22 @@ class Header extends Component {
       <img
         src={user.avatar}
         alt=""
-        className={styles.logout_img}
+        className="logout__img"
         title="you must have a gravitar connected to you email account"
       />
     );
     const dashboardLink = (
-      <Link to="/dashboard" className={styles.ddlink}>
+      <Link to="/dashboard" className="header__dropdown--link">
         Dashboard
       </Link>
     );
     const postFeeds = (
-      <Link to="/feeds" className={styles.ddlink}>
+      <Link to="/feeds" className="header__dropdown--link">
         Post Feeds
       </Link>
     );
     const login = (
-      <Link to="/login" className={styles.ddlink}>
+      <Link to="/login" className="header__dropdown--link">
         Sign in
       </Link>
     );
@@ -44,27 +43,26 @@ class Header extends Component {
       <a
         href="/"
         onClick={this.onClickLogout.bind(this)}
-        className={styles.ddlink}
+        className="header__dropdown--link"
       >
         Signout
       </a>
     );
     return (
-      <div className={styles.header}>
-        <Link to="/" className={styles.title}>
+      <div className="header">
+        <Link to="/" className="header__title">
           ProLinkup
         </Link>
-        <div className={styles.navbar}>
-          <div className={styles.dropdown}>
-            {isAuthenticated ? avatar : <span>Menu</span>}
-            <div className={styles.ddcontent}>
-              <Link to="/" className={styles.ddlink}>
-                Home
+        <div className="header__nav">
+          <div className="header__dropdown">
+            {isAuthenticated ? avatar : <span> Menu </span>}
+            <div className="header__dropdown--content">
+              <Link to="/" className="header__dropdown--link">
+                <i className="fa fa-home"></i>
               </Link>
-              <Link to="/pros" className={styles.ddlink}>
+              <Link to="/pros" className="header__dropdown--link">
                 Pros
               </Link>
-
               {isAuthenticated ? dashboardLink : null}
               {isAuthenticated ? postFeeds : null}
               {isAuthenticated ? logout : login}
@@ -78,13 +76,13 @@ class Header extends Component {
 
 Header.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  //clearCurrentUserProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  clearCurrentUserProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 export default connect(mapStateToProps, {
   logoutUser,
-  clearCurrentUserProfile,
+  clearCurrentUserProfile
 })(Header);

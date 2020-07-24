@@ -27,7 +27,7 @@
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 10px 1px var(--shadow-color);
-  background-color: var(--div-color);
+  background-color: var(--color-white-shade);
 }
 
 .btn_review a {
@@ -50,7 +50,7 @@
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
   }
   .textarea {
     height: 100px;
@@ -67,7 +67,7 @@
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 10px 1px var(--shadow-color);
-    background-color: var(--div-color);
+    background-color: var(--color-white-shade);
   }
   .post_item__img {
     height: 50px;

@@ -42,7 +42,7 @@
   height: 15px;
   width: 15px;
   color: white;
-  background-color: var(--button-color);
+  background-color: var(--color-btn-pry);
   text-align: center;
 }
 
@@ -96,7 +96,7 @@
     height: 15px;
     width: 15px;
     color: white;
-    background-color: var(--button-color);
+    background-color: var(--color-btn-pry);
     text-align: center;
   }
 
@@ -144,7 +144,7 @@
     height: 15px;
     width: 15px;
     color: white;
-    background-color: var(--button-color);
+    background-color: var(--color-btn-pry);
     text-align: center;
   }
 

@@ -1,17 +1,18 @@
-footer {
+.footer {
   height: 8vh;
   max-width: 100vw;
   margin: 0;
   padding: 0;
   color: white;
-  background-color: var(--deep-theme-color);
+  background-color: $color-pry;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1em;
 }
+
 @media screen and (max-width: 800px) {
-  footer {
+  .footer {
     font-size: 2vw;
   }
 }

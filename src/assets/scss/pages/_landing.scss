@@ -1,0 +1,49 @@
+.landing {
+  height: 84vh;
+  position: relative;
+  transition: all 1s ease;
+  &__main {
+    @include absolute-center;
+    padding: 1rem 4rem;
+    color: $pry-text-color;
+    border: 6px solid $color-pry;
+    border-radius: 5px;
+    text-align: center;
+    background-color: $color-white-shade;
+    animation: appear 0.5s ease-out 0.8;
+    //box-shadow: $box-shadow-light;
+    @include resolution(phone) {
+      border: none;
+      animation: appear 0.7s ease-out 0.8;
+    }
+  }
+  &__title {
+    font-size: 5rem;
+    color: $color-pry;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px grey;
+    letter-spacing: 0.5rem;
+    @include resolution(laptops) {
+      letter-spacing: 0.2rem;
+    }
+    @include resolution(phone) {
+      letter-spacing: 0.1rem;
+      font-size: 4rem;
+    }
+  }
+
+  &__note {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    @include resolution(laptops) {
+      letter-spacing: 0;
+    }
+    @include resolution(phone) {
+      letter-spacing: 0;
+      display: none;
+    }
+  }
+}
