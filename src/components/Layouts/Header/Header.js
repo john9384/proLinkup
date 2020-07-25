@@ -1,18 +1,27 @@
 import React from "react";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../redux/actions/authActions";
 import { clearCurrentUserProfile } from "../../../redux/actions/profileActions";
+import logo from "../../../assets/img/logo3.PNG";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      email: "",
+      password: "",
+      errors: {}
+    };
+  }
   onClickLogout(e) {
     e.preventDefault();
     this.props.clearCurrentUserProfile();
     this.props.logoutUser();
-    this.props.history.push("/");
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -24,9 +33,10 @@ class Header extends Component {
         title="you must have a gravitar connected to you email account"
       />
     );
-    const dashboardLink = (
-      <Link to="/dashboard" className="header__dropdown--link">
-        Dashboard
+    const home = (
+      <Link to="/" className="header__dropdown--link">
+        <i className="fa fa-home"></i>
+        <span className="">Home</span>
       </Link>
     );
     const postFeeds = (
@@ -43,31 +53,74 @@ class Header extends Component {
       <a
         href="/"
         onClick={this.onClickLogout.bind(this)}
-        className="header__dropdown--link"
+        className="header__nav--links"
       >
         Signout
       </a>
     );
+    const users_links = (
+      <Link to="/pros" className="header__nav--links">
+        Pros
+      </Link>
+    );
     return (
       <div className="header">
         <Link to="/" className="header__title">
-          ProLinkup
+          <img src={logo} className="header__logo" />
+          <span>Prolinkup</span>
         </Link>
-        <div className="header__nav">
+
+        <nav className="header__nav">
+          {isAuthenticated ? home : null}
+          {isAuthenticated ? postFeeds : null}
           <div className="header__dropdown">
-            {isAuthenticated ? avatar : <span> Menu </span>}
+            {isAuthenticated ? avatar : null}
             <div className="header__dropdown--content">
-              <Link to="/" className="header__dropdown--link">
-                <i className="fa fa-home"></i>
-              </Link>
-              <Link to="/pros" className="header__dropdown--link">
-                Pros
-              </Link>
-              {isAuthenticated ? dashboardLink : null}
-              {isAuthenticated ? postFeeds : null}
-              {isAuthenticated ? logout : login}
+              {isAuthenticated ? avatar : null}
+              {isAuthenticated ? logout : null}
             </div>
           </div>
+        </nav>
+
+        <div class="nav-mobile">
+          <input
+            type="checkbox"
+            class="nav-mobile__checkbox"
+            id="nav-mobile-toggle"
+          />
+          <label for="nav-mobile-toggle" class="nav-mobile__btn">
+            <span class="nav-mobile__icon">&nbsp;</span>
+          </label>
+          <div class="nav-mobile__bg">&nbsp;</div>
+          <nav class="nav-mobile__menu">
+            <ul class="nav-mobile__list">
+              <li class="nav-mobile__items">
+                <a href="#" class="nav-mobile__link">
+                  About Us
+                </a>
+              </li>
+              <li class="nav-mobile__items">
+                <a href="#" class="nav-mobile__link">
+                  Services
+                </a>
+              </li>
+              <li class="nav-mobile__items">
+                <a href="#" class="nav-mobile__link">
+                  Popular
+                </a>
+              </li>
+              <li class="nav-mobile__items">
+                <a href="#" class="nav-mobile__link">
+                  Stories
+                </a>
+              </li>
+              <li class="nav-mobile__items">
+                <a href="#" class="nav-mobile__link">
+                  Booking
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     );

@@ -10,8 +10,9 @@ import Spinner from "../../common/spinner/Spinner";
 import classnames from "classnames";
 import styles from "./Profile.module.css";
 import {
+  getCurrentProfile,
   getProfileByHandle,
-  getProfileById,
+  getProfileById
 } from "../../../redux/actions/profileActions";
 
 class Profile extends Component {
@@ -54,14 +55,15 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  profile: state.profile,
+const mapStateToProps = state => ({
+  profile: state.profile
 });
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
   getProfileById: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
-export default connect(mapStateToProps, { getProfileByHandle, getProfileById })(
-  Profile
-);
+export default connect(mapStateToProps, {
+  getProfileByHandle,
+  getProfileById
+})(Profile);
