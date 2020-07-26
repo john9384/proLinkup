@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import { logoutUser } from "../../../redux/actions/authActions";
 import { clearCurrentUserProfile } from "../../../redux/actions/profileActions";
 import logo from "../../../assets/img/logo3.PNG";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Header extends Component {
   constructor() {
@@ -15,7 +14,8 @@ class Header extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
+      dropdown: false
     };
   }
   onClickLogout(e) {
@@ -23,65 +23,100 @@ class Header extends Component {
     this.props.clearCurrentUserProfile();
     this.props.logoutUser();
   }
+  onClickToggleDropdown(e) {
+    e.preventDefault();
+    this.setState({
+      dropdown: !this.state.dropdown
+    });
+  }
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    let firstname, lastname;
+    if (isAuthenticated) {
+      firstname = user.payload.firstname;
+      lastname = user.payload.lastname;
+    }
+
     const avatar = (
       <img
         src={user.avatar}
         alt=""
-        className="logout__img"
+        className="dropdown__avatar"
         title="you must have a gravitar connected to you email account"
       />
     );
     const home = (
-      <Link to="/" className="header__dropdown--link">
-        <i className="fa fa-home"></i>
-        <span className="">Home</span>
+      <Link to="/" className="nav__item">
+        <i className="fa fa-home nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Home</span>
+      </Link>
+    );
+    const usersLinks = (
+      <Link to="/pros" className="nav__item">
+        <i className="fa fa-address-card-o nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Pros</span>
       </Link>
     );
     const postFeeds = (
-      <Link to="/feeds" className="header__dropdown--link">
-        Post Feeds
+      <Link to="/feeds" className="nav__item">
+        <i className="fa fa-feed nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Feeds</span>
       </Link>
     );
-    const login = (
-      <Link to="/login" className="header__dropdown--link">
-        Sign in
-      </Link>
+    const userMenu = (
+      <div
+        className="nav__item"
+        onClick={this.onClickToggleDropdown.bind(this)}
+      >
+        <i className="fa fa-th nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">User</span>
+      </div>
     );
     const logout = (
       <a
         href="/"
         onClick={this.onClickLogout.bind(this)}
-        className="header__nav--links"
+        className="dropdown__signout"
       >
         Signout
       </a>
     );
-    const users_links = (
-      <Link to="/pros" className="header__nav--links">
-        Pros
-      </Link>
-    );
+
     return (
       <div className="header">
         <Link to="/" className="header__title">
           <img src={logo} className="header__logo" />
           <span>Prolinkup</span>
         </Link>
+        {isAuthenticated ? (
+          <nav className="nav">
+            {home}
+            {usersLinks}
+            {postFeeds}
+            {userMenu}
 
-        <nav className="header__nav">
-          {isAuthenticated ? home : null}
-          {isAuthenticated ? postFeeds : null}
-          <div className="header__dropdown">
-            {isAuthenticated ? avatar : null}
-            <div className="header__dropdown--content">
-              {isAuthenticated ? avatar : null}
-              {isAuthenticated ? logout : null}
-            </div>
-          </div>
-        </nav>
-
+            {!this.state.dropdown ? null : (
+              <div className="dropdown">
+                <div className="dropdown__title-box">
+                  {avatar}
+                  <h1 className="heading-pry dropdown__name">
+                    {firstname} {lastname}
+                  </h1>
+                  <i
+                    className="fa fa-times dropdown__close"
+                    aria-hidden="true"
+                    onClick={this.onClickToggleDropdown.bind(this)}
+                  ></i>
+                  <ul className="dropdown__content">
+                    <li className="dropdown__item">Profile</li>
+                    <li className="dropdown__item">Dahboard</li>
+                    <li className="dropdown__item">{logout}</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </nav>
+        ) : null}
         <div class="nav-mobile">
           <input
             type="checkbox"
