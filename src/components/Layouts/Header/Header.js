@@ -46,26 +46,38 @@ class Header extends Component {
       />
     );
     const home = (
-      <Link to="/" className="nav__item">
+      <Link to="/" className="nav__item nav-mobile__link">
         <i className="fa fa-home nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Home</span>
       </Link>
     );
+    const dashboard = (
+      <Link to="/" className="nav__item nav-mobile__link">
+        <i className="fa fa-dashboard nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Settings</span>
+      </Link>
+    );
+    const profileLInk = (
+      <Link to="/" className="nav__item nav-mobile__link">
+        <i className="fa fa-dashboard nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Profile</span>
+      </Link>
+    );
     const usersLinks = (
-      <Link to="/pros" className="nav__item">
+      <Link to="/pros" className="nav__item nav-mobile__link">
         <i className="fa fa-address-card-o nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Pros</span>
       </Link>
     );
     const postFeeds = (
-      <Link to="/feeds" className="nav__item">
+      <Link to="/feeds" className="nav__item nav-mobile__link">
         <i className="fa fa-feed nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Feeds</span>
       </Link>
     );
     const userMenu = (
       <div
-        className="nav__item"
+        className="nav__item nav-mobile__link"
         onClick={this.onClickToggleDropdown.bind(this)}
       >
         <i className="fa fa-th nav__icon" aria-hidden="true"></i>
@@ -76,9 +88,10 @@ class Header extends Component {
       <a
         href="/"
         onClick={this.onClickLogout.bind(this)}
-        className="dropdown__signout"
+        className="dropdown__signout nav-mobile__link"
       >
-        Signout
+        <i className="fa fa-th nav__icon" aria-hidden="true"></i>
+        <span className="nav__text">Signout</span>
       </a>
     );
 
@@ -108,8 +121,8 @@ class Header extends Component {
                     onClick={this.onClickToggleDropdown.bind(this)}
                   ></i>
                   <ul className="dropdown__content">
-                    <li className="dropdown__item">Profile</li>
-                    <li className="dropdown__item">Dahboard</li>
+                    <li className="dropdown__item"></li>
+                    <li className="dropdown__item">{dashboard}</li>
                     <li className="dropdown__item">{logout}</li>
                   </ul>
                 </div>
@@ -126,34 +139,14 @@ class Header extends Component {
           <label for="nav-mobile-toggle" class="nav-mobile__btn">
             <span class="nav-mobile__icon">&nbsp;</span>
           </label>
-          <div class="nav-mobile__bg">&nbsp;</div>
           <nav class="nav-mobile__menu">
             <ul class="nav-mobile__list">
-              <li class="nav-mobile__items">
-                <a href="#" class="nav-mobile__link">
-                  About Us
-                </a>
-              </li>
-              <li class="nav-mobile__items">
-                <a href="#" class="nav-mobile__link">
-                  Services
-                </a>
-              </li>
-              <li class="nav-mobile__items">
-                <a href="#" class="nav-mobile__link">
-                  Popular
-                </a>
-              </li>
-              <li class="nav-mobile__items">
-                <a href="#" class="nav-mobile__link">
-                  Stories
-                </a>
-              </li>
-              <li class="nav-mobile__items">
-                <a href="#" class="nav-mobile__link">
-                  Booking
-                </a>
-              </li>
+              <li class="nav-mobile__items">{home}</li>
+              <li class="nav-mobile__items">{usersLinks}</li>
+              <li class="nav-mobile__items">{postFeeds}</li>
+              <li class="nav-mobile__items">{profileLInk}</li>
+              <li class="nav-mobile__items">{dashboard}</li>
+              <li class="nav-mobile__items">{logout}</li>
             </ul>
           </nav>
         </div>
