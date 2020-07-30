@@ -4,12 +4,13 @@ $color-btn-danger: rgb(126, 15, 15);
 $color-white: white;
 $btn-text-color: white;
 $info-text-color: grey;
-$shadow-color: grey;
 $input-border-color: lightblue;
 $input-border-focus-color: black;
 $color-black: black;
 $pry-text-color: black;
 $color-white-shade: ghostwhite;
+$color-success: green;
+$color-alert: rgb(126, 15, 15);
 
 // ====== Grid Variables =================
 $grid-width: 114rem;
@@ -18,3 +19,4 @@ $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem;
 
 $box-shadow-light: 1px 1px 3rem 0.4rem rgba(black, 0.2);
+$box-shadow-grey: 2px 2px 10px 1px grey;

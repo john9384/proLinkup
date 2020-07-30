@@ -6,7 +6,7 @@
     text-decoration: none;
     padding: 0.7rem 3rem;
     display: inline-block;
-    transition: all 1s;
+    transition: all 0.8s;
     position: relative;
     border: none;
     border-radius: 5px;
@@ -28,6 +28,7 @@
   }
   &--pry {
     background-color: $color-btn-pry;
+    color: white;
 
     &:hover {
       background-color: $color-pry;

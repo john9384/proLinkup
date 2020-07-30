@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../../redux/actions/authActions";
@@ -53,13 +53,13 @@ class Header extends Component {
     );
     const dashboard = (
       <Link to="/" className="nav__item nav-mobile__link">
-        <i className="fa fa-dashboard nav__icon" aria-hidden="true"></i>
+        <i className="fa fa-cog nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Settings</span>
       </Link>
     );
     const profileLInk = (
       <Link to="/" className="nav__item nav-mobile__link">
-        <i className="fa fa-dashboard nav__icon" aria-hidden="true"></i>
+        <i className="fa fa-user nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Profile</span>
       </Link>
     );
@@ -90,7 +90,7 @@ class Header extends Component {
         onClick={this.onClickLogout.bind(this)}
         className="dropdown__signout nav-mobile__link"
       >
-        <i className="fa fa-th nav__icon" aria-hidden="true"></i>
+        <i className="fa fa-sign-out nav__icon" aria-hidden="true"></i>
         <span className="nav__text">Signout</span>
       </a>
     );
@@ -98,7 +98,7 @@ class Header extends Component {
     return (
       <div className="header">
         <Link to="/" className="header__title">
-          <img src={logo} className="header__logo" />
+          <img src={logo} alt="logo" className="header__logo" />
           <span>Prolinkup</span>
         </Link>
         {isAuthenticated ? (
@@ -130,26 +130,28 @@ class Header extends Component {
             )}
           </nav>
         ) : null}
-        <div class="nav-mobile">
-          <input
-            type="checkbox"
-            class="nav-mobile__checkbox"
-            id="nav-mobile-toggle"
-          />
-          <label for="nav-mobile-toggle" class="nav-mobile__btn">
-            <span class="nav-mobile__icon">&nbsp;</span>
-          </label>
-          <nav class="nav-mobile__menu">
-            <ul class="nav-mobile__list">
-              <li class="nav-mobile__items">{home}</li>
-              <li class="nav-mobile__items">{usersLinks}</li>
-              <li class="nav-mobile__items">{postFeeds}</li>
-              <li class="nav-mobile__items">{profileLInk}</li>
-              <li class="nav-mobile__items">{dashboard}</li>
-              <li class="nav-mobile__items">{logout}</li>
-            </ul>
-          </nav>
-        </div>
+        {!isAuthenticated ? null : (
+          <div class="nav-mobile">
+            <input
+              type="checkbox"
+              class="nav-mobile__checkbox"
+              id="nav-mobile-toggle"
+            />
+            <label for="nav-mobile-toggle" class="nav-mobile__btn">
+              <span class="nav-mobile__icon">&nbsp;</span>
+            </label>
+            <nav class="nav-mobile__menu">
+              <ul class="nav-mobile__list">
+                <li class="nav-mobile__items">{home}</li>
+                <li class="nav-mobile__items">{usersLinks}</li>
+                <li class="nav-mobile__items">{postFeeds}</li>
+                <li class="nav-mobile__items">{profileLInk}</li>
+                <li class="nav-mobile__items">{dashboard}</li>
+                <li class="nav-mobile__items">{logout}</li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </div>
     );
   }

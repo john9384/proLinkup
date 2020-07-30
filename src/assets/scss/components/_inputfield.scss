@@ -1,0 +1,45 @@
+.input {
+  width: 97%;
+  height: 30px;
+  border: 1px solid $input-border-color;
+  border-radius: 3px;
+  padding: 2px;
+  padding-left: 4px;
+  &:focus {
+    box-shadow: $box-shadow-grey;
+    border: 1px solid $color-success;
+    outline: none;
+  }
+  &:focus:invalid {
+    border: 1px solid $color-btn-danger;
+  }
+  &:active {
+    background: white;
+  }
+
+  &__info {
+    display: block;
+    font-style: italic;
+    color: $info-text-color;
+    font-size: 10px;
+  }
+}
+
+.textarea {
+  width: 97%;
+  height: 200px;
+  border: 1px solid $input-border-color;
+  border-radius: 3px;
+  padding: 10px;
+  &:focus {
+    box-shadow: $box-shadow-grey;
+    border: 1px solid $color-success;
+    outline: none;
+  }
+  &:focus:invalid {
+    border: 1px solid $color-btn-danger;
+  }
+  &:active {
+    background: white;
+  }
+}

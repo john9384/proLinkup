@@ -85,10 +85,6 @@
   &__name {
     display: block;
     max-width: 15rem;
-    // position: absolute;
-    // top: 4rem;
-    // left: 10rem;
-    // transform: translateY(-50%);
     font-size: 2.5rem;
     margin-top: 1rem;
   }
@@ -188,6 +184,9 @@
       border-radius: 10px;
       box-shadow: $box-shadow-light;
       z-index: 10000;
+      @include resolution(phone) {
+        top: 2rem;
+      }
     }
 
     &__list {
