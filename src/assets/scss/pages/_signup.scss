@@ -1,63 +1,85 @@
 .signup {
   height: 84vh;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  max-width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: var(--pry-text-color);
-}
-
-.signup__main {
-  height: 510px;
-  width: 70%;
-  margin: 0;
-  padding: 0 30px 0 30px;
-  box-shadow: $box-shadow-grey;
-  color: var(--pry-text-color);
-  border-radius: 5px;
-  border: none;
-  background-color: var(--color-white-shade);
-}
-
-.signup__h2 {
-  text-transform: uppercase;
-  color: var(--deep-theme-color);
-}
-
-.signup__btn {
-  margin: 0 20px 0 0;
-}
-
-@media screen and (max-width: 800px) {
-  .signup {
-    display: flex;
-    align-items: center;
-  }
-  .signup__main {
-    height: 500px;
-    width: 70%;
+  justify-content: center;
+  &__main {
+    min-height: 10rem;
+    padding: 2rem 2rem 3rem 3rem;
     border-radius: 5px;
     border: none;
+    box-shadow: $box-shadow-grey;
+    background-color: $color-white-shade;
   }
-  .signup__btn {
-    margin: 0 20px 0 0;
+  &__h2 {
+    text-transform: uppercase;
+    color: $color-pry;
+    font-size: 3rem;
   }
-}
+  &__input {
+    margin: 1rem 0 0.3rem 0;
+    width: 50rem;
+  }
+  &__btn {
+    margin: 0rem 2rem 0 0;
+  }
+  &__reg {
+    &,
+    &:link,
+    &:visited {
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      color: $info-text-color;
+      transition: all 0.3s;
+    }
 
-@media screen and (max-width: 450px) {
-  .signup {
-    display: block;
+    &:hover,
+    &:active {
+      color: rgba($color-black, 0.8);
+      font-size: 1.4rem;
+    }
   }
-  .signup__main {
-    padding: 0;
-    width: 100%;
-    margin: 0;
-    box-shadow: 0 0 0 0;
-    background-color: white;
+  @include resolution(tab) {
+    &__main {
+      min-height: 10rem;
+      background-color: $color-white-shade;
+    }
+    &__input {
+      margin: 1rem 0 0 0;
+      width: 35rem;
+    }
+    &__btn {
+      margin: 0.1rem 2rem 0 0;
+    }
   }
-  .btn {
-    margin: 10px 20px 0 0;
+  @include resolution(phone) {
+    height: 84vh;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__main {
+      color: $pry-text-color;
+      border-radius: 5px;
+      border: none;
+      background-color: white;
+    }
+    &__h2 {
+      font-size: 2rem;
+    }
+    &__input {
+      margin: 1rem 0 1rem 0;
+      width: 28rem;
+      font-size: 1.2rem;
+      padding-left: 1rem;
+    }
+    &__btn {
+      margin: 0.5rem 2rem 0 0;
+    }
+    &__reg {
+      font-size: 1.2rem;
+    }
   }
 }

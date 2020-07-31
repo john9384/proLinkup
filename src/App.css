@@ -370,7 +370,7 @@ a {
       background-color: #0c02c8; }
 
 .input {
-  width: 97%;
+  max-width: 97%;
   height: 30px;
   border: 1px solid lightblue;
   border-radius: 3px;
@@ -460,7 +460,7 @@ a {
   justify-content: center; }
   .login__main {
     min-height: 10rem;
-    padding: 3rem 3rem 3rem 3rem;
+    padding: 2rem 2rem 3rem 3rem;
     border: none;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 10px 1px grey;
@@ -468,10 +468,9 @@ a {
   .login__h2 {
     text-transform: uppercase;
     color: #000a22;
-    font-size: 3rem;
-    margin: 0 0 1rem 0; }
+    font-size: 3rem; }
   .login__input {
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 0.5rem 0;
     width: 50rem; }
   .login__btn {
     margin: 1rem 2rem 0 0; }
@@ -514,5 +513,69 @@ a {
         padding-left: 1rem; }
       .login__btn {
         margin: 2rem 2rem 0 0; }
-      .login__link {
+      .login__not-reg {
+        font-size: 1.2rem; } }
+
+.signup {
+  height: 84vh;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .signup__main {
+    min-height: 10rem;
+    padding: 2rem 2rem 3rem 3rem;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 10px 1px grey;
+    background-color: ghostwhite; }
+  .signup__h2 {
+    text-transform: uppercase;
+    color: #000a22;
+    font-size: 3rem; }
+  .signup__input {
+    margin: 1rem 0 0.3rem 0;
+    width: 50rem; }
+  .signup__btn {
+    margin: 0rem 2rem 0 0; }
+  .signup__reg, .signup__reg:link, .signup__reg:visited {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    color: grey;
+    transition: all 0.3s; }
+  .signup__reg:hover, .signup__reg:active {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.4rem; }
+  @media (max-width: 48em) {
+    .signup__main {
+      min-height: 10rem;
+      background-color: ghostwhite; }
+    .signup__input {
+      margin: 1rem 0 0 0;
+      width: 35rem; }
+    .signup__btn {
+      margin: 0.1rem 2rem 0 0; } }
+  @media (max-width: 30em) {
+    .signup {
+      height: 84vh;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .signup__main {
+        color: black;
+        border-radius: 5px;
+        border: none;
+        background-color: white; }
+      .signup__h2 {
+        font-size: 2rem; }
+      .signup__input {
+        margin: 1rem 0 1rem 0;
+        width: 28rem;
+        font-size: 1.2rem;
+        padding-left: 1rem; }
+      .signup__btn {
+        margin: 0.5rem 2rem 0 0; }
+      .signup__reg {
         font-size: 1.2rem; } }
