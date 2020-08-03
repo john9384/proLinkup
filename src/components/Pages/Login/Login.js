@@ -50,7 +50,7 @@ class Login extends Component {
     return (
       <main className="login">
         <div className="login__main">
-          <h2 className="login__h2 heading-pry"> User Login </h2>
+          <h2 className="login__h2 heading--pry"> User Login </h2>
           <form onSubmit={this.onSubmit}>
             <InputField
               type="email"

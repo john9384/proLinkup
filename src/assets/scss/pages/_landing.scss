@@ -35,14 +35,13 @@
 
   &__note {
     font-size: 1.5rem;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.1rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
     @include resolution(laptops) {
       letter-spacing: 0;
     }
     @include resolution(phone) {
-      letter-spacing: 0;
       display: none;
     }
   }

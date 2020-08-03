@@ -1,0 +1,85 @@
+.add-exp {
+  &__h1 {
+    @include resolution(tab) {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @include resolution(phone) {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  &__input {
+    width: 30rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    @include resolution(phone) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  &__date {
+    display: inline-block;
+    width: 23rem;
+  }
+  &__check-div {
+    margin-top: -0.5rem;
+    @include resolution(phone) {
+      width: 100%;
+      margin-top: -1rem;
+    }
+  }
+  &__checkbox-btn {
+    display: none;
+  }
+  &__checkbox-label {
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+  &__checkbox-span {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid $color-pry;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    right: -4rem;
+    top: 0px;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-pry;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &__checkbox-btn:checked ~ &__checkbox-label &__checkbox-span::after {
+    opacity: 1;
+  }
+  &__textarea {
+    width: 30rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    @include resolution(phone) {
+      width: 100%;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+  &__date-header {
+    display: inline-block;
+    width: 7rem;
+    margin-bottom: 0.1rem;
+  }
+}

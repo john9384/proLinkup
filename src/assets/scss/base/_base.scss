@@ -19,3 +19,13 @@ body {
   box-sizing: border-box;
 }
 /* ------ Links -----------------------*/
+.container {
+  padding: 0 15vw;
+  min-height: 84vh;
+  @include resolution(tab) {
+    padding: 0 10vw;
+  }
+  @include resolution(phone) {
+    padding: 0 8vw;
+  }
+}

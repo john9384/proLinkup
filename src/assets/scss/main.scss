@@ -1,5 +1,7 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
+@import "abstracts/functions";
+
 //======= Base =============================
 @import "base/animation";
 @import "base/base";
@@ -7,6 +9,7 @@
 @import "base/utilities";
 // ====== Layouts================================
 @import "layout/header";
+@import "layout/grid";
 @import "layout/footer";
 // ====== Components ============================
 @import "components/button";
@@ -15,3 +18,5 @@
 @import "pages/landing";
 @import "pages/login";
 @import "pages/signup";
+@import "pages/addedu";
+@import "pages/addexp";

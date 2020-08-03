@@ -57,7 +57,7 @@ class SignUp extends Component {
     return (
       <main className="signup">
         <div className="signup__main">
-          <h2 className="signup__h2 heading-pry">New User SignUp</h2>
+          <h2 className="signup__h2 heading--pry">New User SignUp</h2>
           <form onSubmit={this.onSubmit}>
             <InputField
               name="firstname"
@@ -119,6 +119,7 @@ class SignUp extends Component {
             </Link>
           </form>
         </div>
+        <div></div>
         {errors ? <Popup error={errors} /> : <div />}
       </main>
     );

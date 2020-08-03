@@ -1,0 +1,24 @@
+@function col_1of2($gutter) {
+  @return calc((100% - #{$gutter}) / 2);
+}
+@function col_1of3($gutter) {
+  @return calc((100% - 2 * #{$gutter-horizontal}) / 3);
+}
+@function col_2of3($gutter) {
+  @return calc(
+    2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}
+  );
+}
+@function col_1of4($gutter) {
+  @return calc((100% - 3 * #{$gutter-horizontal}) / 4);
+}
+@function col_2of4($gutter) {
+  @return calc(
+    2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}
+  );
+}
+@function col_3of4($gutter) {
+  @return calc(
+    3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}
+  );
+}
