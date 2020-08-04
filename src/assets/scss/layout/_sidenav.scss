@@ -1,0 +1,5 @@
+.side-nav {
+  @include resolution(phone) {
+    display: none;
+  }
+}

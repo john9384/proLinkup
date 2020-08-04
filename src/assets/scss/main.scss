@@ -11,6 +11,7 @@
 @import "layout/header";
 @import "layout/grid";
 @import "layout/footer";
+@import "layout/sidenav";
 // ====== Components ============================
 @import "components/button";
 @import "components/inputfield";
@@ -18,5 +19,5 @@
 @import "pages/landing";
 @import "pages/login";
 @import "pages/signup";
-@import "pages/addedu";
-@import "pages/addexp";
+@import "pages/addcredform";
+@import "pages/profileform";

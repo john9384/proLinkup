@@ -390,6 +390,10 @@ a {
   .footer {
     font-size: 2vw; } }
 
+@media (max-width: 30em) {
+  .side-nav {
+    display: none; } }
+
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
@@ -401,7 +405,7 @@ a {
   border-radius: 5px;
   font-size: 1.1rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 700;
   box-shadow: 0.5px 1px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer; }
   @media (max-width: 48em) {
@@ -428,19 +432,25 @@ a {
       transform: scale(1.02);
       background-color: #0c02c8; }
 
+.btn--sec {
+  padding: 0;
+  box-shadow: 0 0 0 0;
+  padding: 0.3rem;
+  border-radius: 1px; }
+
 .input {
   max-width: 100%;
   height: 30px;
   border: 1px solid lightblue;
   border-radius: 3px;
-  padding: 2px;
-  padding-left: 4px; }
+  padding: 2px 2px 2px 10px; }
   .input:focus {
-    box-shadow: 2px 2px 10px 1px grey;
-    border: 1px solid green;
+    box-shadow: 1px 0 10px 1px rgba(128, 128, 128, 0.2);
     outline: none; }
+  .input:focus:valid {
+    border-bottom: 2px solid green; }
   .input:focus:invalid {
-    border: 1px solid #7e0f0f; }
+    border-bottom: 2px solid #7e0f0f; }
   .input:active {
     background: white; }
   .input__info {
@@ -639,44 +649,44 @@ a {
         font-size: 1.2rem; } }
 
 @media (max-width: 48em) {
-  .add-edu__h1 {
+  .add-cred__h1 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem; } }
 
 @media (max-width: 30em) {
-  .add-edu__h1 {
+  .add-cred__h1 {
     margin-top: 1rem;
     margin-bottom: 1rem; } }
 
-.add-edu__input {
+.add-cred__input {
   width: 30rem;
   padding-left: 1rem;
   margin-bottom: 0.5rem; }
   @media (max-width: 30em) {
-    .add-edu__input {
+    .add-cred__input {
       width: 100%;
       margin-bottom: 1rem; } }
 
-.add-edu__date {
+.add-cred__date {
   display: inline-block;
   width: 23rem; }
 
-.add-edu__check-div {
+.add-cred__check-div {
   margin-top: -0.5rem; }
   @media (max-width: 30em) {
-    .add-edu__check-div {
+    .add-cred__check-div {
       width: 100%;
       margin-top: -1rem; } }
 
-.add-edu__checkbox-btn {
+.add-cred__checkbox-btn {
   display: none; }
 
-.add-edu__checkbox-label {
+.add-cred__checkbox-label {
   font-size: 1rem;
   cursor: pointer;
   position: relative; }
 
-.add-edu__checkbox-span {
+.add-cred__checkbox-span {
   height: 1.5rem;
   width: 1.5rem;
   border: 2px solid #000a22;
@@ -685,7 +695,7 @@ a {
   position: absolute;
   right: -4rem;
   top: 0px; }
-  .add-edu__checkbox-span::after {
+  .add-cred__checkbox-span::after {
     content: "";
     display: block;
     height: 1rem;
@@ -699,101 +709,82 @@ a {
     opacity: 0;
     transition: opacity 0.3s; }
 
-.add-edu__checkbox-btn:checked ~ .add-edu__checkbox-label .add-edu__checkbox-span::after {
+.add-cred__checkbox-btn:checked ~ .add-cred__checkbox-label .add-cred__checkbox-span::after {
   opacity: 1; }
 
-.add-edu__textarea {
+.add-cred__textarea {
   width: 30rem;
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem; }
   @media (max-width: 30em) {
-    .add-edu__textarea {
+    .add-cred__textarea {
       width: 100%;
       margin-top: 1.5rem;
       margin-bottom: 2rem; } }
 
-.add-edu__date-header {
+.add-cred__date-header {
   display: inline-block;
   width: 7rem;
   margin-bottom: 0.1rem; }
 
 @media (max-width: 48em) {
-  .add-exp__h1 {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem; } }
+  .profile-form__title {
+    margin-top: 2rem; } }
 
-@media (max-width: 30em) {
-  .add-exp__h1 {
-    margin-top: 1rem;
-    margin-bottom: 1rem; } }
-
-.add-exp__input {
+.profile-form__input {
   width: 30rem;
-  padding-left: 1rem;
-  margin-bottom: 0.5rem; }
+  margin-top: 1rem; }
   @media (max-width: 30em) {
-    .add-exp__input {
-      width: 100%;
-      margin-bottom: 1rem; } }
+    .profile-form__input {
+      width: 100%; } }
 
-.add-exp__date {
-  display: inline-block;
-  width: 23rem; }
-
-.add-exp__check-div {
-  margin-top: -0.5rem; }
-  @media (max-width: 30em) {
-    .add-exp__check-div {
-      width: 100%;
-      margin-top: -1rem; } }
-
-.add-exp__checkbox-btn {
-  display: none; }
-
-.add-exp__checkbox-label {
-  font-size: 1rem;
-  cursor: pointer;
-  position: relative; }
-
-.add-exp__checkbox-span {
-  height: 1.5rem;
-  width: 1.5rem;
-  border: 2px solid #000a22;
-  border-radius: 50%;
-  display: inline-block;
-  position: absolute;
-  right: -4rem;
-  top: 0px; }
-  .add-exp__checkbox-span::after {
-    content: "";
-    display: block;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000a22;
-    opacity: 0;
-    transition: opacity 0.3s; }
-
-.add-exp__checkbox-btn:checked ~ .add-exp__checkbox-label .add-exp__checkbox-span::after {
-  opacity: 1; }
-
-.add-exp__textarea {
+.profile-form__textarea {
   width: 30rem;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem; }
+  margin-top: 1rem; }
   @media (max-width: 30em) {
-    .add-exp__textarea {
-      width: 100%;
-      margin-top: 1.5rem;
-      margin-bottom: 2rem; } }
+    .profile-form__textarea {
+      width: 100%; } }
 
-.add-exp__date-header {
-  display: inline-block;
-  width: 7rem;
-  margin-bottom: 0.1rem; }
+.profile-form__socials {
+  margin-top: 1rem; }
+
+.profile-form--group {
+  background-color: #ece6e6;
+  width: 30rem;
+  border-radius: 5px;
+  padding: 1px;
+  margin-top: 1rem; }
+  @media (max-width: 30em) {
+    .profile-form--group {
+      width: 100%; } }
+
+.profile-form--social-input {
+  width: 26.5rem;
+  margin: 0;
+  transform: translateY(-0.125rem); }
+  @media (max-width: 30em) {
+    .profile-form--social-input {
+      width: 100%; } }
+
+.profile-form--icon {
+  color: black;
+  width: 3rem;
+  text-align: center;
+  margin: 0; }
+
+.profile-form--icon-name {
+  display: none;
+  color: black; }
+  @media (max-width: 30em) {
+    .profile-form--icon-name {
+      display: inline-block;
+      width: 80%;
+      font-size: 1.2rem; } }
+
+.profile-form--opt {
+  margin-left: 3rem;
+  font-size: 1.2rem; }
+
+.profile-form__submit {
+  margin: 2rem 0 3rem 0; }

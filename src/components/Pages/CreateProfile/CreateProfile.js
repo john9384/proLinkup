@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
-import styles from "./CreateProfile.module.css";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
-import classnames from "classnames";
+import SideNav from "../../Layouts/SideNav/SideNav";
 import Popup from "../../common/popup/Popup";
 
 class CreateProfile extends Component {
@@ -29,7 +28,7 @@ class CreateProfile extends Component {
       linkedin: "",
       youtube: "",
       instagram: "",
-      errors: {},
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -54,7 +53,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      instagram: this.state.instagram,
+      instagram: this.state.instagram
     };
     this.props.postCurrentProfile(profileData, this.props.history);
   }
@@ -68,164 +67,171 @@ class CreateProfile extends Component {
     if (displaySocialInputs) {
       socials = (
         <div>
-          <InputField
-            type="text"
-            name="twitter"
-            value={this.state.twitter}
-            placeholder="Twitter"
-            classname={classnames("input", styles.input)}
-            onChange={this.onChange}
-          />
+          <div className="profile-form--group">
+            <i className="fa fa-twitter profile-form--icon"></i>
+            <input
+              type="text"
+              name="twitter"
+              value={this.state.twitter}
+              placeholder="Twitter"
+              className="profile-form__input input profile-form--social-input"
+              onChange={this.onChange}
+            />
+          </div>
+          <div className="profile-form--group">
+            <i className="fa fa-linkedin profile-form--icon"></i>
 
-          <InputField
-            type="text"
-            name="linkedin"
-            value={this.state.linkedin}
-            placeholder="Linkedin"
-            classname={classnames("input", styles.input)}
-            onChange={this.onChange}
-          />
+            <input
+              type="text"
+              name="linkedin"
+              value={this.state.linkedin}
+              placeholder="Linkedin"
+              className="profile-form__input input profile-form--social-input"
+              onChange={this.onChange}
+            />
+          </div>
 
-          <InputField
-            type="text"
-            name="facebook"
-            value={this.state.facebook}
-            placeholder="Facebook"
-            classname={classnames("input", styles.input)}
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="youtube"
-            value={this.state.youtube}
-            placeholder="Youtube"
-            classname={classnames("input", styles.input)}
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="instagram"
-            value={this.state.instagram}
-            placeholder="Instagram"
-            classname={classnames("input", styles.input)}
-            onChange={this.onChange}
-          />
+          <div className="profile-form--group">
+            <i className="fa fa-facebook profile-form--icon"></i>
+            <input
+              type="text"
+              name="facebook"
+              value={this.state.facebook}
+              placeholder="Facebook"
+              className="profile-form__input input profile-form--social-input"
+              onChange={this.onChange}
+            />
+          </div>
+
+          <div className="profile-form--group">
+            <i className="fa fa-youtube profile-form--icon"></i>
+            <input
+              type="text"
+              name="youtube"
+              value={this.state.youtube}
+              placeholder="Youtube"
+              className="profile-form__input input profile-form--social-input"
+              onChange={this.onChange}
+            />
+          </div>
+
+          <div className="profile-form--group">
+            <i className="fa fa-instagram profile-form--icon"></i>
+            <input
+              type="text"
+              name="instagram"
+              value={this.state.instagram}
+              placeholder="Instagram"
+              className="profile-form__input input profile-form--social-input"
+              onChange={this.onChange}
+            />
+          </div>
         </div>
       );
     } else {
     }
 
     return (
-      <div className={styles.main}>
-        <button className={classnames("btn", styles.btn)}>
-          <Link to="/dashboard" className="link">
-            Back
-          </Link>
-        </button>
-        <h1 className={styles.main__title}> Create your profile</h1>
-        <form onSubmit={this.onSubmit}>
-          <InputField
-            type="text"
-            name="handle"
-            value={this.state.handle}
-            placeholder="* Handle"
-            classname={classnames("input", styles.input)}
-            info="  A unique handle for you profile. Name, company name (Cannot be used)"
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="company"
-            value={this.state.company}
-            placeholder="Company"
-            classname={classnames("input", styles.input)}
-            info="This should include th name of your company. only strings"
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="website"
-            value={this.state.website}
-            placeholder="Website"
-            classname={classnames("input", styles.input)}
-            info="This should include the name of your website ."
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="location"
-            value={this.state.location}
-            placeholder="Location"
-            classname={classnames("input", styles.input)}
-            info="This should include your current location in the format (state country)"
-            onChange={this.onChange}
-          />
-          <InputField
-            type="text"
-            name="skills"
-            value={this.state.skills}
-            placeholder="Skills"
-            classname={classnames("input", styles.input)}
-            info="Multiple skills should be sperated with a comma. eg(html, css, javascript)"
-            onChange={this.onChange}
-          />
-          <InputSelect
-            classname={classnames("input", styles.input)}
-            name="status"
-            value={this.state.status}
-            options={[
-              { label: "Junior", value: "junior" },
-              { label: "Intermediate", value: "intermidiate" },
-              { label: "Proffessional", value: "proffessional" },
-              { label: "Expert", value: "expert" },
-            ]}
-            onChange={this.onChange}
-            info="Select your current status"
-          />
-          <InputField
-            type="text"
-            name="githubusername"
-            value={this.state.githubusername}
-            placeholder="Githubusername"
-            classname={classnames("input", styles.input)}
-            info="Share your githubusername so people can view you public repositories"
-            onChange={this.onChange}
-          />
-          <InputTextArea
-            type="text"
-            name="bio"
-            value={this.state.bio}
-            placeholder="bio"
-            classname={classnames("textarea", styles.textarea)}
-            info="Tell a little about yourself"
-            onChange={this.onChange}
-          />
+      <div className="row">
+        <div className="col-2-of-3 profile-form">
+          <h1 className="profile-form__title heading--pry">
+            Create your profile
+          </h1>
+          <form onSubmit={this.onSubmit}>
+            <InputField
+              type="text"
+              name="handle"
+              value={this.state.handle}
+              placeholder="* Handle"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputField
+              type="text"
+              name="company"
+              value={this.state.company}
+              placeholder="Company"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputField
+              type="text"
+              name="website"
+              value={this.state.website}
+              placeholder="Website"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputField
+              type="text"
+              name="location"
+              value={this.state.location}
+              placeholder="Location"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputField
+              type="text"
+              name="skills"
+              value={this.state.skills}
+              placeholder="Skills"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputSelect
+              classname="profile-form__input input"
+              name="status"
+              value={this.state.status}
+              options={[
+                { label: "Junior", value: "junior" },
+                { label: "Intermediate", value: "intermidiate" },
+                { label: "Proffessional", value: "proffessional" },
+                { label: "Expert", value: "expert" }
+              ]}
+              onChange={this.onChange}
+            />
+            <InputField
+              type="text"
+              name="githubusername"
+              value={this.state.githubusername}
+              placeholder="Githubusername"
+              classname="profile-form__input input"
+              onChange={this.onChange}
+            />
+            <InputTextArea
+              type="text"
+              name="bio"
+              value={this.state.bio}
+              placeholder="bio"
+              classname="profile-form__textarea textarea"
+              onChange={this.onChange}
+            />
 
-          <div className={styles.social}>
-            <button
-              type="button"
-              className={classnames(styles.add__social)}
-              onClick={() => {
-                this.setState((prevState) => ({
-                  displaySocialInputs: !prevState.displaySocialInputs,
-                }));
-              }}
-            >
-              <span>+</span>
-              Add Socials
-            </button>
-            <small className={classnames("input__info", styles.info__social)}>
-              Optional
-            </small>
-            {socials}
-          </div>
-          <input
-            type="submit"
-            value="Submit"
-            className={classnames("btn", styles.btn_submit)}
-          />
-        </form>
-        {errors ? <Popup error={errors} /> : <div></div>}
+            <div className="profile-form__socials">
+              <button
+                type="button"
+                className="btn btn--sec"
+                onClick={() => {
+                  this.setState(prevState => ({
+                    displaySocialInputs: !prevState.displaySocialInputs
+                  }));
+                }}
+              >
+                <i className="fa fa-plus"></i>
+                &nbsp; Socials
+              </button>
+              <small className="profile-form--opt">Optional</small>
+              {socials}
+            </div>
+            <input
+              type="submit"
+              value="Submit"
+              className="btn btn--pry profile-form__submit"
+            />
+            {errors ? <Popup error={errors} /> : null}
+          </form>
+        </div>
+        <SideNav />
       </div>
     );
   }
@@ -233,11 +239,11 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   profile: state.profile,
-  errors: state.errors,
+  errors: state.errors
 });
 export default connect(mapStateToProps, { postCurrentProfile })(
   withRouter(CreateProfile)
