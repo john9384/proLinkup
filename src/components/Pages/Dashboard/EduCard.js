@@ -9,7 +9,7 @@ class EduCard extends Component {
     this.props.deleteEdu(id);
   }
   render() {
-    const education = this.props.education.map((edu) => (
+    const education = this.props.education.map(edu => (
       <tr key={edu._id}>
         <td>{edu.school}</td>
         <td>{edu.degree}</td>
@@ -24,10 +24,10 @@ class EduCard extends Component {
       </tr>
     ));
     return (
-      <div>
-        <h2>Education</h2>
+      <div className="edu">
+        <h2 className="heading--sec edu__head">Education</h2>
         {isEmpty(this.props.education) ? (
-          <h4>No Education detail added</h4>
+          <h4 className="edu__no-edu">No Education detail added</h4>
         ) : (
           <table>
             <thead>
@@ -46,6 +46,6 @@ class EduCard extends Component {
   }
 }
 EduCard.propTypes = {
-  deleteEdu: PropTypes.func.isRequired,
+  deleteEdu: PropTypes.func.isRequired
 };
 export default connect(null, { deleteEdu })(EduCard);

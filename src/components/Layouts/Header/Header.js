@@ -18,6 +18,11 @@ class Header extends Component {
       dropdown: false
     };
   }
+  componentDidMount() {
+    this.setState({
+      dropdown: false
+    });
+  }
   onClickLogout(e) {
     e.preventDefault();
     this.props.clearCurrentUserProfile();
@@ -121,7 +126,6 @@ class Header extends Component {
                     onClick={this.onClickToggleDropdown.bind(this)}
                   ></i>
                   <ul className="dropdown__content">
-                    <li className="dropdown__item"></li>
                     <li className="dropdown__item">{dashboard}</li>
                     <li className="dropdown__item">{logout}</li>
                   </ul>

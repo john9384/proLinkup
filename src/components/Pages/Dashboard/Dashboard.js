@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   getCurrentProfile,
-  deleteAccount,
+  deleteAccount
 } from "../../../redux/actions/profileActions";
 import Spinner from "../../common/spinner/Spinner";
-import styles from "./Dashboard.module.css";
 import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
+import SideNav from "../../Layouts/SideNav/SideNav";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -29,36 +29,47 @@ class Dashboard extends Component {
     } else {
       if (Object.keys(profile).length <= 0) {
         dashboardContent = (
-          <div className={styles.dashboard}>
-            <h1 className={styles.dashboard__title}>Dashboard</h1>
-            <h1>
-              Welcome {firstname} {lastname}
-            </h1>
-            <p styl>You have no profile yet</p>
-            <button className="btn">
-              <Link to="/create-profile" className="link">
+          <div className="col-2-of-3 dashboard">
+            <div className="dashboard__no-profile u-center-text">
+              <h2 className="dashboard__wel-note u-margin-top-large">
+                Welcome {firstname} {lastname}
+              </h2>
+              <p className="dashboard__text u-margin-top-smaller">
+                You have no profile yet
+              </p>
+              <Link
+                to="/create-profile"
+                className="btn btn--pry  u-margin-top-smaller"
+              >
                 Create Profile
               </Link>
-            </button>
+            </div>
           </div>
         );
       } else {
         dashboardContent = (
-          <div className={styles.dashboard}>
-            <h1 className={styles.dashboard__title}>Dashboard</h1>
-            <p>
-              Welcome{" "}
-              <Link to={`/profile/handle/${profile.content.handle}`}>
-                {firstname} {lastname}
-              </Link>
-            </p>
+          <div className="col-2-of-3 dashboard">
+            <h1 className=" heading--pry dashboard__title">Dashboard</h1>
+            <div className="row">
+              <div className="col-1-of-2 dashboard__img u-margin-bottom-medium">
+                <img src={avatar} alt="avatar" />
+              </div>
+              <div className="col-1-of-2 dashboard__details">
+                <h2>
+                  <Link to={`/profile/handle/${profile.content.handle}`}>
+                    {firstname} {lastname}
+                  </Link>
+                </h2>
+              </div>
+            </div>
+
             <ProfileActions />
             <ExpCard experience={profile.content.experience} />
             <EduCard education={profile.content.education} />
             <div style={{ marginBottom: "10px" }}></div>
             <button
               onClick={this.onDeleteClick.bind(this)}
-              className="btn-danger"
+              className="btn btn--danger"
             >
               Delete Account
             </button>
@@ -66,19 +77,23 @@ class Dashboard extends Component {
         );
       }
     }
-    return <div className={styles.main}>{dashboardContent}</div>;
+    return (
+      <div className="row">
+        {dashboardContent} <SideNav />
+      </div>
+    );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   profile: state.profile,
-  auth: state.auth,
+  auth: state.auth
 });
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
   Dashboard

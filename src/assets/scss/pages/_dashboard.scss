@@ -1,0 +1,56 @@
+.dashboard {
+  .no-profile {
+    color: $color-pry;
+  }
+  &__title {
+    @include resolution(phone) {
+      font-size: 2rem;
+    }
+  }
+  &__img {
+    display: inline-block;
+    height: 20rem;
+    margin-bottom: 0;
+    border: 5px solid $color-pry;
+  }
+  &__details {
+    display: inline-block;
+    height: 20rem;
+    margin-bottom: 0;
+    margin-left: 5rem;
+    @include resolution(phone) {
+      height: 10rem;
+    }
+  }
+}
+.actions {
+  padding: 0;
+  &__link {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  &__btn {
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+  }
+  &__icon {
+    margin-right: 0.3rem;
+  }
+}
+.edu {
+  margin-top: 1rem;
+  &__head {
+    background-color: silver;
+    border-radius: 3px;
+    padding-left: 5px;
+  }
+}
+.exp {
+  margin-top: 1rem;
+  &__head {
+    background-color: silver;
+    border-radius: 3px;
+    padding-left: 5px;
+  }
+}

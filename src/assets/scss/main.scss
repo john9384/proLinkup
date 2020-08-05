@@ -6,7 +6,7 @@
 @import "base/animation";
 @import "base/base";
 @import "base/typography";
-@import "base/utilities";
+
 // ====== Layouts================================
 @import "layout/header";
 @import "layout/grid";
@@ -19,5 +19,8 @@
 @import "pages/landing";
 @import "pages/login";
 @import "pages/signup";
+@import "pages/dashboard";
 @import "pages/addcredform";
 @import "pages/profileform";
+// ====== Utils =================================
+@import "utils/margins";

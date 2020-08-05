@@ -9,7 +9,7 @@ class ExpCard extends Component {
     this.props.deleteExp(id);
   }
   render() {
-    const experience = this.props.experience.map((exp) => (
+    const experience = this.props.experience.map(exp => (
       <tr key={exp._id}>
         <td>{exp.company}</td>
         <td>{exp.title}</td>
@@ -24,10 +24,10 @@ class ExpCard extends Component {
       </tr>
     ));
     return (
-      <div>
-        <h2>Experience</h2>
+      <div className="exp">
+        <h2 className="heading--sec exp__head">Experience</h2>
         {isEmpty(this.props.experience) ? (
-          <h4>No Experience added yet</h4>
+          <h4 className="exp__no-exp">No Experience added yet</h4>
         ) : (
           <table>
             <thead>
@@ -46,6 +46,6 @@ class ExpCard extends Component {
   }
 }
 ExpCard.propTypes = {
-  deleteExp: PropTypes.func.isRequired,
+  deleteExp: PropTypes.func.isRequired
 };
 export default connect(null, { deleteExp })(ExpCard);

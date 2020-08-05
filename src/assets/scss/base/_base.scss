@@ -25,7 +25,7 @@ body {
   @include resolution(tab) {
     padding: 0 10vw;
   }
-  @include resolution(phone) {
-    padding: 0 8vw;
-  }
+  // @include resolution(phone) {
+  //   padding: 0 8vw;
+  // }
 }

@@ -131,6 +131,9 @@
       color: $color-pry;
     }
   }
+  &__icon {
+    display: inline;
+  }
   .nav__icon {
     display: none;
   }
@@ -148,7 +151,7 @@
       color: $color-pry;
     }
     &:hover {
-      transform: translateX(5px) scale(1.03);
+      transform: translateX(5px) scale(1.05);
       cursor: pointer;
     }
   }
