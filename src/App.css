@@ -647,12 +647,20 @@ a {
 
 .dashboard__details {
   display: inline-block;
-  height: 20rem;
-  margin-bottom: 0;
-  margin-left: 5rem; }
+  height: 20rem; }
   @media (max-width: 30em) {
     .dashboard__details {
-      height: 10rem; } }
+      background-color: ghostwhite;
+      height: 9rem;
+      padding: 1rem;
+      padding-left: 2rem;
+      border-radius: 5px;
+      box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+      .dashboard__details--h2 {
+        font-size: 2rem;
+        color: #000a22; }
+      .dashboard__details--handle:link, .dashboard__details--handle:visited {
+        color: black; } }
 
 .actions {
   padding: 0; }
@@ -664,19 +672,39 @@ a {
   .actions__icon {
     margin-right: 0.3rem; }
 
-.edu {
+.cred {
   margin-top: 1rem; }
-  .edu__head {
+  .cred:last-child {
+    border-bottom: 1px solid silver; }
+  .cred__head {
     background-color: silver;
     border-radius: 3px;
     padding-left: 5px; }
-
-.exp {
-  margin-top: 1rem; }
-  .exp__head {
-    background-color: silver;
-    border-radius: 3px;
-    padding-left: 5px; }
+    @media (max-width: 48em) {
+      .cred__head {
+        font-size: 1.5rem; } }
+  .cred__card {
+    background-color: ghostwhite;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3);
+    position: relative; }
+  .cred__label {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 7rem;
+    text-transform: uppercase;
+    color: #000a22; }
+  .cred__value {
+    margin-left: 1rem; }
+  .cred__del-btn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    box-shadow: 0 0 0 0;
+    padding: 0.3rem 0.5rem;
+    font-size: 1.5rem; }
 
 @media (max-width: 48em) {
   .add-cred__h1 {
@@ -819,6 +847,34 @@ a {
 
 .profile-form__submit {
   margin: 2rem 0 3rem 0; }
+
+.pros__search {
+  background-color: silver;
+  padding-left: 0.2rem;
+  padding-bottom: 0.2rem;
+  border-radius: 5px; }
+  .pros__search--input {
+    width: 93%; }
+    @media (max-width: 48em) {
+      .pros__search--input {
+        width: 90%; } }
+  .pros__search--icon {
+    width: 7%;
+    text-align: center;
+    font-weight: 600; }
+    @media (max-width: 48em) {
+      .pros__search--icon {
+        width: 10%; } }
+    @media (max-width: 48em) {
+      .pros__search--icon {
+        font-size: 2rem; } }
+
+.pros__card {
+  background-color: ghostwhite;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3);
+  position: relative; }
 
 .u-center-text {
   text-align: center; }

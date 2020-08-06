@@ -10,36 +10,43 @@ class ExpCard extends Component {
   }
   render() {
     const experience = this.props.experience.map(exp => (
-      <tr key={exp._id}>
-        <td>{exp.company}</td>
-        <td>{exp.title}</td>
-        <td>
-          {exp.from} - {exp.to}
-        </td>
-        <td>
-          <button className="btn" onClick={this.onDelClick.bind(this, exp._id)}>
-            Delete
-          </button>
-        </td>
-      </tr>
+      <div className="cred__card u-margin-top-medium" key={exp._id}>
+        <p>
+          <span className="cred__label">Postion</span>:
+          <span className="cred__value">{exp.title}</span>
+        </p>
+        <p>
+          <span className="cred__label">Company</span>:
+          <span className="cred__value">{exp.company}</span>
+        </p>
+        <p>
+          <span className="cred__label">From</span>:
+          <span className="cred__value">{exp.from}</span>
+          {exp.to ? (
+            <p>
+              <span className="cred__label">To</span>:
+              <span className="cred__value">{exp.to}</span>
+            </p>
+          ) : (
+            <span className="cred__value--current">Current</span>
+          )}
+        </p>
+
+        <button
+          className="btn btn--danger cred__del-btn"
+          onClick={this.onDelClick.bind(this, exp._id)}
+        >
+          <i className="fa fa-times"></i>
+        </button>
+      </div>
     ));
     return (
-      <div className="exp">
-        <h2 className="heading--sec exp__head">Experience</h2>
+      <div className="cred">
+        <h2 className="heading--sec cred__head">Experience</h2>
         {isEmpty(this.props.experience) ? (
-          <h4 className="exp__no-exp">No Experience added yet</h4>
+          <h4 className="cred__no-cred">No Experience added yet</h4>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Title</th>
-                <th>Years</th>
-                <th></th>
-              </tr>
-              {experience}
-            </thead>
-          </table>
+          <div> {experience}</div>
         )}
       </div>
     );

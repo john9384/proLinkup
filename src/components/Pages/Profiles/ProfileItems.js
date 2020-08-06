@@ -10,7 +10,7 @@ class ProfileItems extends Component {
   render() {
     const { profile } = this.props;
     return (
-      <div className={styles.profile}>
+      <div className="pros__card u-margin-top-medium">
         <div className={styles.profile__img}>
           <img src={profile.avatar} alt="" className={styles.profile__avatar} />
         </div>
@@ -47,7 +47,7 @@ class ProfileItems extends Component {
   }
 }
 ProfileItems.propTypes = {
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 export default ProfileItems;

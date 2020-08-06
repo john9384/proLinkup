@@ -10,36 +10,43 @@ class EduCard extends Component {
   }
   render() {
     const education = this.props.education.map(edu => (
-      <tr key={edu._id}>
-        <td>{edu.school}</td>
-        <td>{edu.degree}</td>
-        <td>
-          {edu.from} - {edu.to}
-        </td>
-        <td>
-          <button className="btn" onClick={this.onDelClick.bind(this, edu._id)}>
-            Delete
-          </button>
-        </td>
-      </tr>
+      <div className="cred__card u-margin-top-medium" key={edu._id}>
+        <p>
+          <span className="cred__label">Degree</span>:
+          <span className="cred__value">{edu.degree}</span>
+        </p>
+        <p>
+          <span className="cred__label">Company</span>:
+          <span className="cred__value">{edu.school}</span>
+        </p>
+        <p>
+          <span className="cred__label">From</span>:
+          <span className="cred__value">{edu.from}</span>
+          {edu.to ? (
+            <p>
+              <span className="cred__label">To</span>:
+              <span className="cred__value">{edu.to}</span>
+            </p>
+          ) : (
+            <span className="cred__value--current">Current</span>
+          )}
+        </p>
+
+        <button
+          className="btn btn--danger cred__del-btn"
+          onClick={this.onDelClick.bind(this, edu._id)}
+        >
+          <i className="fa fa-times"></i>
+        </button>
+      </div>
     ));
     return (
-      <div className="edu">
-        <h2 className="heading--sec edu__head">Education</h2>
+      <div className="cred u-margin-top-medium u-margin-bottom-large">
+        <h2 className="heading--sec cred__head">Education</h2>
         {isEmpty(this.props.education) ? (
-          <h4 className="edu__no-edu">No Education detail added</h4>
+          <h4 className="cred__no-edu">No Education detail added</h4>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>School</th>
-                <th>Degree</th>
-                <th>Years</th>
-                <th></th>
-              </tr>
-              {education}
-            </thead>
-          </table>
+          <div>{education}</div>
         )}
       </div>
     );

@@ -55,21 +55,24 @@ class Dashboard extends Component {
                 <img src={avatar} alt="avatar" />
               </div>
               <div className="col-1-of-2 dashboard__details">
-                <h2>
-                  <Link to={`/profile/handle/${profile.content.handle}`}>
-                    {firstname} {lastname}
-                  </Link>
+                <h2 className="dashboard__details--h2">
+                  {firstname} {lastname}
                 </h2>
+                <Link
+                  to={`/profile/handle/${profile.content.handle}`}
+                  className="dashboard__details--handle"
+                >
+                  {profile.content.handle}
+                </Link>
               </div>
             </div>
 
             <ProfileActions />
             <ExpCard experience={profile.content.experience} />
             <EduCard education={profile.content.education} />
-            <div style={{ marginBottom: "10px" }}></div>
             <button
               onClick={this.onDeleteClick.bind(this)}
-              className="btn btn--danger"
+              className="btn btn--danger u-margin-bottom-large"
             >
               Delete Account
             </button>
