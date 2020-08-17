@@ -2,43 +2,42 @@ import React, { Component } from "react";
 //import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import isEmpty from "../../../helpers/isEmpty";
-import styles from "./Profiles.module.css";
 
 class ProfileItems extends Component {
   render() {
     const { profile } = this.props;
     return (
-      <div className="pros__card u-margin-top-medium">
-        <div className={styles.profile__img}>
-          <img src={profile.avatar} alt="" className={styles.profile__avatar} />
+      <div className="pros-card u-margin-top-medium">
+        <div className="pros-card__img">
+          <img src={profile.avatar} alt="" className="pros-card__avatar" />
         </div>
-        <div className={styles.profile__intro}>
-          <h3> {profile.username}</h3>
-          <p>
+        <div className="pros-card__details">
+          <h3 className="pros-card__name"> {profile.username}</h3>
+          <p className="pros-card__position">
             {profile.status}
             {isEmpty(profile.company) ? null : (
               <span> at {profile.company} </span>
             )}
           </p>
-          <p>
+          <p className="pros-card__location">
             {isEmpty(profile.location) ? null : <span>{profile.location}</span>}
           </p>
-          <button className={classnames("btn", styles.btn)}>
-            <Link
-              to={`/profile/handle/${profile.handle}`}
-              className={styles.btn}
-            >
-              View Profile
-            </Link>
-          </button>
+
+          <Link
+            to={`/profile/handle/${profile.handle}`}
+            className="btn btn--pry pros-card__btn"
+          >
+            View Profile
+          </Link>
         </div>
-        <div className={styles.profile__skills}>
-          <h3>Skill Set </h3>
-          <ul>
+        <div className="pros-card__skills u-margin-top-medium">
+          <h3 className="heading--sec pros-card__skills-head">Skill Set </h3>
+          <ul className="pros-card__skills-list">
             {profile.skills.slice(0, 4).map((skill, index) => (
-              <li key={index}>{skill}</li>
+              <li key={index} className="pros-card__skills-item">
+                {skill}
+              </li>
             ))}
           </ul>
         </div>

@@ -36,11 +36,11 @@ body {
 
 /* ------ Links -----------------------*/
 .container {
-  padding: 0 15vw;
+  padding: 3rem 15vw;
   min-height: 84vh; }
   @media (max-width: 48em) {
     .container {
-      padding: 0 10vw; } }
+      padding: 3rem 10vw; } }
 
 body {
   font-family: "Noto Sans JP", sans-serif;
@@ -379,7 +379,6 @@ a {
   padding: 0.7rem 3rem;
   display: inline-block;
   transition: all 0.8s;
-  position: relative;
   border: none;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -869,12 +868,77 @@ a {
       .pros__search--icon {
         font-size: 2rem; } }
 
-.pros__card {
+.pros-card {
   background-color: ghostwhite;
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3);
-  position: relative; }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .pros-card__img {
+    width: 17rem;
+    height: 17rem;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+    @media (max-width: 64em) {
+      .pros-card__img {
+        width: 15rem;
+        height: 15rem; } }
+    @media (max-width: 48em) {
+      .pros-card__img {
+        margin: 0 auto; } }
+  .pros-card__avatar {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border: none;
+    border-radius: 50%; }
+  .pros-card__details {
+    height: 16rem;
+    width: 35rem;
+    position: relative; }
+    @media (max-width: 64em) {
+      .pros-card__details {
+        height: 15rem;
+        width: 25rem; } }
+    @media (max-width: 48em) {
+      .pros-card__details {
+        width: 100%;
+        text-align: center;
+        margin-top: 1.5rem; } }
+  .pros-card__name {
+    color: #000a22; }
+  .pros-card__position {
+    text-transform: capitalize; }
+  .pros-card__location {
+    text-transform: capitalize; }
+  .pros-card__btn {
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    @media (max-width: 48em) {
+      .pros-card__btn {
+        left: 50%;
+        translate: -50%; } }
+  .pros-card__skills {
+    width: 100%; }
+    @media (max-width: 48em) {
+      .pros-card__skills {
+        display: none; } }
+  .pros-card__skills-head {
+    background-color: silver;
+    border-radius: 3px;
+    padding-left: 1rem; }
+    @media (max-width: 48em) {
+      .pros-card__skills-head {
+        font-size: 1.5rem; } }
+  .pros-card__skills-list {
+    list-style: none; }
+  .pros-card__skill-item {
+    margin-left: 1rem; }
 
 .u-center-text {
   text-align: center; }
