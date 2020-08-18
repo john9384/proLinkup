@@ -13,6 +13,7 @@ import {
   getProfileByHandle,
   getProfileById
 } from "../../../redux/actions/profileActions";
+import isEmpty from "../../../helpers/isEmpty";
 
 class Profile extends Component {
   componentDidMount() {
@@ -23,12 +24,13 @@ class Profile extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null && this.props.profile.loading) {
+    if (isEmpty(nextProps.profile.profile) && this.props.profile.loading) {
       this.props.history.push("/err-page");
     }
   }
   render() {
     const { profile, loading } = this.props.profile;
+    console.log(profile);
     let profileContent;
     if (profile === null || loading) {
       profileContent = <Spinner />;
