@@ -10,7 +10,6 @@ import Spinner from "../../common/spinner/Spinner";
 import classnames from "classnames";
 import styles from "./Profile.module.css";
 import {
-  getCurrentProfile,
   getProfileByHandle,
   getProfileById
 } from "../../../redux/actions/profileActions";
@@ -25,7 +24,7 @@ class Profile extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.profile.profile === null && this.props.profile.loading) {
-      this.props.history.push("/not-found");
+      this.props.history.push("/err-page");
     }
   }
   render() {

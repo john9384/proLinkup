@@ -14,6 +14,7 @@ import store from "./redux/store";
 import "./App.css";
 import Header from "./components/Layouts/Header/Header";
 import Footer from "./components/Layouts/Footer/Footer";
+import NotFound from "./components/Layouts/NotFound/NotFound";
 import LandingPage from "./components/Pages/LandingPage/LandingPage";
 import SignUp from "./components/Pages/Signup/SignUp";
 import Login from "./components/Pages/Login/Login";
@@ -23,7 +24,6 @@ import EditProfile from "./components/Pages/EditProfile/EditProfile";
 import AddExp from "./components/Pages/AddCred/AddExp";
 import AddEdu from "./components/Pages/AddCred/AddEdu";
 import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
-import NotFound from "./components/Layouts/NotFound/NotFound";
 import Profile from "./components/Pages/Profile/Profile";
 import Posts from "./components/Pages/Posts/Posts";
 import Post from "./components/Pages/Post/Post";
@@ -56,9 +56,6 @@ class App extends Component {
               <Route exact path="/" component={LandingPage} />
               <Route exact path="/sign_up" component={SignUp} />
               <Route exact path="/login" component={Login} />
-
-              <Route exact path="/not-found" component={NotFound} />
-
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute
@@ -92,6 +89,7 @@ class App extends Component {
                 <PrivateRoute exact path="/feeds" component={Posts} />
                 <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
+              <Route exact path="/err-page" component={NotFound} />
             </div>
             <Footer />
           </div>
