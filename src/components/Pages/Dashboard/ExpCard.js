@@ -19,6 +19,18 @@ class ExpCard extends Component {
           <span className="cred__label">Company</span>:
           <span className="cred__value">{exp.company}</span>
         </p>
+        {exp.location ? (
+          <p>
+            <span className="cred__label">Location</span>:
+            <span className="cred__value">{exp.location}</span>
+          </p>
+        ) : null}
+        {exp.description ? (
+          <p>
+            <span className="cred__label">Desc</span>:
+            <span className="cred__value">{exp.description}</span>
+          </p>
+        ) : null}
         <p>
           <span className="cred__label">From</span>:
           <span className="cred__value">{exp.from}</span>

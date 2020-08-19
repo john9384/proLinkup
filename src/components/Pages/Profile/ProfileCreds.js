@@ -1,76 +1,103 @@
 import React, { Component } from "react";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import styles from "./Profile.module.css";
 
 class ProfileCreds extends Component {
   render() {
     const { experience, education } = this.props;
-    const expList = experience.map((exp) => (
-      <li key={exp._id}>
-        <h4>{exp.company}</h4>
+    console.log(experience);
+    const expList = experience.map(exp => (
+      <div key={exp._id} className="cred__card u-margin-top-medium">
         <p>
-          <Moment format="YYYY/MM/DD">{exp.from}</Moment>
-          {exp.to === null ? (
-            "Now"
+          <span className="cred__label">Postion</span>:
+          <span className="cred__value">{exp.title}</span>
+        </p>
+        <p>
+          <span className="cred__label">Company</span>:
+          <span className="cred__value">{exp.company}</span>
+        </p>
+        {exp.location ? (
+          <p>
+            <span className="cred__label">Location</span>:
+            <span className="cred__value">{exp.location}</span>
+          </p>
+        ) : null}
+        {exp.description ? (
+          <p>
+            <span className="cred__label">Desc</span>:
+            <span className="cred__value">{exp.description}</span>
+          </p>
+        ) : null}
+        <p>
+          <span className="cred__label">From</span>:
+          <span className="cred__value">{exp.from}</span>
+          {exp.to ? (
+            <p>
+              <span className="cred__label">To</span>:
+              <span className="cred__value">{exp.to}</span>
+            </p>
           ) : (
-            <Moment format="YYYY/MM/DD">{exp.from}</Moment>
+            <span className="cred__value--current">Current</span>
           )}
         </p>
-        <p>
-          <strong>Position:</strong> {exp.title}
-        </p>
-        <p>
-          {exp.location === "" ? null : (
-            <span>
-              <strong>Location:</strong> <strong>{exp.location}</strong>
-            </span>
-          )}
-        </p>
-        <p>
-          {exp.description === "" ? null : (
-            <span>
-              <strong>Description:</strong> <strong>{exp.description}</strong>
-            </span>
-          )}
-        </p>
-      </li>
+      </div>
     ));
-    const eduList = education.map((edu) => (
-      <li key={edu._id}>
-        <h4>{edu.company}</h4>
+    const eduList = education.map(edu => (
+      <div key={edu._id} className="cred__card u-margin-top-medium">
         <p>
-          <Moment format="YYYY/MM/DD">{edu.from}</Moment>
-          {edu.to === null ? (
-            "Now"
+          <span className="cred__label">Degree</span>:
+          <span className="cred__value">{edu.degree}</span>
+        </p>
+        <p>
+          <span className="cred__label">School</span>:
+          <span className="cred__value">{edu.school}</span>
+        </p>
+        <p>
+          <span className="cred__label">Field</span>:
+          <span className="cred__value">{edu.fieldofstudy}</span>
+        </p>
+        {edu.description ? (
+          <p>
+            <span className="cred__label">Desc:</span>
+            <span className="cred__value">{edu.description}</span>
+          </p>
+        ) : null}
+        <p>
+          <span className="cred__label">From</span>:
+          <span className="cred__value">{edu.from}</span>
+          {edu.to ? (
+            <p>
+              <span className="cred__label">To</span>:
+              <span className="cred__value">{edu.to}</span>
+            </p>
           ) : (
-            <Moment format="YYYY/MM/DD">{edu.from}</Moment>
+            <span className="cred__value--current">Current</span>
           )}
         </p>
-        <p>
-          <strong>Position:</strong> {edu.degree}
-        </p>
-        <p>
-          <strong>Field of Study:</strong> {edu.fieldofstudy}
-        </p>
-        <p>
-          {edu.description === "" ? null : (
-            <span>
-              <strong>Description:</strong> <strong>{edu.description}</strong>
-            </span>
-          )}
-        </p>
-      </li>
+      </div>
     ));
     return (
       <div className={styles.profile__creds}>
-        <div className={styles.creds__exp}>
-          <h3>Experience</h3>
-          {expList.length > 0 ? <ul>{expList}</ul> : <h4>No Experience</h4>}
+        <div className="cred u-margin-top-medium">
+          <h2 className="heading--sec cred__head u-margin-top-large">
+            Experience
+          </h2>
+          {expList.length > 0 ? (
+            <div>{expList}</div>
+          ) : (
+            <h4 className="cred__no-exp">No Experience detail added yet</h4>
+          )}
         </div>
 
         <div className={styles.creds__edu}>
-          <h3>Education</h3>
-          {eduList.length > 0 ? <ul>{eduList}</ul> : <h4>No Education</h4>}
+          <h2 className="heading--sec cred__head u-margin-top-medium">
+            Education
+          </h2>
+          {eduList.length > 0 ? (
+            <div>{eduList}</div>
+          ) : (
+            <h4 className="cred__no-edu">No Education detail added yet</h4>
+          )}
         </div>
       </div>
     );

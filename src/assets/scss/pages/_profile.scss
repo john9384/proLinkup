@@ -1,0 +1,34 @@
+.profile {
+  &__bio-head {
+    color: $color-pry;
+    text-transform: uppercase;
+    background-color: $color-heading-bg;
+    border-radius: 3px;
+    padding-left: 1rem;
+    @include resolution(tab) {
+      font-size: $h2-font-size-tab;
+    }
+  }
+  &__skills {
+    width: 100%;
+    @include resolution(tab) {
+      display: none;
+    }
+  }
+  &__skills-head {
+    color: $color-pry;
+    text-transform: uppercase;
+    background-color: $color-heading-bg;
+    border-radius: 3px;
+    padding-left: 1rem;
+    @include resolution(tab) {
+      font-size: $h2-font-size-tab;
+    }
+  }
+  &__skills-list {
+    list-style: none;
+  }
+  &__skill-item {
+    margin-left: 1rem;
+  }
+}

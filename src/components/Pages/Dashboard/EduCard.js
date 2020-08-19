@@ -16,9 +16,19 @@ class EduCard extends Component {
           <span className="cred__value">{edu.degree}</span>
         </p>
         <p>
-          <span className="cred__label">Company</span>:
+          <span className="cred__label">School</span>:
           <span className="cred__value">{edu.school}</span>
         </p>
+        <p>
+          <span className="cred__label">Field</span>:
+          <span className="cred__value">{edu.fieldofstudy}</span>
+        </p>
+        {edu.description ? (
+          <p>
+            <span className="cred__label">Desc:</span>
+            <span className="cred__value">{edu.description}</span>
+          </p>
+        ) : null}
         <p>
           <span className="cred__label">From</span>:
           <span className="cred__value">{edu.from}</span>

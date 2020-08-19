@@ -1,6 +1,6 @@
 .pros {
   &__search {
-    background-color: silver;
+    background-color: $color-heading-bg;
     padding-left: 0.2rem;
     padding-bottom: 0.2rem;
     border-radius: 5px;
@@ -92,7 +92,7 @@
     }
   }
   &__skills-head {
-    background-color: silver;
+    background-color: $color-heading-bg;
     border-radius: 3px;
     padding-left: 1rem;
     @include resolution(tab) {
