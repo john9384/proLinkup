@@ -36,7 +36,7 @@ body {
 
 /* ------ Links -----------------------*/
 .container {
-  padding: 3rem 15vw;
+  padding: 0 15vw;
   min-height: 84vh; }
   @media (max-width: 48em) {
     .container {
@@ -1006,6 +1006,12 @@ a {
 
 .err-page {
   text-align: center; }
+
+.feeds__form {
+  width: 100%; }
+
+.feeds__textarea {
+  width: 100%; }
 
 .u-center-text {
   text-align: center; }

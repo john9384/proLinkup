@@ -7,7 +7,7 @@ import styles from "./Post.module.css";
 import {
   deletePost,
   addLike,
-  removeLike,
+  removeLike
 } from "../../../redux/actions/postActions";
 
 class PostItem extends Component {
@@ -25,7 +25,7 @@ class PostItem extends Component {
 
   findUserLike(likes) {
     const { auth } = this.props;
-    if (likes.filter((like) => like.user === auth.user.id).length > 0) {
+    if (likes.filter(like => like.user === auth.user.id).length > 0) {
       return true;
     } else {
       return false;
@@ -35,9 +35,9 @@ class PostItem extends Component {
   render() {
     const { post, auth, showActions } = this.props;
     return (
-      <div className={styles.post_item}>
-        <div className={styles.post_item__head}>
-          <Link to={`/profile/${post.user}`} className={styles.post_item__img}>
+      <div className="post-card">
+        <div className="post-card__head">
+          <Link to={`/profile/${post.user}`} className="post-card__img">
             <img src={post.avatar} alt="" />
           </Link>
           <Link to={`/profile/${post.user}`} className={styles.post_item__img}>
@@ -58,7 +58,7 @@ class PostItem extends Component {
                 {
                   <i
                     className={classnames({
-                      "text-info": this.findUserLike(post.likes),
+                      "text-info": this.findUserLike(post.likes)
                     })}
                   />
                 }
@@ -92,7 +92,7 @@ class PostItem extends Component {
 }
 
 PostItem.defaultProps = {
-  showActions: true,
+  showActions: true
 };
 
 PostItem.propTypes = {
@@ -100,11 +100,11 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { deletePost, addLike, removeLike })(

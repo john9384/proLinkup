@@ -135,23 +135,23 @@ class Header extends Component {
           </nav>
         ) : null}
         {!isAuthenticated ? null : (
-          <div class="nav-mobile">
+          <div className="nav-mobile">
             <input
               type="checkbox"
-              class="nav-mobile__checkbox"
+              className="nav-mobile__checkbox"
               id="nav-mobile-toggle"
             />
-            <label for="nav-mobile-toggle" class="nav-mobile__btn">
-              <span class="nav-mobile__icon">&nbsp;</span>
+            <label htmlFor="nav-mobile-toggle" className="nav-mobile__btn">
+              <span className="nav-mobile__icon">&nbsp;</span>
             </label>
-            <nav class="nav-mobile__menu">
-              <ul class="nav-mobile__list">
-                <li class="nav-mobile__items">{home}</li>
-                <li class="nav-mobile__items">{usersLinks}</li>
-                <li class="nav-mobile__items">{postFeeds}</li>
-                <li class="nav-mobile__items">{profileLInk}</li>
-                <li class="nav-mobile__items">{dashboard}</li>
-                <li class="nav-mobile__items">{logout}</li>
+            <nav className="nav-mobile__menu">
+              <ul className="nav-mobile__list">
+                <li className="nav-mobile__items">{home}</li>
+                <li className="nav-mobile__items">{usersLinks}</li>
+                <li className="nav-mobile__items">{postFeeds}</li>
+                <li className="nav-mobile__items">{profileLInk}</li>
+                <li className="nav-mobile__items">{dashboard}</li>
+                <li className="nav-mobile__items">{logout}</li>
               </ul>
             </nav>
           </div>

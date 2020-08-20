@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import { addPost } from "../../../redux/actions/postActions";
 import Popup from "../../common/popup/Popup";
-import classnames from "classnames";
-import styles from "./Post.module.css";
+
 class PostForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       text: "",
-      error: {},
+      error: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -24,7 +23,7 @@ class PostForm extends Component {
   }
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   }
   onSubmit(e) {
@@ -34,7 +33,7 @@ class PostForm extends Component {
     const newPost = {
       text: this.state.text,
       name: firstname + lastname,
-      avatar: avatar,
+      avatar: avatar
     };
 
     this.props.addPost(newPost);
@@ -44,16 +43,16 @@ class PostForm extends Component {
   render() {
     const errors = this.state.error;
     return (
-      <div className={styles.post_form}>
+      <div className="feeds__form u-margin-top-medium u-margin-bottom-medium">
         <form onSubmit={this.onSubmit}>
           <InputTextArea
-            classname={classnames("textarea", styles.textarea)}
+            classname="textarea feeds__textarea u-margin-bottom-small"
             placeholder="Say something"
             name="text"
             value={this.state.text}
             onChange={this.onChange}
           />
-          <button className={classnames("btn", styles.btn)}>Post</button>
+          <button className="btn btn--pry feeds__submit-btn">Post</button>
         </form>
         {errors ? <Popup error={errors} /> : null}
       </div>
@@ -63,12 +62,12 @@ class PostForm extends Component {
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors,
+  errors: state.errors
 });
 
 export default connect(mapStateToProps, { addPost })(PostForm);

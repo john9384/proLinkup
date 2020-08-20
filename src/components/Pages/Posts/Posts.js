@@ -5,7 +5,7 @@ import PostForm from "./PostForm";
 import PostFeed from "./PostFeed";
 import Spinner from "../../common/spinner/Spinner";
 import { getPosts } from "../../../redux/actions/postActions";
-import styles from "./Post.module.css";
+import SideNav from "../../Layouts/SideNav/SideNav";
 
 class Posts extends Component {
   componentDidMount() {
@@ -23,22 +23,25 @@ class Posts extends Component {
       postContent = <PostFeed posts={content} />;
     }
     return (
-      <div className={styles.post_container}>
-        <h1 className={styles.h1}>Create Post</h1>
-        <PostForm />
-        <h1 className={styles.h1}>Latest Feeds</h1>
-        {postContent}
+      <div className="row">
+        <div className="col-2-of-3">
+          <h1 className="heading--pry">Create Post</h1>
+          <PostForm />
+          <h1 className="heading--sec">Latest Feeds</h1>
+          {postContent}
+        </div>
+        <SideNav />
       </div>
     );
   }
 }
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  post: state.post,
+const mapStateToProps = state => ({
+  post: state.post
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);

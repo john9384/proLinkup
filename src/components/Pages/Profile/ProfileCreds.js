@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // import Moment from "react-moment";
-import styles from "./Profile.module.css";
 
 class ProfileCreds extends Component {
   render() {
@@ -71,7 +70,7 @@ class ProfileCreds extends Component {
       </div>
     ));
     return (
-      <div className={styles.profile__creds}>
+      <div>
         <div className="cred u-margin-top-medium">
           <h2 className="heading--sec cred__head u-margin-top-large">
             Experience
@@ -83,7 +82,7 @@ class ProfileCreds extends Component {
           )}
         </div>
 
-        <div className={styles.creds__edu}>
+        <div>
           <h2 className="heading--sec cred__head u-margin-top-medium">
             Education
           </h2>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import isEmpty from "../../../helpers/isEmpty";
-import styles from "./Profile.module.css";
 
 class ProfileHeader extends Component {
   render() {
