@@ -6,20 +6,19 @@ class ProfileHeader extends Component {
   render() {
     const { content } = this.props.profile;
     return (
-      <div className={styles.profile__header}>
-        <div className={styles.header__img}>
-          <img src={content.avatar} alt="" className={styles.header__avatar} />
+      <div className="profile__header">
+        <div className="profile__header-img">
+          <img src={content.avatar} alt="" className="profile__header-avatar" />
         </div>
-        <div className={styles.header__basic}>
-          {" "}
-          <h3>{content.username}</h3>
-          <p>
+        <div className="profile__header-info u-margin-top-medium">
+          <h3 className="profile__header-info--name">{content.username}</h3>
+          <p className="profile__header-info--prof">
             {isEmpty(content.status) ? null : <span>{content.status} </span>}
             {isEmpty(content.company) ? null : (
               <span> at {content.company}</span>
             )}
           </p>
-          <p>
+          <p className="profile__header-info--location">
             {isEmpty(content.location) ? null : <span>{content.location}</span>}
             {/* Todo: add the icons for social links and website */}
           </p>

@@ -474,6 +474,10 @@ a {
     border-radius: 5px;
     box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3);
     position: relative; }
+    .cred__card p {
+      display: flex;
+      justify-content: baseline;
+      align-items: center; }
   .cred__label {
     display: inline-block;
     font-size: 1.2rem;
@@ -939,6 +943,34 @@ a {
     list-style: none; }
   .pros-card__skill-item {
     margin-left: 1rem; }
+
+.profile__header {
+  background-color: ghostwhite;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+
+.profile__header-img {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+
+.profile .profile__header-avatar {
+  height: 100%;
+  width: 100%; }
+
+.profile__header-info--name {
+  color: #000a22;
+  text-transform: uppercase; }
+
+.profile__header-info--prof {
+  color: black;
+  text-transform: capitalize; }
+
+.profile__header-info--location {
+  color: black; }
 
 .profile__bio-head {
   color: #000a22;

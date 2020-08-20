@@ -29,13 +29,10 @@ class ProfileCreds extends Component {
           </p>
         ) : null}
         <p>
-          <span className="cred__label">From</span>:
-          <span className="cred__value">{exp.from}</span>
+          <span className="cred__label">Date</span>:
+          <span className="cred__value">{exp.from} -</span>
           {exp.to ? (
-            <p>
-              <span className="cred__label">To</span>:
-              <span className="cred__value">{exp.to}</span>
-            </p>
+            <span className="cred__value">{exp.to}</span>
           ) : (
             <span className="cred__value--current">Current</span>
           )}
@@ -63,13 +60,10 @@ class ProfileCreds extends Component {
           </p>
         ) : null}
         <p>
-          <span className="cred__label">From</span>:
-          <span className="cred__value">{edu.from}</span>
+          <span className="cred__label">Date</span>:
+          <span className="cred__value">{edu.from} -</span>
           {edu.to ? (
-            <p>
-              <span className="cred__label">To</span>:
-              <span className="cred__value">{edu.to}</span>
-            </p>
+            <span className="cred__value">{edu.to}</span>
           ) : (
             <span className="cred__value--current">Current</span>
           )}

@@ -1,4 +1,34 @@
 .profile {
+  &__header {
+    background-color: $color-white-shade;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0px 1px 10px rgba(grey, 0.3);
+  }
+  &__header-img {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0px 1px 10px rgba(grey, 0.3);
+  }
+  .profile__header-avatar {
+    height: 100%;
+    width: 100%;
+  }
+  &__header-info {
+    &--name {
+      color: $color-pry;
+      text-transform: uppercase;
+    }
+    &--prof {
+      color: $pry-text-color;
+      text-transform: capitalize;
+    }
+    &--location {
+      color: $pry-text-color;
+    }
+  }
   &__bio-head {
     color: $color-pry;
     text-transform: uppercase;
