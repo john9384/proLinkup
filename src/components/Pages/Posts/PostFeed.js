@@ -12,7 +12,7 @@ class PostFeed extends Component {
   componentDidMount() {
     this.setState({ posts: this.props.posts });
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps) {
       this.setState({ posts: this.props.posts });
     }
@@ -22,6 +22,7 @@ class PostFeed extends Component {
     const posts = this.state.posts;
     let feeds = [];
     for (let [key, value] of Object.entries(posts)) {
+      console.log(key);
       feeds.push(value);
     }
     const feedContent = feeds.map(feed => (

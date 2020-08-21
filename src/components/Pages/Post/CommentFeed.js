@@ -6,10 +6,11 @@ class CommentFeed extends Component {
   render() {
     const { comments, postId } = this.props;
     let feeds;
-    if (comments == null || comments == "undefined") {
+    if (comments === null || comments === "undefined") {
       console.log("Undefined");
     } else {
       for (let [key, value] of Object.entries(comments)) {
+        console.log(key);
         feeds.push(
           <CommentItem key={value.id} comment={value} postId={postId} />
         );
@@ -21,7 +22,7 @@ class CommentFeed extends Component {
 
 CommentFeed.propTypes = {
   comments: PropTypes.array.isRequired,
-  postId: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired
 };
 
 export default CommentFeed;

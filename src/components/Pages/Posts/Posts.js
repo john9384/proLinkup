@@ -27,7 +27,7 @@ class Posts extends Component {
         <div className="col-2-of-3">
           <h1 className="heading--pry">Create Post</h1>
           <PostForm />
-          <h1 className="heading--sec">Latest Feeds</h1>
+          <h1 className="heading--sec feeds__head-2">Latest Feeds</h1>
           {postContent}
         </div>
         <SideNav />

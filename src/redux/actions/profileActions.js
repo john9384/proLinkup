@@ -43,7 +43,6 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 export const getProfileByHandle = handle => dispatch => {
-  console.log(handle);
   dispatch(setProfileLoading());
   axios
     .get(`http://localhost:4000/profile/handle/${handle}`)
@@ -61,7 +60,6 @@ export const getProfileByHandle = handle => dispatch => {
     );
 };
 export const getProfileById = id => dispatch => {
-  console.log(id);
   dispatch(setProfileLoading());
   axios
     .get(`http://localhost:4000/profile/${id}`)

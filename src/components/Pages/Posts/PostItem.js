@@ -38,42 +38,40 @@ class PostItem extends Component {
       <div className="post-card">
         <div className="post-card__head">
           <Link to={`/profile/${post.user}`} className="post-card__img">
-            <img src={post.avatar} alt="" />
+            <img src={post.avatar} alt="" className="post-card__avatar" />
           </Link>
-          <Link to={`/profile/${post.user}`} className={styles.post_item__img}>
-            Hello
-          </Link>
-          <span>{post.name}</span>
+          <div className="post-card__info">
+            <span className="post-card__name">{post.name}</span>
+            <Link to={`/profile/${post.user}`} className="post-card__handle">
+              @{post.handle}
+            </Link>
+          </div>
         </div>
 
         <div>
-          <p className={styles.post_item__content}>{post.text}</p>
+          <p className="post-card__content">{post.text}</p>
+          <p className="post-card__like-no">{post.likes.length} Likes</p>
           {showActions ? (
-            <span>
-              <button
+            <div className="post-card__actions">
+              <i
                 onClick={this.onLikeClick.bind(this, post._id)}
                 type="button"
-                className={styles.btn_review}
-              >
-                {
-                  <i
-                    className={classnames({
-                      "text-info": this.findUserLike(post.likes)
-                    })}
-                  />
-                }
-                <span>{post.likes.length} Likes</span>
-              </button>
-              <button
+                className="fa fa-thumbs-up post-card__reaction post-card__like"
+              ></i>
+
+              <i
                 onClick={this.onUnlikeClick.bind(this, post._id)}
                 type="button"
-                className={styles.btn_review}
+                className="fa fa-thumbs-down post-card__reaction post-card__dislike"
+              ></i>
+
+              <Link
+                to={`/post/${post._id}`}
+                className="post-card__reaction post-card__comment"
               >
-                Unlike
-              </button>
-              <button className={styles.btn_review}>
-                <Link to={`/post/${post._id}`}>Comments</Link>
-              </button>
+                <i className="fa fa-comments"></i>
+              </Link>
+
               {post.user === auth.user.id ? (
                 <button
                   onClick={this.onDeleteClick.bind(this, post._id)}
@@ -83,7 +81,7 @@ class PostItem extends Component {
                   Delete
                 </button>
               ) : null}
-            </span>
+            </div>
           ) : null}
         </div>
       </div>

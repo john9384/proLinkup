@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class ProfileCreds extends Component {
   render() {
     const { experience, education } = this.props;
-    console.log(experience);
+
     const expList = experience.map(exp => (
       <div key={exp._id} className="cred__card u-margin-top-medium">
         <p>

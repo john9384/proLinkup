@@ -676,23 +676,34 @@ a {
   .dashboard__title {
     font-size: 2rem; } }
 
+.dashboard__basic {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+
 .dashboard__img {
   display: inline-block;
   height: 20rem;
-  margin-bottom: 0;
+  width: 20rem;
+  border-radius: 50%;
   border: 5px solid #000a22; }
+  .dashboard__img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; }
+  @media (max-width: 48em) {
+    .dashboard__img {
+      margin: 1rem auto; } }
 
 .dashboard__details {
   display: inline-block;
-  height: 20rem; }
-  @media (max-width: 30em) {
+  width: auto;
+  margin-left: 3rem; }
+  @media (max-width: 48em) {
     .dashboard__details {
-      background-color: ghostwhite;
-      height: 9rem;
-      padding: 1rem;
-      padding-left: 2rem;
-      border-radius: 5px;
-      box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+      margin: 0;
+      width: 100%;
+      text-align: center; }
       .dashboard__details--h2 {
         font-size: 2rem;
         color: #000a22; }
@@ -1012,6 +1023,67 @@ a {
 
 .feeds__textarea {
   width: 100%; }
+
+@media (max-width: 48em) {
+  .feeds__head-2 {
+    font-size: 2rem; } }
+
+.post-card {
+  width: 100%;
+  background-color: ghostwhite;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+  .post-card__head {
+    height: 5rem;
+    display: flex;
+    align-items: center; }
+  .post-card__img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: none; }
+  .post-card__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; }
+  .post-card__info {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column; }
+  .post-card__name {
+    color: #000a22; }
+  .post-card__handle {
+    color: grey;
+    font-size: 1.2rem; }
+  .post-card__content {
+    text-align: justify;
+    padding: 1rem 1rem; }
+  .post-card__like-no {
+    padding: 0 1rem;
+    color: grey;
+    font-size: 1.3rem; }
+  .post-card__actions {
+    display: flex;
+    align-items: center; }
+  .post-card__reaction {
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+    color: black;
+    font-size: 2rem;
+    transition: transform 0.5s; }
+  .post-card__reaction:hover {
+    transform: scale(1.03); }
+  .post-card__like {
+    width: 5rem; }
+  .post-card__dislike {
+    width: 5rem; }
+  .post-card__comment {
+    width: 5rem; }
+    .post-card__comment:link, .post-card__comment:visited {
+      color: black; }
 
 .u-center-text {
   text-align: center; }

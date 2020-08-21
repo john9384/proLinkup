@@ -23,6 +23,7 @@ class Header extends Component {
       dropdown: false
     });
   }
+
   onClickLogout(e) {
     e.preventDefault();
     this.props.clearCurrentUserProfile();

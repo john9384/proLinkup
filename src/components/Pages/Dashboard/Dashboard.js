@@ -50,11 +50,11 @@ class Dashboard extends Component {
         dashboardContent = (
           <div className="col-2-of-3 dashboard">
             <h1 className=" heading--pry dashboard__title">Dashboard</h1>
-            <div className="row">
-              <div className="col-1-of-2 dashboard__img u-margin-bottom-medium">
-                <img src={avatar} alt="avatar" />
+            <div className="dashboard__basic u-margin-top-medium u-margin-bottom-medium">
+              <div className="dashboard__img">
+                <img src={avatar} alt="" />
               </div>
-              <div className="col-1-of-2 dashboard__details">
+              <div className="dashboard__details">
                 <h2 className="dashboard__details--h2">
                   {firstname} {lastname}
                 </h2>
