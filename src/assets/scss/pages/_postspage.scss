@@ -1,0 +1,65 @@
+.post {
+  width: 100%;
+
+  &__comment-form {
+    width: 100%;
+    display: flex;
+    &--input {
+      width: 54rem;
+      margin-right: 2rem;
+    }
+    &--btn {
+      float: right;
+    }
+  }
+  &__comment-feed {
+    border-radius: 5px;
+  }
+  &__comment-item {
+    margin: 2rem 0;
+    padding: 2rem;
+    box-shadow: 0px 1px 10px rgba(grey, 0.3);
+    position: relative;
+    &--head {
+      height: 5rem;
+      display: flex;
+      align-items: center;
+    }
+    &--img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: none;
+    }
+    &--avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    &--info {
+      margin-top: -2rem;
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 3rem;
+    }
+    &--name {
+      color: $color-pry;
+    }
+    &--handle {
+      color: grey;
+      font-size: 1.2rem;
+    }
+    &--text {
+      padding-left: 2rem;
+    }
+    &--del {
+      position: absolute;
+      top: 2rem;
+      transition: transform 0.5s;
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+}

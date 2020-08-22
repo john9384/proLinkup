@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styles from "./Post.module.css";
 import {
   deletePost,
   addLike,
@@ -76,7 +74,7 @@ class PostItem extends Component {
                 <button
                   onClick={this.onDeleteClick.bind(this, post._id)}
                   type="button"
-                  className={classnames("btn-danger", styles.btn)}
+                  className="btn btn--danger"
                 >
                   Delete
                 </button>

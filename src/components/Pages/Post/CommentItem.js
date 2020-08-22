@@ -10,33 +10,29 @@ class CommentItem extends Component {
 
   render() {
     const { comment, postId, auth } = this.props;
-
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={comment.avatar}
-                alt=""
-              />
-            </a>
-            <br />
-            <p className="text-center">{comment.name}</p>
+      <div className="post__comment-item ">
+        <div className="post__comment-item--head u-margin-bottom-small">
+          <div className="post__comment-item--img">
+            <img
+              src={comment.avatar}
+              alt=""
+              className="post__comment-item--avatar"
+            />
           </div>
-          <div className="col-md-10">
-            <p className="lead">{comment.text}</p>
-            {comment.user === auth.user.id ? (
-              <button
-                onClick={this.onDeleteClick.bind(this, postId, comment._id)}
-                type="button"
-                className="btn btn-danger mr-1"
-              >
-                <i className="fas fa-times" />
-              </button>
-            ) : null}
-          </div>
+          <p className="post__comment-item--info">
+            <span className="post__comment-item--name">{comment.name}</span>
+            <span className="post__comment-item--handle">{comment.handle}</span>
+          </p>
+        </div>
+        <div className="post__comment-item--content">
+          <p className="post__comment-item--text">{comment.text}</p>
+          {comment.user === auth.user.payload.id ? (
+            <i
+              onClick={this.onDeleteClick.bind(this, postId, comment._id)}
+              className="fa fa-times post__comment-item--del"
+            />
+          ) : null}
         </div>
       </div>
     );
@@ -47,11 +43,11 @@ CommentItem.propTypes = {
   deleteComment: PropTypes.func.isRequired,
   comment: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { deleteComment })(CommentItem);

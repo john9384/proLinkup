@@ -50,19 +50,26 @@ class Dashboard extends Component {
         dashboardContent = (
           <div className="col-2-of-3 dashboard">
             <h1 className=" heading--pry dashboard__title">Dashboard</h1>
-            <div className="dashboard__basic u-margin-top-medium u-margin-bottom-medium">
-              <div className="dashboard__img">
-                <img src={avatar} alt="" />
-              </div>
-              <div className="dashboard__details">
-                <h2 className="dashboard__details--h2">
-                  {firstname} {lastname}
-                </h2>
+            <div className=" u-margin-bottom-medium">
+              <p className="dashboard__name">
+                Welcome {firstname} {lastname}
+              </p>
+              {profile.content.handle ? (
+                <div>
+                  <Link
+                    to={`/profile/${this.props.auth.user.payload.id}`}
+                    className="dashboard__handle u-margin-top-smaller"
+                  >
+                    @{profile.content.handle}
+                  </Link>
+                </div>
+              ) : null}
+              <div>
                 <Link
-                  to={`/profile/handle/${profile.content.handle}`}
-                  className="dashboard__details--handle"
+                  to={`/profile/${this.props.auth.user.payload.id}`}
+                  className="btn btn--pry  u-margin-top-small"
                 >
-                  {profile.content.handle}
+                  View Profile
                 </Link>
               </div>
             </div>

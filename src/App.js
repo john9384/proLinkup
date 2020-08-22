@@ -25,7 +25,7 @@ import AddExp from "./components/Pages/AddCred/AddExp";
 import AddEdu from "./components/Pages/AddCred/AddEdu";
 import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
 import Profile from "./components/Pages/Profile/Profile";
-import Posts from "./components/Pages/Posts/Posts";
+import Posts from "./components/Pages/Feeds/Posts";
 import Post from "./components/Pages/Post/Post";
 
 try {

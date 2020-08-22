@@ -4,19 +4,20 @@ import CommentItem from "./CommentItem";
 
 class CommentFeed extends Component {
   render() {
-    const { comments, postId } = this.props;
-    let feeds;
-    if (comments === null || comments === "undefined") {
-      console.log("Undefined");
-    } else {
-      for (let [key, value] of Object.entries(comments)) {
-        console.log(key);
-        feeds.push(
-          <CommentItem key={value.id} comment={value} postId={postId} />
-        );
-      }
-    }
-    return <div>{feeds}</div>;
+    const { comments, postId, auth } = this.props;
+    const commentContent = comments.map(comment => (
+      <CommentItem
+        key={comment._id}
+        comment={comment}
+        postId={postId}
+        auth={auth}
+      />
+    ));
+    return (
+      <div className="post__comment-feed u-margin-top-medium">
+        {commentContent}
+      </div>
+    );
   }
 }
 

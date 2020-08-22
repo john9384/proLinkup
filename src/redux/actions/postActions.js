@@ -7,141 +7,141 @@ import {
   GET_POSTS,
   GET_POST,
   POST_LOADING,
-  DELETE_POST,
+  DELETE_POST
 } from "./types";
 
 // Add Post
-export const addPost = (postData) => (dispatch) => {
+export const addPost = postData => dispatch => {
   dispatch(clearErrors());
   axios
     .post("http://localhost:4000/post", postData)
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: ADD_POST,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       });
     });
 };
 
-export const getPosts = () => (dispatch) => {
+export const getPosts = () => dispatch => {
   dispatch(setPostLoading());
   axios
     .get("http://localhost:4000/post")
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: GET_POSTS,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_POSTS,
-        payload: null,
+        payload: null
       })
     );
 };
 
-export const getPost = (id) => (dispatch) => {
+export const getPost = id => dispatch => {
   dispatch(setPostLoading());
   axios
     .get(`http://localhost:4000/post/${id}`)
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: GET_POST,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_POST,
-        payload: null,
+        payload: null
       })
     );
 };
 
 // Delete Post
-export const deletePost = (id) => (dispatch) => {
+export const deletePost = id => dispatch => {
   axios
     .delete(`http://localhost:4000/post/${id}`)
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: DELETE_POST,
-        payload: id,
+        payload: id
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };
 
 // Add Like
-export const addLike = (id) => (dispatch) => {
+export const addLike = id => dispatch => {
   axios
     .post(`http://localhost:4000/post/like/${id}`)
-    .then((res) => dispatch(getPosts()))
-    .catch((err) =>
+    .then(res => dispatch(getPosts()))
+    .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };
 
 // Remove Like
-export const removeLike = (id) => (dispatch) => {
+export const removeLike = id => dispatch => {
   axios
     .post(`http://localhost:4000/post/unlike/${id}`)
-    .then((res) => dispatch(getPosts()))
-    .catch((err) =>
+    .then(res => dispatch(getPosts()))
+    .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };
 
 // Add Comment
-export const addComment = (postId, commentData) => (dispatch) => {
+export const addComment = (postId, commentData) => dispatch => {
   dispatch(clearErrors());
   axios
     .post(`http://localhost:4000/post/comment/${postId}`, commentData)
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: GET_POST,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };
 
 // Delete Comment
-export const deleteComment = (postId, commentId) => (dispatch) => {
+export const deleteComment = (postId, commentId) => dispatch => {
   axios
     .delete(`http://localhost:4000/post/comment/${postId}/${commentId}`)
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: GET_POST,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) =>
+    .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };
@@ -149,13 +149,13 @@ export const deleteComment = (postId, commentId) => (dispatch) => {
 // Set loading state
 export const setPostLoading = () => {
   return {
-    type: POST_LOADING,
+    type: POST_LOADING
   };
 };
 
 // Clear errors
 export const clearErrors = () => {
   return {
-    type: CLEAR_ERRORS,
+    type: CLEAR_ERRORS
   };
 };

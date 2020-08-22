@@ -676,39 +676,14 @@ a {
   .dashboard__title {
     font-size: 2rem; } }
 
-.dashboard__basic {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%; }
+.dashboard__name {
+  color: #000a22;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: capitalize; }
 
-.dashboard__img {
-  display: inline-block;
-  height: 20rem;
-  width: 20rem;
-  border-radius: 50%;
-  border: 5px solid #000a22; }
-  .dashboard__img img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; }
-  @media (max-width: 48em) {
-    .dashboard__img {
-      margin: 1rem auto; } }
-
-.dashboard__details {
-  display: inline-block;
-  width: auto;
-  margin-left: 3rem; }
-  @media (max-width: 48em) {
-    .dashboard__details {
-      margin: 0;
-      width: 100%;
-      text-align: center; }
-      .dashboard__details--h2 {
-        font-size: 2rem;
-        color: #000a22; }
-      .dashboard__details--handle:link, .dashboard__details--handle:visited {
-        color: black; } }
+.dashboard__handle:link, .dashboard__handle:visited {
+  color: black; }
 
 .actions {
   padding: 0; }
@@ -1084,6 +1059,56 @@ a {
     width: 5rem; }
     .post-card__comment:link, .post-card__comment:visited {
       color: black; }
+
+.post {
+  width: 100%; }
+  .post__comment-form {
+    width: 100%;
+    display: flex; }
+    .post__comment-form--input {
+      width: 54rem;
+      margin-right: 2rem; }
+    .post__comment-form--btn {
+      float: right; }
+  .post__comment-feed {
+    border-radius: 5px; }
+  .post__comment-item {
+    margin: 2rem 0;
+    padding: 2rem;
+    box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3);
+    position: relative; }
+    .post__comment-item--head {
+      height: 5rem;
+      display: flex;
+      align-items: center; }
+    .post__comment-item--img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: none; }
+    .post__comment-item--avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; }
+    .post__comment-item--info {
+      margin-top: -2rem;
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 3rem; }
+    .post__comment-item--name {
+      color: #000a22; }
+    .post__comment-item--handle {
+      color: grey;
+      font-size: 1.2rem; }
+    .post__comment-item--text {
+      padding-left: 2rem; }
+    .post__comment-item--del {
+      position: absolute;
+      top: 2rem;
+      transition: transform 0.5s; }
+      .post__comment-item--del:hover {
+        transform: scale(1.3); }
 
 .u-center-text {
   text-align: center; }
