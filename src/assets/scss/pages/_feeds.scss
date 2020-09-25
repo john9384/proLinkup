@@ -21,6 +21,8 @@
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 0px 1px 10px rgba(grey, 0.3);
+  animation: appear 0.5s;
+  position: relative;
   &__head {
     height: 5rem;
     display: flex;
@@ -51,7 +53,7 @@
   }
   &__content {
     text-align: justify;
-    padding: 1rem 1rem;
+    padding: 1rem 6rem;
   }
   &__like-no {
     padding: 0 1rem;
@@ -84,6 +86,15 @@
     &:link,
     &:visited {
       color: black;
+    }
+  }
+  &__del {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    transition: transform 0.5s;
+    &:hover {
+      transform: scale(1.2);
     }
   }
 }

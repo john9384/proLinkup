@@ -7,7 +7,7 @@ import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
 import SideNav from "../../Layouts/SideNav/SideNav";
-import Popup from "../../common/popup/Popup";
+import hasError from "../../../helpers/validator";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -63,6 +63,9 @@ class CreateProfile extends Component {
 
   render() {
     let { displaySocialInputs, errors } = this.state;
+    if (errors) {
+      var err_obj = hasError(errors.content);
+    }
     let socials;
     if (displaySocialInputs) {
       socials = (
@@ -74,8 +77,12 @@ class CreateProfile extends Component {
               name="twitter"
               value={this.state.twitter}
               placeholder="Twitter"
-              className="profile-form__input input profile-form--social-input"
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "twitter"
+                  ? "input profile-form__input profile-form--social-input input__error"
+                  : "input profile-form__input profile-form--social-input"
+              }
             />
           </div>
           <div className="profile-form--group">
@@ -86,8 +93,12 @@ class CreateProfile extends Component {
               name="linkedin"
               value={this.state.linkedin}
               placeholder="Linkedin"
-              className="profile-form__input input profile-form--social-input"
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "linkedin"
+                  ? "input profile-form__input profile-form--social-input input__error"
+                  : "input profile-form__input profile-form--social-input"
+              }
             />
           </div>
 
@@ -98,8 +109,12 @@ class CreateProfile extends Component {
               name="facebook"
               value={this.state.facebook}
               placeholder="Facebook"
-              className="profile-form__input input profile-form--social-input"
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "facebook"
+                  ? "input profile-form__input profile-form--social-input input__error"
+                  : "input profile-form__input profile-form--social-input"
+              }
             />
           </div>
 
@@ -110,8 +125,12 @@ class CreateProfile extends Component {
               name="youtube"
               value={this.state.youtube}
               placeholder="Youtube"
-              className="profile-form__input input profile-form--social-input"
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "youtube"
+                  ? "input profile-form__input profile-form--social-input input__error"
+                  : "input profile-form__input profile-form--social-input"
+              }
             />
           </div>
 
@@ -122,13 +141,18 @@ class CreateProfile extends Component {
               name="instagram"
               value={this.state.instagram}
               placeholder="Instagram"
-              className="profile-form__input input profile-form--social-input"
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "instagram"
+                  ? "input profile-form__input profile-form--social-input input__error"
+                  : "input profile-form__input profile-form--social-input"
+              }
             />
           </div>
         </div>
       );
     } else {
+      socials = null;
     }
 
     return (
@@ -142,44 +166,83 @@ class CreateProfile extends Component {
               type="text"
               name="handle"
               value={this.state.handle}
-              placeholder="* Handle"
-              classname="profile-form__input input"
+              placeholder="Handle"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "handle"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "handle" ? err_obj.detail : null
+              }
             />
             <InputField
               type="text"
               name="company"
               value={this.state.company}
               placeholder="Company"
-              classname="profile-form__input input"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "company"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "company" ? err_obj.detail : null
+              }
             />
             <InputField
               type="text"
               name="website"
               value={this.state.website}
               placeholder="Website"
-              classname="profile-form__input input"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "website"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "website" ? err_obj.detail : null
+              }
             />
             <InputField
               type="text"
               name="location"
               value={this.state.location}
               placeholder="Location"
-              classname="profile-form__input input"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "location"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "location" ? err_obj.detail : null
+              }
             />
             <InputField
               type="text"
               name="skills"
               value={this.state.skills}
               placeholder="Skills"
-              classname="profile-form__input input"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "skills"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "skills" ? err_obj.detail : null
+              }
             />
             <InputSelect
-              classname="profile-form__input input"
               name="status"
               value={this.state.status}
               options={[
@@ -189,22 +252,47 @@ class CreateProfile extends Component {
                 { label: "Expert", value: "expert" }
               ]}
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "status"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "status" ? err_obj.detail : null
+              }
             />
             <InputField
               type="text"
               name="githubusername"
               value={this.state.githubusername}
               placeholder="Githubusername"
-              classname="profile-form__input input"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "githubusername"
+                  ? "input profile-form__input input__error"
+                  : "input profile-form__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "githubusername"
+                  ? err_obj.detail
+                  : null
+              }
             />
             <InputTextArea
               type="text"
               name="bio"
               value={this.state.bio}
               placeholder="bio"
-              classname="profile-form__textarea textarea"
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "bio"
+                  ? "textarea profile-form__textarea textarea__error"
+                  : "textarea profile-form__textarea"
+              }
+              info=""
+              error={errors && err_obj.field === "bio" ? err_obj.detail : null}
             />
 
             <div className="profile-form__socials">
@@ -228,7 +316,6 @@ class CreateProfile extends Component {
               value="Submit"
               className="btn btn--pry profile-form__submit"
             />
-            {errors ? <Popup error={errors} /> : null}
           </form>
         </div>
         <SideNav />

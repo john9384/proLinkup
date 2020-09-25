@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import isEmpty from "../../../helpers/isEmpty";
 import { deleteExp } from "../../../redux/actions/profileActions";
-
+import returnDateStr from "../../../helpers/dateString";
 class ExpCard extends Component {
   onDelClick(id) {
     this.props.deleteExp(id);
@@ -33,9 +33,9 @@ class ExpCard extends Component {
         ) : null}
         <p>
           <span className="cred__label">Date</span>:
-          <span className="cred__value">{exp.from} -</span>
+          <span className="cred__value">{returnDateStr(exp.from)} -</span>
           {exp.to ? (
-            <span className="cred__value">{exp.to}</span>
+            <span className="cred__value">{returnDateStr(exp.to)}</span>
           ) : (
             <span className="cred__value--current">Current</span>
           )}

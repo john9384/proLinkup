@@ -5,12 +5,11 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { signupUser } from "../../../redux/actions/authActions";
 import InputField from "../../common/inputFieldGroup/InputTextField";
-import Popup from "../../common/popup/Popup";
+import hasError from "../../../helpers/validator";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       firstname: "",
       lastname: "",
@@ -24,7 +23,7 @@ class SignUp extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, errors: {} });
   }
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -53,7 +52,9 @@ class SignUp extends Component {
 
   render() {
     const { errors } = this.state;
-
+    if (errors) {
+      var err_obj = hasError(errors.content);
+    }
     return (
       <main className="signup">
         <div className="signup__main">
@@ -64,16 +65,30 @@ class SignUp extends Component {
               placeholder="Firstname"
               value={this.state.firstname}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "firstname"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
               info="Includes letters only"
+              error={
+                errors && err_obj.field === "firstname" ? err_obj.detail : null
+              }
             />
             <InputField
               name="lastname"
               placeholder="Lastname"
               value={this.state.lastname}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "lastname"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
               info="Includes letters only"
+              error={
+                errors && err_obj.field === "lastname" ? err_obj.detail : null
+              }
             />
             <InputField
               type="email"
@@ -81,8 +96,15 @@ class SignUp extends Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "email"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
               info="Must be valid email"
+              error={
+                errors && err_obj.field === "email" ? err_obj.detail : null
+              }
             />
             <InputField
               type="tel"
@@ -90,8 +112,15 @@ class SignUp extends Component {
               placeholder="Phone Number"
               value={this.state.phone}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "phone"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
               info="Must be valid phone number"
+              error={
+                errors && err_obj.field === "phone" ? err_obj.detail : null
+              }
             />
             <InputField
               type="password"
@@ -99,8 +128,15 @@ class SignUp extends Component {
               placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "password"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
               info="Can include letters numbers and symbols"
+              error={
+                errors && err_obj.field === "password" ? err_obj.detail : null
+              }
             />
             <InputField
               type="password"
@@ -108,7 +144,14 @@ class SignUp extends Component {
               placeholder="Confirm Password"
               value={this.state.password2}
               onChange={this.onChange}
-              classname="input signup__input"
+              classname={
+                errors && err_obj.field === "password2"
+                  ? "input signup__input input__error"
+                  : "input signup__input"
+              }
+              error={
+                errors && err_obj.field === "password2" ? err_obj.detail : null
+              }
             />
             <br />
             <button className="btn btn--pry signup__btn" name="btn">
@@ -119,8 +162,6 @@ class SignUp extends Component {
             </Link>
           </form>
         </div>
-        <div></div>
-        {errors ? <Popup error={errors} /> : <div />}
       </main>
     );
   }

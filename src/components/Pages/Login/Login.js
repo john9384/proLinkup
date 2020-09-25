@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/authActions";
 import InputField from "../../common/inputFieldGroup/InputTextField";
-import Popup from "../../common/popup/Popup";
+import hasError from "../../../helpers/validator";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,8 @@ class Login extends Component {
   }
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: {}
     });
   }
   componentDidMount() {
@@ -47,6 +48,9 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state;
+    if (errors) {
+      var err_obj = hasError(errors.content);
+    }
     return (
       <main className="login">
         <div className="login__main">
@@ -58,7 +62,15 @@ class Login extends Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.onChange}
-              classname="input login__input"
+              classname={
+                errors && err_obj.field === "email"
+                  ? "input login__input input__error"
+                  : "input login__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "email" ? err_obj.detail : null
+              }
             />
             <InputField
               type="password"
@@ -66,7 +78,15 @@ class Login extends Component {
               placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
-              classname="input login__input"
+              classname={
+                errors && err_obj.field === "password"
+                  ? "input login__input input__error"
+                  : "input login__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "password" ? err_obj.detail : null
+              }
             />
             <button className="btn btn--pry login__btn" name="btn">
               Submit
@@ -76,11 +96,11 @@ class Login extends Component {
             </Link>
           </form>
         </div>
-        {errors ? <Popup error={errors} /> : <div></div>}
       </main>
     );
   }
 }
+
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,

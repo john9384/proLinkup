@@ -22,8 +22,8 @@ class Profile extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (isEmpty(nextProps.profile.profile) && this.props.profile.loading) {
-      this.props.history.push("/err-page");
+    if (nextProps.profile.profile === null) {
+      this.props.history.push("/not-found");
     }
   }
   render() {

@@ -20,8 +20,12 @@ class Post extends Component {
     const { post, loading } = this.props.post;
     const auth = this.props.auth;
     let postContent;
-
-    if (post === null || loading || Object.keys(post).length === 0) {
+    if (
+      post === null ||
+      loading ||
+      Object.keys(post).length === 0 ||
+      Object.keys(post).length == null
+    ) {
       postContent = <Spinner />;
     } else {
       postContent = (

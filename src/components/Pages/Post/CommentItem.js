@@ -27,12 +27,12 @@ class CommentItem extends Component {
         </div>
         <div className="post__comment-item--content">
           <p className="post__comment-item--text">{comment.text}</p>
-          {comment.user === auth.user.payload.id ? (
+          {comment.user !== auth.user.payload.id ? null : (
             <i
               onClick={this.onDeleteClick.bind(this, postId, comment._id)}
               className="fa fa-times post__comment-item--del"
-            />
-          ) : null}
+            ></i>
+          )}
         </div>
       </div>
     );

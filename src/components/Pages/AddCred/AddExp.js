@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addExp } from "../../../redux/actions/profileActions";
 import SideNav from "../../Layouts/SideNav/SideNav";
+import hasError from "../../../helpers/validator";
 class AddExp extends Component {
   constructor(props) {
     super(props);
@@ -55,44 +56,81 @@ class AddExp extends Component {
   }
 
   render() {
+    let { errors } = this.state;
+    if (errors) {
+      var err_obj = hasError(errors.content);
+    }
     return (
       <div className="row">
         <div className="col-2-of-3 add-cred">
           <h1 className="add-cred__h1 heading--pry">Add Experience</h1>
           <form onSubmit={this.onSubmit}>
             <InputField
-              classname="add-cred__input input"
-              placeholder="* Company"
+              placeholder="Company"
               name="company"
               value={this.state.company}
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "company"
+                  ? "input add-cred__input input__error"
+                  : "input add-cred__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "company" ? err_obj.detail : null
+              }
             />
             <InputField
-              classname="add-cred__input input"
               placeholder="Title"
               name="title"
               value={this.state.title}
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "title"
+                  ? "input add-cred__input input__error"
+                  : "input add-cred__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "title" ? err_obj.detail : null
+              }
             />
             <InputField
-              classname="add-cred__input input"
               type="text"
               placeholder="Location"
               name="location"
               value={this.state.location}
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "location"
+                  ? "input add-cred__input input__error"
+                  : "input add-cred__input"
+              }
+              info=""
+              error={
+                errors && err_obj.field === "location" ? err_obj.detail : null
+              }
             />
             <span className="add-cred__date-header heading--label">
               Start Date
             </span>
             <input
-              className="add-cred__input input add-cred__date"
               type="date"
               placeholder="From"
               name="from"
               value={this.state.from}
               onChange={this.onChange}
+              className={
+                errors && err_obj.field === "from"
+                  ? "input add-cred__input add-cred__date input__error"
+                  : "input add-cred__input add-cred__date"
+              }
             />
+            <div>
+              {errors && err_obj.field === "from" ? (
+                <span className="input__info">{err_obj.detail}</span>
+              ) : null}
+            </div>
             <div className="add-cred__check-div">
               <input
                 type="checkbox"
@@ -125,7 +163,17 @@ class AddExp extends Component {
                   value={this.state.to}
                   onChange={this.onChange}
                   disabled={this.state.disabled ? "disabled" : ""}
+                  className={
+                    errors && err_obj.field === "to"
+                      ? "input add-cred__input add-cred__date input__error"
+                      : "input add-cred__input add-cred__date"
+                  }
                 />
+                <div>
+                  {errors && err_obj.field === "to" ? (
+                    <span className="input__info">{err_obj.detail}</span>
+                  ) : null}
+                </div>
               </div>
             )}
             <InputTextArea
@@ -134,7 +182,17 @@ class AddExp extends Component {
               name="description"
               value={this.state.description}
               onChange={this.onChange}
+              classname={
+                errors && err_obj.field === "description"
+                  ? "textarea add-cred__textarea input__error"
+                  : "textarea add-cred__textarea"
+              }
             />
+            <div>
+              {errors && err_obj.field === "description" ? (
+                <span className="input__info">{err_obj.detail}</span>
+              ) : null}
+            </div>
             <input type="submit" value="submit" className="btn btn--pry" />
           </form>
         </div>

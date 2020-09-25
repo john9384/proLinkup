@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import isEmpty from "../../../helpers/isEmpty";
 import { deleteEdu } from "../../../redux/actions/profileActions";
-
+import returnDateStr from "../../../helpers/dateString";
 class EduCard extends Component {
   onDelClick(id) {
     this.props.deleteEdu(id);
@@ -31,9 +31,9 @@ class EduCard extends Component {
         ) : null}
         <p>
           <span className="cred__label">Date</span>:
-          <span className="cred__value">{edu.from} -</span>
+          <span className="cred__value">{returnDateStr(edu.from)} -</span>
           {edu.to ? (
-            <span className="cred__value">{edu.to}</span>
+            <span className="cred__value">{returnDateStr(edu.to)}</span>
           ) : (
             <span className="cred__value--current">Current</span>
           )}

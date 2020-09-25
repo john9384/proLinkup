@@ -7,6 +7,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-height: 600px) {
+    height: 6rem;
+  }
   &__title {
     height: 100%;
     width: 20vw;
@@ -188,6 +191,9 @@
       box-shadow: $box-shadow-light;
       z-index: 10000;
       @include resolution(phone) {
+        top: 2rem;
+      }
+      @media screen and (max-height: 600px) {
         top: 2rem;
       }
     }
