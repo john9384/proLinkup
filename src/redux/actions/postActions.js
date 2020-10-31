@@ -14,7 +14,7 @@ import {
 export const addPost = postData => dispatch => {
   dispatch(clearErrors());
   axios
-    .post("http://localhost:4000/api/v1/post", postData)
+    .post("https://floating-springs-14668.herokuapp.com/api/v1/post", postData)
     .then(res =>
       dispatch({
         type: ADD_POST,
@@ -32,7 +32,7 @@ export const addPost = postData => dispatch => {
 export const getPosts = () => dispatch => {
   dispatch(setPostLoading());
   axios
-    .get("http://localhost:4000/api/v1/post")
+    .get("https://floating-springs-14668.herokuapp.com/api/v1/post")
     .then(res =>
       dispatch({
         type: GET_POSTS,
@@ -50,7 +50,7 @@ export const getPosts = () => dispatch => {
 export const getPost = id => dispatch => {
   dispatch(setPostLoading());
   axios
-    .get(`http://localhost:4000/api/v1/post/${id}`)
+    .get(`https://floating-springs-14668.herokuapp.com/api/v1/post/${id}`)
     .then(res =>
       dispatch({
         type: GET_POST,
@@ -69,7 +69,7 @@ export const getPost = id => dispatch => {
 export const deletePost = id => dispatch => {
   dispatch(clearErrors());
   axios
-    .delete(`http://localhost:4000/api/v1/post/${id}`)
+    .delete(`https://floating-springs-14668.herokuapp.com/api/v1/post/${id}`)
     .then(res =>
       dispatch({
         type: DELETE_POST,
@@ -87,7 +87,7 @@ export const deletePost = id => dispatch => {
 // Add Like
 export const addLike = id => dispatch => {
   axios
-    .post(`http://localhost:4000/api/v1/post/like/${id}`)
+    .post(`https://floating-springs-14668.herokuapp.com/api/v1/post/like/${id}`)
     .then(res => dispatch(getPosts()))
     .catch(err =>
       dispatch({
@@ -100,7 +100,9 @@ export const addLike = id => dispatch => {
 // Remove Like
 export const removeLike = id => dispatch => {
   axios
-    .post(`http://localhost:4000/api/v1/post/unlike/${id}`)
+    .post(
+      `https://floating-springs-14668.herokuapp.com/api/v1/post/unlike/${id}`
+    )
     .then(res => dispatch(getPosts()))
     .catch(err =>
       dispatch({
@@ -114,7 +116,10 @@ export const removeLike = id => dispatch => {
 export const addComment = (postId, commentData) => dispatch => {
   dispatch(clearErrors());
   axios
-    .post(`http://localhost:4000/api/v1/post/comment/${postId}`, commentData)
+    .post(
+      `https://floating-springs-14668.herokuapp.com/api/v1/post/comment/${postId}`,
+      commentData
+    )
     .then(res =>
       dispatch({
         type: GET_POST,
@@ -132,7 +137,9 @@ export const addComment = (postId, commentData) => dispatch => {
 // Delete Comment
 export const deleteComment = (postId, commentId) => dispatch => {
   axios
-    .delete(`http://localhost:4000/api/v1/post/comment/${postId}/${commentId}`)
+    .delete(
+      `https://floating-springs-14668.herokuapp.com/api/v1/post/comment/${postId}/${commentId}`
+    )
     .then(res =>
       dispatch({
         type: GET_POST,

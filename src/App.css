@@ -97,7 +97,10 @@ a {
   background-color: #000a22;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0; }
   @media (max-width: 48em) {
     .header {
       padding: 0 10vw; } }
@@ -166,7 +169,8 @@ a {
   top: 7vh;
   padding: 2rem 3rem;
   box-shadow: 1px 1px 3rem 0.4rem rgba(0, 0, 0, 0.2);
-  border-radius: 10px; }
+  border-radius: 10px;
+  z-index: 1000; }
   .dropdown__title-box {
     display: block;
     color: #000a22;
@@ -231,6 +235,7 @@ a {
   display: none; }
 
 @media (max-width: 48em) {
+  z-index: 100;
   .nav-mobile {
     display: block;
     position: relative; }
@@ -377,9 +382,18 @@ a {
     .footer {
       height: 6rem; } }
 
-@media (max-width: 30em) {
-  .side-nav {
-    display: none; } }
+.side-nav {
+  padding: 0 20px;
+  font-size: 1.6rem;
+  position: sticky;
+  bottom: 0;
+  left: 0; }
+  .side-nav h1 {
+    text-transform: uppercase;
+    font-size: 2.5rem; }
+  @media (max-width: 30em) {
+    .side-nav {
+      display: none; } }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -617,7 +631,7 @@ a {
         font-size: 1.2rem; } }
 
 .signup {
-  height: 84vh;
+  min-height: 84vh;
   max-width: 100%;
   display: flex;
   align-items: center;
@@ -649,7 +663,6 @@ a {
     font-size: 1.4rem; }
   @media (max-width: 48em) {
     .signup__main {
-      min-height: 10rem;
       background-color: ghostwhite; }
     .signup__input {
       margin: 1rem 0 0 0;
@@ -658,7 +671,6 @@ a {
       margin: 0.1rem 2rem 0 0; } }
   @media (max-width: 30em) {
     .signup {
-      height: 84vh;
       max-width: 100%;
       display: flex;
       flex-direction: column;
@@ -924,7 +936,7 @@ a {
     @media (max-width: 48em) {
       .pros-card__btn {
         left: 50%;
-        translate: -50%; } }
+        transform: translateX(-50%); } }
   .pros-card__skills {
     width: 100%; }
     @media (max-width: 48em) {
@@ -942,65 +954,58 @@ a {
   .pros-card__skill-item {
     margin-left: 1rem; }
 
-.profile__header {
-  background-color: ghostwhite;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
-
-.profile__header-img {
-  height: 20rem;
-  width: 20rem;
-  border-radius: 50%;
-  margin: 0 auto;
-  box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
-
-.profile .profile__header-avatar {
-  height: 100%;
-  width: 100%; }
-
-.profile__header-info--name {
-  color: #000a22;
-  text-transform: uppercase; }
-
-.profile__header-info--prof {
-  color: black;
-  text-transform: capitalize; }
-
-.profile__header-info--location {
-  color: black; }
-
-.profile__bio-head {
-  color: #000a22;
-  text-transform: uppercase;
-  background-color: silver;
-  border-radius: 3px;
-  padding-left: 1rem; }
-  @media (max-width: 48em) {
-    .profile__bio-head {
-      font-size: 1.5rem; } }
-
-.profile__skills {
-  width: 100%; }
-  @media (max-width: 48em) {
-    .profile__skills {
-      display: none; } }
-
-.profile__skills-head {
-  color: #000a22;
-  text-transform: uppercase;
-  background-color: silver;
-  border-radius: 3px;
-  padding-left: 1rem; }
-  @media (max-width: 48em) {
-    .profile__skills-head {
-      font-size: 1.5rem; } }
-
-.profile__skills-list {
-  list-style: none; }
-
-.profile__skill-item {
-  margin-left: 1rem; }
+.profile {
+  padding-bottom: 2rem; }
+  .profile__header {
+    background-color: ghostwhite;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+  .profile__header-img {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0px 1px 10px rgba(128, 128, 128, 0.3); }
+  .profile__header-avatar {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%; }
+  .profile__header-info--name {
+    color: #000a22;
+    text-transform: uppercase; }
+  .profile__header-info--prof {
+    color: black;
+    text-transform: capitalize; }
+  .profile__header-info--location {
+    color: black; }
+  .profile__bio-head {
+    color: #000a22;
+    text-transform: uppercase;
+    background-color: silver;
+    border-radius: 3px;
+    padding-left: 1rem; }
+    @media (max-width: 48em) {
+      .profile__bio-head {
+        font-size: 1.5rem; } }
+  .profile__skills {
+    width: 100%; }
+    @media (max-width: 48em) {
+      .profile__skills {
+        display: none; } }
+  .profile__skills-head {
+    color: #000a22;
+    text-transform: uppercase;
+    background-color: silver;
+    border-radius: 3px;
+    padding-left: 1rem; }
+    @media (max-width: 48em) {
+      .profile__skills-head {
+        font-size: 1.5rem; } }
+  .profile__skills-list {
+    list-style: none; }
+  .profile__skill-item {
+    margin-left: 1rem; }
 
 .err-page {
   text-align: center; }

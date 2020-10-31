@@ -33,7 +33,7 @@ class Profile extends Component {
       profileContent = <Spinner />;
     } else {
       profileContent = (
-        <div className="col-2-of-3">
+        <div className="col-2-of-3 profile">
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
           <ProfileCreds

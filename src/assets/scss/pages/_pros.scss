@@ -83,7 +83,7 @@
     left: 0;
     @include resolution(tab) {
       left: 50%;
-      translate: -50%;
+      transform: translateX(-50%);
     }
   }
   &__skills {

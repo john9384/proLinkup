@@ -5,7 +5,10 @@ import jwt_decode from "jwt-decode";
 
 export const signupUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/api/v1/user/sign-up", userData)
+    .post(
+      "https://floating-springs-14668.herokuapp.com/api/v1/user/sign-up",
+      userData
+    )
     .then(res => {
       history.push("/login");
     })
@@ -18,7 +21,10 @@ export const signupUser = (userData, history) => dispatch => {
 };
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:4000/api/v1/user/authenticate", userData)
+    .post(
+      "https://floating-springs-14668.herokuapp.com/api/v1/user/authenticate",
+      userData
+    )
     .then(res => {
       const { token } = res.data.content;
       localStorage.setItem("jwtToken", token);

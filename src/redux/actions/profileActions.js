@@ -11,7 +11,7 @@ import {
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get("http://localhost:4000/api/v1/profile/all")
+    .get("https://floating-springs-14668.herokuapp.com/api/v1/profile/all")
     .then(res =>
       dispatch({
         type: GET_PROFILES,
@@ -28,7 +28,7 @@ export const getProfiles = () => dispatch => {
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`http://localhost:4000/api/v1/profile`)
+    .get(`https://floating-springs-14668.herokuapp.com/api/v1/profile`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -45,7 +45,9 @@ export const getCurrentProfile = () => dispatch => {
 export const getProfileByHandle = handle => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`http://localhost:4000/api/v1/profile/handle/${handle}`)
+    .get(
+      `https://floating-springs-14668.herokuapp.com/api/v1/profile/handle/${handle}`
+    )
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -62,7 +64,7 @@ export const getProfileByHandle = handle => dispatch => {
 export const getProfileById = id => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`http://localhost:4000/api/v1/profile/${id}`)
+    .get(`https://floating-springs-14668.herokuapp.com/api/v1/profile/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -78,7 +80,10 @@ export const getProfileById = id => dispatch => {
 };
 export const postCurrentProfile = (profileData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/api/v1/profile", profileData)
+    .post(
+      "https://floating-springs-14668.herokuapp.com/api/v1/profile",
+      profileData
+    )
     .then(res => history.push("/dashboard"))
     .catch(err =>
       dispatch({
@@ -100,22 +105,27 @@ export const clearCurrentUserProfile = () => {
 };
 export const deleteAccount = () => dispatch => {
   if (window.confirm("Are you sure? This can Not be undown!")) {
-    axios.delete("http://localhost:4000/api/v1/profile").then(res =>
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: {}
-      }).catch(err => {
+    axios
+      .delete("https://floating-springs-14668.herokuapp.com/api/v1/profile")
+      .then(res =>
         dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data
-        });
-      })
-    );
+          type: SET_CURRENT_USER,
+          payload: {}
+        }).catch(err => {
+          dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+          });
+        })
+      );
   }
 };
 export const addEdu = (eduData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/api/v1/profile/education", eduData)
+    .post(
+      "https://floating-springs-14668.herokuapp.com/api/v1/profile/education",
+      eduData
+    )
     .then(res => history.push("/dashboard"))
     .catch(err => {
       dispatch({
@@ -126,7 +136,10 @@ export const addEdu = (eduData, history) => dispatch => {
 };
 export const addExp = (expData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/api/v1/profile/experience", expData)
+    .post(
+      "https://floating-springs-14668.herokuapp.com/api/v1/profile/experience",
+      expData
+    )
     .then(res => history.push("/dashboard"))
     .catch(err => {
       dispatch({
@@ -138,7 +151,9 @@ export const addExp = (expData, history) => dispatch => {
 
 export const deleteExp = id => dispatch => {
   axios
-    .delete(`http://localhost:4000/api/v1/profile/experience/${id}`)
+    .delete(
+      `https://floating-springs-14668.herokuapp.com/api/v1/profile/experience/${id}`
+    )
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => {
       dispatch({
@@ -149,7 +164,9 @@ export const deleteExp = id => dispatch => {
 };
 export const deleteEdu = id => dispatch => {
   axios
-    .delete(`http://localhost:4000/api/v1/profile/education/${id}`)
+    .delete(
+      `https://floating-springs-14668.herokuapp.com/api/v1/profile/education/${id}`
+    )
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => {
       dispatch({
