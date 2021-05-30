@@ -1,9 +1,10 @@
 .landing {
-  height: 84vh;
-  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: all 1s ease;
   &__main {
-    @include absolute-center;
     padding: 1rem 4rem;
     color: $pry-text-color;
     border: 6px solid $color-pry;
@@ -11,11 +12,6 @@
     text-align: center;
     background-color: $color-white-shade;
     animation: appear 0.5s ease-out 0.8;
-    //box-shadow: $box-shadow-light;
-    @include resolution(phone) {
-      border: none;
-      animation: appear 0.7s ease-out 0.8;
-    }
   }
   &__title {
     font-size: 5rem;
@@ -24,13 +20,6 @@
     font-weight: 700;
     text-shadow: 2px 2px 5px grey;
     letter-spacing: 0.5rem;
-    @include resolution(laptops) {
-      letter-spacing: 0.2rem;
-    }
-    @include resolution(phone) {
-      letter-spacing: 0.1rem;
-      font-size: 4rem;
-    }
   }
 
   &__note {
@@ -38,10 +27,28 @@
     letter-spacing: 0.1rem;
     margin-top: -1rem;
     margin-bottom: 1rem;
-    @include resolution(laptops) {
+  }
+
+  // Media query for screen resolution tab
+  @media screen and(max-width: $res-tab) {
+    &__title {
+      letter-spacing: 0.2rem;
+    }
+    &__note {
       letter-spacing: 0;
     }
-    @include resolution(phone) {
+  }
+  // Media query for screen resolution mobile
+  @media screen and(max-width: $res-mobile) {
+    &__main {
+      border: none;
+      animation: appear 0.7s ease-out 0.8;
+    }
+    &__title {
+      letter-spacing: 0.1rem;
+      font-size: 4rem;
+    }
+    &__note {
       display: none;
     }
   }

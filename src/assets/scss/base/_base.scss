@@ -3,7 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -11,21 +11,12 @@ html {
   @include resolution(tab) {
     font-size: 50%;
   }
-  @include resolution(big-desktop) {
-    font-size: 75%;
+  @media screen and (max-width: $res-tab) {
+    font-size: 50%;
   }
-}
-body {
-  box-sizing: border-box;
 }
 /* ------ Links -----------------------*/
 .container {
-  padding: 0 15vw;
-  min-height: 84vh;
-  @include resolution(tab) {
-    padding: 3rem 10vw;
-  }
-  // @include resolution(phone) {
-  //   padding: 0 8vw;
-  // }
+  max-width: 114rem;
+  margin: 0 auto;
 }

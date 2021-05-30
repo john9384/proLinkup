@@ -17,7 +17,7 @@ class SignUp extends Component {
       phone: "",
       password: "",
       password2: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -33,7 +33,7 @@ class SignUp extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
@@ -45,7 +45,7 @@ class SignUp extends Component {
       email: this.state.email,
       phone: this.state.phone,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
     };
     this.props.signupUser(newUser, this.props.history);
   }
@@ -169,11 +169,11 @@ class SignUp extends Component {
 SignUp.propTypes = {
   signupUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProp = state => ({
+const mapStateToProp = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProp, { signupUser })(withRouter(SignUp));

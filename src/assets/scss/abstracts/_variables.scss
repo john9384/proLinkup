@@ -29,3 +29,14 @@ $h1-font-size-tab: 2rem;
 $h2-font-size-desktop: 2rem;
 $h2-font-size-tab: 1.5rem;
 $text-font-size-desktop: 1.6rem;
+
+// 420px maximum width: cover all smartphones in portrait mode
+// 421px to 767px width: most smartphones in landscape mode
+// 768px to 1023px: most Android tablets and iPads in portrait mode
+// 1024px to 1365px: most Android tablets and iPads in landscape mode, older desktop/laptop monitors
+// 1366px and above: iPad PRO, HDready and FullHD desktop laptop monitors
+
+$res-mobile: 26.25em;
+$res-mobile-landscape: 50em;
+$res-tab: 64em;
+$res-tab-landscape: 85.625em;

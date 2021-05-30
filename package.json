@@ -22,7 +22,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "compile": "node-sass src/assets/scss/main.scss src/App.css -w",
+    "scss": "node-sass src/assets/scss/main.scss src/App.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

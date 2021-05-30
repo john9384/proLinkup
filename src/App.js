@@ -50,49 +50,33 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div>
-            <Header />
-            <div className="container">
-              <Route exact path="/" component={LandingPage} />
-              <Route exact path="/sign_up" component={SignUp} />
-              <Route exact path="/login" component={Login} />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute
-                  exact
-                  path="/profile/handle/:handle"
-                  component={Profile}
-                />
-                <PrivateRoute
-                  exact
-                  path="/profile/:user_id"
-                  component={Profile}
-                />
-                <PrivateRoute exact path="/pros" component={BasicProfiles} />
-                <PrivateRoute
-                  exact
-                  path="/create-profile"
-                  component={CreateProfile}
-                />
-                <PrivateRoute
-                  exact
-                  path="/edit-profile"
-                  component={EditProfile}
-                />
-                <PrivateRoute exact path="/add-experience" component={AddExp} />
-                <PrivateRoute exact path="/add-education" component={AddEdu} />
-                <PrivateRoute
-                  exact
-                  path="/profiles"
-                  component={BasicProfiles}
-                />
-                <PrivateRoute exact path="/feeds" component={Posts} />
-                <PrivateRoute exact path="/post/:id" component={Post} />
-              </Switch>
-              <Route exact path="/not-found" component={NotFound} />
-            </div>
-            <Footer />
-          </div>
+          {/* <Header /> */}
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/sign_up" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/profile/handle/:handle"
+              component={Profile}
+            />
+            <PrivateRoute exact path="/profile/:user_id" component={Profile} />
+            <PrivateRoute exact path="/pros" component={BasicProfiles} />
+            <PrivateRoute
+              exact
+              path="/create-profile"
+              component={CreateProfile}
+            />
+            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+            <PrivateRoute exact path="/add-experience" component={AddExp} />
+            <PrivateRoute exact path="/add-education" component={AddEdu} />
+            <PrivateRoute exact path="/profiles" component={BasicProfiles} />
+            <PrivateRoute exact path="/feeds" component={Posts} />
+            <PrivateRoute exact path="/post/:id" component={Post} />
+          </Switch>
+          <Route exact path="/not-found" component={NotFound} />
+          {/* <Footer /> */}
         </BrowserRouter>
       </Provider>
     );

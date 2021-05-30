@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import Header from "../../Layouts/Header/Header";
+import Footer from "../../Layouts/Footer/Footer";
 
 class LandingPage extends Component {
   componentDidMount() {
@@ -12,7 +14,8 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="landing">
-        <div className="row">
+        <Header />
+        <div className="container">
           <div className="landing__main">
             <p className="landing__title"> Prolinkup </p>
             <p className="landing__note">
@@ -25,14 +28,15 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
 }
 LandingPage.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 export default connect(mapStateToProps)(LandingPage);

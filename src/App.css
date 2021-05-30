@@ -20,27 +20,21 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: border-box; }
 
 html {
   font-size: 62.5%; }
   @media (max-width: 48em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 75.01em) {
+  @media screen and (max-width: 64em) {
     html {
-      font-size: 75%; } }
-
-body {
-  box-sizing: border-box; }
+      font-size: 50%; } }
 
 /* ------ Links -----------------------*/
 .container {
-  padding: 0 15vw;
-  min-height: 84vh; }
-  @media (max-width: 48em) {
-    .container {
-      padding: 3rem 10vw; } }
+  max-width: 114rem;
+  margin: 0 auto; }
 
 body {
   font-family: "Noto Sans JP", sans-serif;
@@ -91,7 +85,7 @@ a {
 
 .header {
   padding: 0 15vw;
-  height: 8vh;
+  height: 60px;
   max-width: 100vw;
   margin: 0;
   background-color: #000a22;
@@ -365,7 +359,7 @@ a {
     width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .footer {
-  height: 8vh;
+  height: 60px;
   max-width: 100vw;
   margin: 0;
   padding: 0;
@@ -521,14 +515,12 @@ a {
     font-size: 1.5rem; }
 
 .landing {
-  height: 84vh;
-  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   transition: all 1s ease; }
   .landing__main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 1rem 4rem;
     color: black;
     border: 6px solid #000a22;
@@ -536,10 +528,6 @@ a {
     text-align: center;
     background-color: ghostwhite;
     animation: appear 0.5s ease-out 0.8; }
-    @media (max-width: 30em) {
-      .landing__main {
-        border: none;
-        animation: appear 0.7s ease-out 0.8; } }
   .landing__title {
     font-size: 5rem;
     color: #000a22;
@@ -547,24 +535,25 @@ a {
     font-weight: 700;
     text-shadow: 2px 2px 5px grey;
     letter-spacing: 0.5rem; }
-    @media (max-width: 64em) {
-      .landing__title {
-        letter-spacing: 0.2rem; } }
-    @media (max-width: 30em) {
-      .landing__title {
-        letter-spacing: 0.1rem;
-        font-size: 4rem; } }
   .landing__note {
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
     margin-top: -1rem;
     margin-bottom: 1rem; }
-    @media (max-width: 64em) {
-      .landing__note {
-        letter-spacing: 0; } }
-    @media (max-width: 30em) {
-      .landing__note {
-        display: none; } }
+  @media screen and (max-width: 64em) {
+    .landing__title {
+      letter-spacing: 0.2rem; }
+    .landing__note {
+      letter-spacing: 0; } }
+  @media screen and (max-width: 26.25em) {
+    .landing__main {
+      border: none;
+      animation: appear 0.7s ease-out 0.8; }
+    .landing__title {
+      letter-spacing: 0.1rem;
+      font-size: 4rem; }
+    .landing__note {
+      display: none; } }
 
 .login {
   height: 84vh;
