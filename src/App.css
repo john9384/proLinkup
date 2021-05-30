@@ -31,7 +31,6 @@ html {
     html {
       font-size: 50%; } }
 
-/* ------ Links -----------------------*/
 .container {
   max-width: 114rem;
   margin: 0 auto; }
@@ -400,7 +399,7 @@ a {
   font-size: 1.1rem;
   font-family: inherit;
   font-weight: 700;
-  box-shadow: 0.5px 1px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3);
   cursor: pointer; }
   @media (max-width: 48em) {
     .btn, .btn:link, .btn:visited {
@@ -441,8 +440,8 @@ a {
   max-width: 100%;
   height: 30px;
   border: 1px solid lightblue;
-  border-radius: 3px;
-  padding: 2px 2px 2px 10px; }
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem; }
   .input:focus {
     box-shadow: 1px 0 10px 1px rgba(128, 128, 128, 0.2);
     outline: none; }
@@ -466,9 +465,9 @@ a {
   height: 10rem;
   border: 1px solid lightblue;
   border-radius: 3px;
-  padding: 10px; }
+  padding: 1rem; }
   .textarea:focus {
-    box-shadow: 2px 2px 10px 1px grey;
+    box-shadow: 0px 0px 5px 1px rgba(0, 10, 34, 0.2);
     border: 1px solid green;
     outline: none; }
   .textarea:focus:invalid {
@@ -556,25 +555,36 @@ a {
       display: none; } }
 
 .login {
-  height: 84vh;
-  max-width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
+  .login .icon {
+    color: #000a22;
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+    padding: 0 1.5rem;
+    font-size: 3rem;
+    border: 1px solid #000a22;
+    border-radius: 1rem;
+    transition: opacity 0.5s; }
+    .login .icon:hover {
+      opacity: 0.5; }
   .login__main {
-    min-height: 10rem;
-    padding: 2rem 2rem 3rem 3rem;
+    padding: 2rem 3rem;
     border: none;
     border-radius: 0.5rem;
-    box-shadow: 2px 2px 10px 1px grey;
+    box-shadow: 0 0 5px 1px rgba(0, 10, 34, 0.3);
     background-color: ghostwhite; }
   .login__h2 {
     text-transform: uppercase;
     color: #000a22;
     font-size: 3rem; }
   .login__input {
-    margin: 1rem 0 0.5rem 0;
-    width: 50rem; }
+    margin: 1rem 0;
+    width: 40rem; }
   .login__btn {
     margin: 1rem 2rem 0 0; }
   .login__not-reg, .login__not-reg:link, .login__not-reg:visited {
@@ -586,61 +596,68 @@ a {
   .login__not-reg:hover, .login__not-reg:active {
     color: rgba(0, 0, 0, 0.8);
     font-size: 1.4rem; }
-  @media (max-width: 48em) {
-    .login__main {
-      min-height: 10rem;
-      background-color: ghostwhite; }
+  @media screen and (max-width: 64em) {
+    .login .icon {
+      top: 3rem; }
     .login__input {
-      margin: 1rem 0 1rem 0;
-      width: 35rem; }
+      margin: 1rem 0; }
     .login__btn {
       margin: 1rem 20px 0 0; } }
-  @media (max-width: 30em) {
-    .login {
-      height: 84vh;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; }
-      .login__main {
-        color: black;
-        border-radius: 5px;
-        border: none;
-        background-color: white; }
-      .login__h2 {
-        font-size: 2rem; }
-      .login__input {
-        margin: 1rem 0 1rem 0;
-        width: 28rem;
-        font-size: 1.2rem;
-        padding-left: 1rem; }
-      .login__btn {
-        margin: 2rem 2rem 0 0; }
-      .login__not-reg {
-        font-size: 1.2rem; } }
+  @media screen and (max-width: 47.9375em) {
+    .login .icon {
+      top: 2rem;
+      left: 3rem;
+      padding: 0 1rem;
+      font-size: 2rem; }
+    .login__main {
+      color: black;
+      border-radius: 5px;
+      border: none; }
+    .login__h2 {
+      font-size: 2rem; }
+    .login__input {
+      margin: 1rem 0;
+      width: 55vw;
+      font-size: 1.2rem;
+      padding-left: 1rem; }
+    .login__btn {
+      margin: 1rem 2rem 0 0; }
+    .login__not-reg {
+      font-size: 1.2rem; } }
 
 .signup {
-  min-height: 84vh;
-  max-width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
+  .signup .icon {
+    color: #000a22;
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+    padding: 0 1.5rem;
+    font-size: 3rem;
+    border: 1px solid #000a22;
+    border-radius: 1rem;
+    transition: opacity 0.5s; }
+    .signup .icon:hover {
+      opacity: 0.5; }
   .signup__main {
-    min-height: 10rem;
-    padding: 2rem 2rem 3rem 3rem;
+    padding: 2rem 3rem;
     border-radius: 5px;
     border: none;
-    box-shadow: 2px 2px 10px 1px grey;
+    box-shadow: 0px 0px 5px 1px rgba(0, 10, 34, 0.2);
     background-color: ghostwhite; }
   .signup__h2 {
     text-transform: uppercase;
     color: #000a22;
     font-size: 3rem; }
   .signup__input {
-    margin: 1rem 0 0.3rem 0;
-    width: 50rem; }
+    margin: 1rem 0;
+    width: 40rem; }
   .signup__btn {
-    margin: 0rem 2rem 0 0; }
+    margin: 1rem 2rem 0 0; }
   .signup__reg, .signup__reg:link, .signup__reg:visited {
     font-size: 1.3rem;
     font-weight: 400;
@@ -650,36 +667,37 @@ a {
   .signup__reg:hover, .signup__reg:active {
     color: rgba(0, 0, 0, 0.8);
     font-size: 1.4rem; }
-  @media (max-width: 48em) {
-    .signup__main {
-      background-color: ghostwhite; }
+  @media screen and (max-width: 64em) {
+    .signup .icon {
+      top: 3rem; }
     .signup__input {
-      margin: 1rem 0 0 0;
-      width: 35rem; }
+      margin: 1rem 0; }
     .signup__btn {
-      margin: 0.1rem 2rem 0 0; } }
-  @media (max-width: 30em) {
+      margin: 1rem 20px 0 0; } }
+  @media screen and (max-width: 47.9375em) {
+    .signup .icon {
+      top: 2rem;
+      left: 3rem;
+      padding: 0 1rem;
+      font-size: 2rem; }
+    .signup__main {
+      color: black;
+      border-radius: 5px;
+      border: none; }
+    .signup__h2 {
+      font-size: 2rem; }
+    .signup__input {
+      margin: 1rem 0;
+      width: 55vw;
+      font-size: 1.2rem;
+      padding-left: 1rem; }
+    .signup__btn {
+      margin: 1rem 2rem 0 0; }
+    .signup__reg {
+      font-size: 1.2rem; } }
+  @media screen and (max-width: 47.9375em) and (min-width: 26.25em) {
     .signup {
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; }
-      .signup__main {
-        color: black;
-        border-radius: 5px;
-        border: none;
-        background-color: white; }
-      .signup__h2 {
-        font-size: 2rem; }
-      .signup__input {
-        margin: 1rem 0 1rem 0;
-        width: 28rem;
-        font-size: 1.2rem;
-        padding-left: 1rem; }
-      .signup__btn {
-        margin: 0.5rem 2rem 0 0; }
-      .signup__reg {
-        font-size: 1.2rem; } }
+      padding: 10rem 0; } }
 
 .dashboard .no-profile {
   color: #000a22; }

@@ -1,15 +1,28 @@
 .login {
-  height: 84vh;
-  max-width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  .icon {
+    color: $color-pry;
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+    padding: 0 1.5rem;
+    font-size: 3rem;
+    border: 1px solid $color-pry;
+    border-radius: 1rem;
+    transition: opacity 0.5s;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
   &__main {
-    min-height: 10rem;
-    padding: 2rem 2rem 3rem 3rem;
+    padding: 2rem 3rem;
     border: none;
     border-radius: 0.5rem;
-    box-shadow: $box-shadow-grey;
+    box-shadow: 0 0 5px 1px rgba($color-pry, 0.3);
     background-color: $color-white-shade;
   }
   &__h2 {
@@ -18,8 +31,8 @@
     font-size: 3rem;
   }
   &__input {
-    margin: 1rem 0 0.5rem 0;
-    width: 50rem;
+    margin: 1rem 0;
+    width: 40rem;
   }
   &__btn {
     margin: 1rem 2rem 0 0;
@@ -41,42 +54,42 @@
       font-size: 1.4rem;
     }
   }
-  @include resolution(tab) {
-    &__main {
-      min-height: 10rem;
-      background-color: $color-white-shade;
+  // Media query for screen resolution tab
+  @media screen and (max-width: $res-tab) {
+    .icon {
+      top: 3rem;
     }
     &__input {
-      margin: 1rem 0 1rem 0;
-      width: 35rem;
+      margin: 1rem 0;
     }
     &__btn {
       margin: 1rem 20px 0 0;
     }
   }
-  @include resolution(phone) {
-    height: 84vh;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  // Media query for screen resolution mobile
+  @media screen and (max-width: $res-mobile-landscape) {
+    .icon {
+      top: 2rem;
+      left: 3rem;
+      padding: 0 1rem;
+      font-size: 2rem;
+    }
     &__main {
       color: $pry-text-color;
       border-radius: 5px;
       border: none;
-      background-color: white;
     }
     &__h2 {
       font-size: 2rem;
     }
     &__input {
-      margin: 1rem 0 1rem 0;
-      width: 28rem;
+      margin: 1rem 0;
+      width: 55vw;
       font-size: 1.2rem;
       padding-left: 1rem;
     }
     &__btn {
-      margin: 2rem 2rem 0 0;
+      margin: 1rem 2rem 0 0;
     }
     &__not-reg {
       font-size: 1.2rem;

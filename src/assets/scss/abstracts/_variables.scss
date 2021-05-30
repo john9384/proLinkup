@@ -21,7 +21,7 @@ $gutter-vertical-small: 1rem;
 $gutter-horizontal: 6rem;
 
 $box-shadow-light: 1px 1px 3rem 0.4rem rgba(black, 0.2);
-$box-shadow-grey: 2px 2px 10px 1px grey;
+$box-shadow-grey: 0px 0px 5px 1px rgba($color-pry, 0.2);
 
 // ======= Font sizes ====================
 $h1-font-size-desktop: 2.5rem;
@@ -37,6 +37,6 @@ $text-font-size-desktop: 1.6rem;
 // 1366px and above: iPad PRO, HDready and FullHD desktop laptop monitors
 
 $res-mobile: 26.25em;
-$res-mobile-landscape: 50em;
+$res-mobile-landscape: 47.9375em;
 $res-tab: 64em;
 $res-tab-landscape: 85.625em;

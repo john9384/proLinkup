@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/authActions";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import hasError from "../../../helpers/validator";
+//fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +15,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -20,7 +23,7 @@ class Login extends Component {
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
-      errors: {}
+      errors: {},
     });
   }
   componentDidMount() {
@@ -40,7 +43,7 @@ class Login extends Component {
     e.preventDefault();
     const currentUserData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.loginUser(currentUserData);
@@ -52,51 +55,57 @@ class Login extends Component {
       var err_obj = hasError(errors.content);
     }
     return (
-      <main className="login">
-        <div className="login__main">
-          <h2 className="login__h2 heading--pry"> User Login </h2>
-          <form onSubmit={this.onSubmit}>
-            <InputField
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "email"
-                  ? "input login__input input__error"
-                  : "input login__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "email" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "password"
-                  ? "input login__input input__error"
-                  : "input login__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "password" ? err_obj.detail : null
-              }
-            />
-            <button className="btn btn--pry login__btn" name="btn">
-              Submit
-            </button>
-            <Link to="/sign_up" className="login__not-reg">
-              Not registered
-            </Link>
-          </form>
+      <div className="login">
+        <Link to="/" className="icon">
+          <FontAwesomeIcon icon={faHome} />
+        </Link>
+
+        <div className="container">
+          <main className="login__main">
+            <h2 className="login__h2 heading--pry"> User Login </h2>
+            <form onSubmit={this.onSubmit}>
+              <InputField
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "email"
+                    ? "input login__input input__error"
+                    : "input login__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "email" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "password"
+                    ? "input login__input input__error"
+                    : "input login__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "password" ? err_obj.detail : null
+                }
+              />
+              <button className="btn btn--pry login__btn" name="btn">
+                Submit
+              </button>
+              <Link to="/sign_up" className="login__not-reg">
+                Not registered
+              </Link>
+            </form>
+          </main>
         </div>
-      </main>
+      </div>
     );
   }
 }
@@ -104,10 +113,10 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { loginUser })(Login);

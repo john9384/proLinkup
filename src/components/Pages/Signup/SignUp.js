@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 import { signupUser } from "../../../redux/actions/authActions";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import hasError from "../../../helpers/validator";
-
+//fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -56,113 +58,118 @@ class SignUp extends Component {
       var err_obj = hasError(errors.content);
     }
     return (
-      <main className="signup">
-        <div className="signup__main">
-          <h2 className="signup__h2 heading--pry">New User SignUp</h2>
-          <form onSubmit={this.onSubmit}>
-            <InputField
-              name="firstname"
-              placeholder="Firstname"
-              value={this.state.firstname}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "firstname"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              info="Includes letters only"
-              error={
-                errors && err_obj.field === "firstname" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              name="lastname"
-              placeholder="Lastname"
-              value={this.state.lastname}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "lastname"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              info="Includes letters only"
-              error={
-                errors && err_obj.field === "lastname" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "email"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              info="Must be valid email"
-              error={
-                errors && err_obj.field === "email" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={this.state.phone}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "phone"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              info="Must be valid phone number"
-              error={
-                errors && err_obj.field === "phone" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "password"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              info="Can include letters numbers and symbols"
-              error={
-                errors && err_obj.field === "password" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="password"
-              name="password2"
-              placeholder="Confirm Password"
-              value={this.state.password2}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "password2"
-                  ? "input signup__input input__error"
-                  : "input signup__input"
-              }
-              error={
-                errors && err_obj.field === "password2" ? err_obj.detail : null
-              }
-            />
-            <br />
-            <button className="btn btn--pry signup__btn" name="btn">
-              Submit
-            </button>
-            <Link to="/login" className="link signup__reg">
-              Already a member
-            </Link>
-          </form>
+      <div className="signup">
+        <Link to="/" className="icon">
+          <FontAwesomeIcon icon={faHome} />
+        </Link>
+
+        <div className="container">
+          <main className="signup__main">
+            <h2 className="signup__h2 heading--pry">User SignUp</h2>
+            <form onSubmit={this.onSubmit}>
+              <InputField
+                name="firstname"
+                placeholder="Firstname"
+                value={this.state.firstname}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "firstname"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "firstname"
+                    ? err_obj.detail
+                    : null
+                }
+              />
+              <InputField
+                name="lastname"
+                placeholder="Lastname"
+                value={this.state.lastname}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "lastname"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "lastname" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "email"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "email" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={this.state.phone}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "phone"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "phone" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "password"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "password" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="password"
+                name="password2"
+                placeholder="Confirm Password"
+                value={this.state.password2}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "password2"
+                    ? "input signup__input input__error"
+                    : "input signup__input"
+                }
+                error={
+                  errors && err_obj.field === "password2"
+                    ? err_obj.detail
+                    : null
+                }
+              />
+              <br />
+              <button className="btn btn--pry signup__btn" name="btn">
+                Submit
+              </button>
+              <Link to="/login" className="link signup__reg">
+                Login instead
+              </Link>
+            </form>
+          </main>
         </div>
-      </main>
+      </div>
     );
   }
 }
