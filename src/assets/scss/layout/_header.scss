@@ -1,22 +1,21 @@
 .header {
-  @include side-padding;
   height: 60px;
-  max-width: 100vw;
+  max-width: 100%;
   margin: 0;
   background-color: $color-pry;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   left: 0;
-  @media screen and (max-height: 600px) {
-    height: 6rem;
+  .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
   &__title {
     height: 100%;
-    width: 20vw;
-    margin: 0 5vw 0 0;
     padding: 0;
     font-size: 1.5rem;
     font-weight: bold;
@@ -34,10 +33,11 @@
     }
   }
   &__logo {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
   }
 }
+// Desktop Nav Styling
 .nav {
   height: 100%;
   width: 15vw;
@@ -45,12 +45,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  @include resolution(laptops) {
-    width: 20vw;
-  }
-  @include resolution(tab) {
-    display: none;
-  }
+
   &__item {
     display: block;
     max-width: 3rem;
@@ -71,6 +66,18 @@
     text-transform: uppercase;
     font-weight: 500;
   }
+  // Media query for tab-screen
+  @media screen and (max-width: $res-tab) {
+    width: 20vw;
+  }
+  // Media query for mobile-landscape
+  @media screen and (max-width: $res-mobile-landscape) {
+    width: 25vw;
+  }
+  // Media query for mobile-screen
+  @media screen and (max-width: $res-mobile) {
+    display: none;
+  }
 }
 .dropdown {
   width: 25rem;
@@ -78,22 +85,18 @@
   color: $color-black;
   position: absolute;
   right: 0;
-  top: 7vh;
-  padding: 2rem 3rem;
+  top: 5rem;
+  padding: 2rem;
   box-shadow: $box-shadow-light;
   border-radius: 10px;
-  z-index: 1000;
+  z-index: inherit;
 
   &__title-box {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: $color-pry;
     animation: appear 0.2s ease-in;
-  }
-  &__name {
-    display: block;
-    max-width: 15rem;
-    font-size: 2.5rem;
-    margin-top: 1rem;
   }
   &__avatar {
     display: block;
@@ -103,55 +106,49 @@
     height: 5rem;
     border-radius: 50%;
   }
-  &__close {
-    position: absolute;
-    top: 1rem;
-    right: 2rem;
-    font-size: 1.5rem;
-    transition: transform 0.3s;
-    &:hover {
-      transform: scale(1.05);
-    }
+  &__name {
+    width: max-content;
+    display: block;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding-left: 1rem;
   }
+
   &__content {
     width: 100%;
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
   &__item {
-    padding: 10px 0;
-    text-align: left;
+    &:last-child {
+      border-top: 1px solid rgba(grey, 0.5);
+    }
+  }
+  .nav__item {
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
     text-transform: uppercase;
-    padding-left: 1rem;
+    padding: 0.5rem 0 0.5rem 1rem;
     font-weight: 500;
     color: $color-pry;
     transition: transform 0.3s;
-    &:not(:last-child) {
-      border-bottom: 1px solid rgba(grey, 0.5);
-    }
+
     &:hover {
       transform: translateX(5px) scale(1.02);
       cursor: pointer;
     }
-    .nav__text {
-      color: $color-pry;
-    }
-  }
-  &__icon {
-    display: inline;
   }
   .nav__icon {
-    display: none;
+    display: block;
+    color: $color-pry;
+    width: 3rem;
   }
   .nav__text {
     color: $color-pry;
-    font-size: 1.4rem;
-    @include resolution(tab) {
-      color: $color-white;
-    }
+    margin-left: 1rem;
   }
-  &__signout {
+  .nav__signout {
     &:link,
     &:visited,
     &:active {
@@ -163,13 +160,16 @@
     }
   }
 }
+
+// Mobile Nav Styling
 .nav-mobile {
   display: none;
-}
-@include resolution(tab) {
-  z-index: 100;
-  .nav-mobile {
-    display: block;
+  // Media query for mobile-screen
+  @media screen and (max-width: $res-mobile) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
     position: relative;
     &__checkbox {
       display: none;
@@ -178,9 +178,6 @@
       background-color: $color-pry;
       height: 3rem;
       width: 3rem;
-      position: absolute;
-      top: -1vh;
-      right: 0vw;
       z-index: 2000;
       text-align: center;
       box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
@@ -189,29 +186,41 @@
       display: none;
       width: 0;
       position: absolute;
-      top: 4rem;
+      top: 5rem;
       right: 0;
       background-color: $color-pry;
       border-radius: 10px;
       box-shadow: $box-shadow-light;
       z-index: 10000;
-      @include resolution(phone) {
-        top: 2rem;
-      }
-      @media screen and (max-height: 600px) {
-        top: 2rem;
-      }
     }
 
     &__list {
       list-style: none;
       width: 100%;
       color: black;
+      padding: 2rem 0;
     }
-    &__items {
-      margin: 1rem;
-    }
-    &__link {
+
+    &__item {
+      // margin: 1rem;
+      display: flex;
+      align-items: center;
+      // padding: 0;
+      .nav__icon {
+        display: block;
+        font-size: 2rem;
+        padding: 0.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          height: 2rem;
+          width: 2rem;
+        }
+      }
+      .nav__text {
+        margin-left: 1.5rem;
+      }
       transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
       &:link,
@@ -230,23 +239,16 @@
         color: $color-white-shade;
         transform: translateX(1rem) scale(1.3);
       }
-      .nav__icon {
-        display: inline;
-        font-size: 2rem;
-      }
-      .nav__text {
-        display: inline;
-        font-size: 1.6rem;
-        padding-left: 1rem;
-      }
     }
     &__checkbox:checked ~ &__menu {
       display: block;
-      width: 25rem;
+      width: 20rem;
     }
     &__icon {
       position: relative;
       top: 1vh;
+
+      background-color: white;
       &,
       &::before,
       &::after {
@@ -254,9 +256,6 @@
         height: 2px;
         background-color: $color-white;
         display: inline-block;
-        @include resolution(phone) {
-          width: 2.5rem;
-        }
       }
       &::before,
       &::after {
@@ -265,11 +264,15 @@
         left: 0;
         transition: all 0.5s;
       }
+      & {
+        top: 50%;
+        transform: translateY(-50%);
+      }
       &::before {
         top: -0.8rem;
       }
       &::after {
-        top: 0.9rem;
+        top: 0.8rem;
       }
     }
     &__checkbox:checked + &__btn &__icon {

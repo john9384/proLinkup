@@ -7,6 +7,17 @@ import { logoutUser } from "../../../redux/actions/authActions";
 import { clearCurrentUserProfile } from "../../../redux/actions/profileActions";
 import logo from "../../../assets/img/logo3.PNG";
 
+//fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAddressCard,
+  faCog,
+  faFileMedical,
+  faHome,
+  faRss,
+  faSignOutAlt,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 class Header extends Component {
   constructor() {
     super();
@@ -15,12 +26,12 @@ class Header extends Component {
       email: "",
       password: "",
       errors: {},
-      dropdown: false
+      dropdown: false,
     };
   }
   componentDidMount() {
     this.setState({
-      dropdown: false
+      dropdown: false,
     });
   }
 
@@ -32,7 +43,7 @@ class Header extends Component {
   onClickToggleDropdown(e) {
     e.preventDefault();
     this.setState({
-      dropdown: !this.state.dropdown
+      dropdown: !this.state.dropdown,
     });
   }
   render() {
@@ -52,38 +63,48 @@ class Header extends Component {
       />
     );
     const home = (
-      <Link to="/" className="nav__item nav-mobile__link">
-        <i className="fa fa-home nav__icon" aria-hidden="true"></i>
+      <Link to="/" className="nav__item nav-mobile__item">
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faHome} />
+        </span>
         <span className="nav__text">Home</span>
       </Link>
     );
     const dashboard = (
-      <Link to="/" className="nav__item nav-mobile__link">
-        <i className="fa fa-cog nav__icon" aria-hidden="true"></i>
+      <Link to="/" className="nav__item nav-mobile__item">
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faCog} />
+        </span>
         <span className="nav__text">Settings</span>
       </Link>
     );
     const profileLInk = (
-      <Link to="/" className="nav__item nav-mobile__link">
-        <i className="fa fa-user nav__icon" aria-hidden="true"></i>
+      <Link to="/" className="nav__item nav-mobile__item">
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faUser} />
+        </span>
         <span className="nav__text">Profile</span>
       </Link>
     );
     const usersLinks = (
-      <Link to="/pros" className="nav__item nav-mobile__link">
-        <i className="fa fa-address-card-o nav__icon" aria-hidden="true"></i>
+      <Link to="/pros" className="nav__item nav-mobile__item">
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faAddressCard} />
+        </span>
         <span className="nav__text">Pros</span>
       </Link>
     );
     const postFeeds = (
-      <Link to="/feeds" className="nav__item nav-mobile__link">
-        <i className="fa fa-feed nav__icon" aria-hidden="true"></i>
+      <Link to="/feeds" className="nav__item nav-mobile__item">
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faRss} />
+        </span>
         <span className="nav__text">Feeds</span>
       </Link>
     );
     const userMenu = (
       <div
-        className="nav__item nav-mobile__link"
+        className="nav__item nav-mobile__item"
         onClick={this.onClickToggleDropdown.bind(this)}
       >
         <i className="fa fa-th nav__icon" aria-hidden="true"></i>
@@ -94,69 +115,70 @@ class Header extends Component {
       <a
         href="/"
         onClick={this.onClickLogout.bind(this)}
-        className="dropdown__signout nav-mobile__link"
+        className="nav__item dropdown__signout nav-mobile__item"
       >
-        <i className="fa fa-sign-out nav__icon" aria-hidden="true"></i>
+        <span className="nav__icon">
+          <FontAwesomeIcon icon={faSignOutAlt} />
+        </span>
+
         <span className="nav__text">Signout</span>
       </a>
     );
-
+    const mobileNav = (
+      <div className="nav-mobile">
+        <input
+          type="checkbox"
+          className="nav-mobile__checkbox"
+          id="nav-mobile-toggle"
+        />
+        <label htmlFor="nav-mobile-toggle" className="nav-mobile__btn">
+          <span className="nav-mobile__icon">&nbsp;</span>
+        </label>
+        <nav className="animate__animated animate__fadeIn nav-mobile__menu">
+          <ul className="nav-mobile__list">
+            <li>{home}</li>
+            <li>{usersLinks}</li>
+            <li>{postFeeds}</li>
+            <li>{profileLInk}</li>
+            <li>{dashboard}</li>
+            <li>{logout}</li>
+          </ul>
+        </nav>
+      </div>
+    );
+    const desktopDropdown = (
+      <div className="animate__animated animate__fadeIn dropdown">
+        <div className="dropdown__title-box">
+          {avatar}
+          <span className="heading-pry dropdown__name">
+            {firstname} {lastname}
+          </span>
+        </div>
+        <ul className="dropdown__content">
+          <li className="dropdown__item">{dashboard}</li>
+          <li className="dropdown__item">{logout}</li>
+        </ul>
+      </div>
+    );
     return (
       <div className="header">
-        <Link to="/" className="header__title">
-          <img src={logo} alt="logo" className="header__logo" />
-          <span>Prolinkup</span>
-        </Link>
-        {isAuthenticated ? (
-          <nav className="nav">
-            {home}
-            {usersLinks}
-            {postFeeds}
-            {userMenu}
+        <div className="container">
+          <Link to="/" className="header__title">
+            <img src={logo} alt="logo" className="header__logo" />
+            <span>Prolinkup</span>
+          </Link>
+          {isAuthenticated ? (
+            <nav className="nav">
+              {home}
+              {usersLinks}
+              {postFeeds}
+              {userMenu}
 
-            {!this.state.dropdown ? null : (
-              <div className="dropdown">
-                <div className="dropdown__title-box">
-                  {avatar}
-                  <h1 className="heading-pry dropdown__name">
-                    {firstname} {lastname}
-                  </h1>
-                  <i
-                    className="fa fa-times dropdown__close"
-                    aria-hidden="true"
-                    onClick={this.onClickToggleDropdown.bind(this)}
-                  ></i>
-                  <ul className="dropdown__content">
-                    <li className="dropdown__item">{dashboard}</li>
-                    <li className="dropdown__item">{logout}</li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </nav>
-        ) : null}
-        {!isAuthenticated ? null : (
-          <div className="nav-mobile">
-            <input
-              type="checkbox"
-              className="nav-mobile__checkbox"
-              id="nav-mobile-toggle"
-            />
-            <label htmlFor="nav-mobile-toggle" className="nav-mobile__btn">
-              <span className="nav-mobile__icon">&nbsp;</span>
-            </label>
-            <nav className="nav-mobile__menu">
-              <ul className="nav-mobile__list">
-                <li className="nav-mobile__items">{home}</li>
-                <li className="nav-mobile__items">{usersLinks}</li>
-                <li className="nav-mobile__items">{postFeeds}</li>
-                <li className="nav-mobile__items">{profileLInk}</li>
-                <li className="nav-mobile__items">{dashboard}</li>
-                <li className="nav-mobile__items">{logout}</li>
-              </ul>
+              {!this.state.dropdown ? null : desktopDropdown}
             </nav>
-          </div>
-        )}
+          ) : null}
+          {!isAuthenticated ? null : mobileNav}
+        </div>
       </div>
     );
   }
@@ -165,12 +187,12 @@ class Header extends Component {
 Header.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   clearCurrentUserProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 export default connect(mapStateToProps, {
   logoutUser,
-  clearCurrentUserProfile
+  clearCurrentUserProfile,
 })(Header);

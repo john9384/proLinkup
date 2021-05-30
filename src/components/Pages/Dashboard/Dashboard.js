@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   getCurrentProfile,
-  deleteAccount
+  deleteAccount,
 } from "../../../redux/actions/profileActions";
 import Spinner from "../../common/spinner/Spinner";
 import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
 import SideNav from "../../Layouts/SideNav/SideNav";
+import Header from "../../Layouts/Header/Header";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -88,22 +89,25 @@ class Dashboard extends Component {
       }
     }
     return (
-      <div className="row">
-        {dashboardContent} <SideNav />
+      <div className="dashboard">
+        <Header />
+        <div className="container">
+          {dashboardContent} <SideNav />
+        </div>
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  auth: state.auth
+  auth: state.auth,
 });
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
   Dashboard

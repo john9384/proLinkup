@@ -50,7 +50,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          {/* <Header /> */}
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/login" component={Login} />
@@ -76,7 +75,6 @@ class App extends Component {
             <PrivateRoute exact path="/post/:id" component={Post} />
           </Switch>
           <Route exact path="/not-found" component={NotFound} />
-          {/* <Footer /> */}
         </BrowserRouter>
       </Provider>
     );

@@ -1,4 +1,7 @@
 .dashboard {
+  .container {
+    display: flex;
+  }
   .no-profile {
     color: $color-pry;
   }
