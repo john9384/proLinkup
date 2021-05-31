@@ -22,3 +22,19 @@ html {
     padding: 0 5vw;
   }
 }
+
+.page-body {
+  display: flex;
+  max-width: 114rem;
+  margin: 0 auto;
+  @media screen and (max-width: $res-tab) {
+    padding: 0 5vw;
+  }
+  @media screen and (max-width: $res-mobile-landscape) {
+    padding: 0;
+  }
+}
+
+.page-main {
+  flex: 1;
+}

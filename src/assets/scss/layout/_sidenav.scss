@@ -1,15 +1,14 @@
 .side-nav {
-  display: none;
+  //display: none;
+  flex-shrink: 0;
+  width: 30rem;
   padding: 0 20px;
   font-size: 1.6rem;
-  // position: sticky;
-  // bottom: 0;
-  // left: 0;
   h1 {
     text-transform: uppercase;
     font-size: 2.5rem;
   }
-  @include resolution(phone) {
+  @media screen and (max-width: $res-mobile-landscape) {
     display: none;
   }
 }

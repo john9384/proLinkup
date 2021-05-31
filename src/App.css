@@ -37,6 +37,20 @@ html {
     .container {
       padding: 0 5vw; } }
 
+.page-body {
+  display: flex;
+  max-width: 114rem;
+  margin: 0 auto; }
+  @media screen and (max-width: 64em) {
+    .page-body {
+      padding: 0 5vw; } }
+  @media screen and (max-width: 47.9375em) {
+    .page-body {
+      padding: 0; } }
+
+.page-main {
+  flex: 1; }
+
 body {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 1.6rem;
@@ -91,7 +105,8 @@ a {
   background-color: #000a22;
   position: sticky;
   top: 0;
-  left: 0; }
+  left: 0;
+  z-index: 1000; }
   .header .container {
     height: 100%;
     width: 100%;
@@ -357,13 +372,14 @@ a {
       height: 6rem; } }
 
 .side-nav {
-  display: none;
+  flex-shrink: 0;
+  width: 30rem;
   padding: 0 20px;
   font-size: 1.6rem; }
   .side-nav h1 {
     text-transform: uppercase;
     font-size: 2.5rem; }
-  @media (max-width: 30em) {
+  @media screen and (max-width: 47.9375em) {
     .side-nav {
       display: none; } }
 
@@ -678,15 +694,32 @@ a {
     .signup {
       padding: 10rem 0; } }
 
-.dashboard .container {
-  display: flex; }
-
 .dashboard .no-profile {
   color: #000a22; }
 
 @media (max-width: 30em) {
   .dashboard__title {
     font-size: 2rem; } }
+
+.dashboard__cover {
+  width: 100%;
+  height: 20rem;
+  margin-bottom: 3.5rem;
+  position: relative; }
+  .dashboard__cover--bg-img {
+    width: 100%;
+    height: 100%; }
+  .dashboard__cover--avatar {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -3.5rem;
+    left: 2vw;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s; }
+    .dashboard__cover--avatar:hover {
+      transform: scale(1.01); }
 
 .dashboard__name {
   color: #000a22;
@@ -697,15 +730,24 @@ a {
 .dashboard__handle:link, .dashboard__handle:visited {
   color: black; }
 
-.actions {
+.dashboard .actions {
+  margin-top: 1rem;
   padding: 0; }
-  .actions__link:not(:last-child) {
+  .dashboard .actions__link:not(:last-child) {
     margin-right: 1rem; }
-  .actions__btn {
+  .dashboard .actions__btn {
     padding: 0.2rem 1rem;
     border-radius: 5px; }
-  .actions__icon {
+  .dashboard .actions__icon {
     margin-right: 0.3rem; }
+
+@media screen and (max-width: 64em) and (min-width: 47.9375em) {
+  .dashboard .container {
+    padding: 0; } }
+
+@media screen and (max-width: 26.25em) {
+  .dashboard__cover--avatar {
+    left: 5vw; } }
 
 @media (max-width: 48em) {
   .add-cred__h1 {

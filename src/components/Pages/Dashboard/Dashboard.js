@@ -49,11 +49,23 @@ class Dashboard extends Component {
         );
       } else {
         dashboardContent = (
-          <div className="col-2-of-3 dashboard">
-            <h1 className=" heading--pry dashboard__title">Dashboard</h1>
-            <div className=" u-margin-bottom-medium">
+          <div className="page-main dashboard">
+            {/* <h1 className=" heading--pry dashboard__title">Dashboard</h1> */}
+            <div className="dashboard__cover">
+              <img
+                className="dashboard__cover--bg-img"
+                src="https://images.unsplash.com/photo-1622300650278-124ecb8151c0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+                alt="bg"
+              />
+              <img
+                className="dashboard__cover--avatar"
+                src="https://th.bing.com/th/id/OIP.w5dy8Ty-r7VnqxXv5-xi3QHaHU?pid=ImgDet&rs=1"
+                alt="avatar"
+              />
+            </div>
+            <div className="container">
               <p className="dashboard__name">
-                Welcome {firstname} {lastname}
+                {firstname} {lastname}
               </p>
               {profile.content.handle ? (
                 <div>
@@ -73,25 +85,25 @@ class Dashboard extends Component {
                   View Profile
                 </Link>
               </div>
-            </div>
 
-            <ProfileActions />
-            <ExpCard experience={profile.content.experience} />
-            <EduCard education={profile.content.education} />
-            <button
-              onClick={this.onDeleteClick.bind(this)}
-              className="btn btn--danger u-margin-bottom-large"
-            >
-              Delete Account
-            </button>
+              <ProfileActions />
+              <ExpCard experience={profile.content.experience} />
+              <EduCard education={profile.content.education} />
+              <button
+                onClick={this.onDeleteClick.bind(this)}
+                className="btn btn--danger u-margin-bottom-large"
+              >
+                Delete Account
+              </button>
+            </div>
           </div>
         );
       }
     }
     return (
-      <div className="dashboard">
+      <div>
         <Header />
-        <div className="container">
+        <div className="page-body">
           {dashboardContent} <SideNav />
         </div>
       </div>
