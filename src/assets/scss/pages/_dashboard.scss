@@ -19,10 +19,31 @@
     &--bg-img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+    &--bg-upload {
+      width: max-content;
+      position: absolute;
+      right: 2rem;
+      bottom: 0;
+      div {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        font-size: 1.6rem;
+      }
+      img,
+      p {
+        display: none;
+      }
+      button {
+        opacity: 0.8;
+      }
     }
     &--avatar {
       width: 12rem;
       height: 12rem;
+      overflow: hidden;
       border-radius: 50%;
       position: absolute;
       bottom: -3.5rem;
@@ -31,6 +52,31 @@
       transition: transform 0.5s;
       &:hover {
         transform: scale(1.01);
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &--upload {
+      width: max-content;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      div {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        font-size: 1.6rem;
+      }
+      img,
+      p {
+        display: none;
+      }
+      button {
+        opacity: 0.8;
       }
     }
   }

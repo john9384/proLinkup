@@ -87,6 +87,28 @@ export const postCurrentProfile = (profileData, history) => (dispatch) => {
       })
     );
 };
+export const postImg = (file, history) => (dispatch) => {
+  axios
+    .post(`${config.api.prefix}/profile/upload/img`, file)
+    .then((res) => history.push("/"))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
+export const postBgImg = (file, history) => (dispatch) => {
+  axios
+    .post(`${config.api.prefix}/profile/upload/bg-img`, file)
+    .then((res) => history.push("/"))
+    .catch((err) => {
+      return dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
 
 export const setProfileLoading = () => {
   return {
@@ -100,17 +122,20 @@ export const clearCurrentUserProfile = () => {
 };
 export const deleteAccount = () => (dispatch) => {
   if (window.confirm("Are you sure? This can Not be undown!")) {
-    axios.delete(`${config.api.prefix}/profile`).then((res) =>
-      dispatch({
-        type: SET_CURRENT_USER,
-        payload: {},
-      }).catch((err) => {
+    axios
+      .delete(`${config.api.prefix}/profile`)
+      .then((res) =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {},
+        })
+      )
+      .catch((err) => {
         dispatch({
           type: GET_ERRORS,
           payload: err.response.data,
         });
-      })
-    );
+      });
   }
 };
 export const addEdu = (eduData, history) => (dispatch) => {

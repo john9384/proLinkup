@@ -8,7 +8,7 @@ import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import hasError from "../../../helpers/validator";
-
+import Header from "../../Layouts/Header/Header";
 class CreateProfile extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,7 @@ class CreateProfile extends Component {
       linkedin: "",
       youtube: "",
       instagram: "",
-      errors: {}
+      errors: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -53,7 +53,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      instagram: this.state.instagram
+      instagram: this.state.instagram,
     };
 
     this.props.postCurrentProfile(profileData, this.props.history);
@@ -157,169 +157,175 @@ class CreateProfile extends Component {
     }
 
     return (
-      <div className="row">
-        <div className="col-2-of-3 profile-form">
-          <h1 className="profile-form__title heading--pry">
-            Create your profile
-          </h1>
-          <form onSubmit={this.onSubmit}>
-            <InputField
-              type="text"
-              name="handle"
-              value={this.state.handle}
-              placeholder="Handle"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "handle"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "handle" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="text"
-              name="company"
-              value={this.state.company}
-              placeholder="Company"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "company"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "company" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="text"
-              name="website"
-              value={this.state.website}
-              placeholder="Website"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "website"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "website" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="text"
-              name="location"
-              value={this.state.location}
-              placeholder="Location"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "location"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "location" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="text"
-              name="skills"
-              value={this.state.skills}
-              placeholder="Skills"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "skills"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "skills" ? err_obj.detail : null
-              }
-            />
-            <InputSelect
-              name="status"
-              value={this.state.status}
-              options={[
-                { label: "Junior", value: "junior" },
-                { label: "Intermediate", value: "intermidiate" },
-                { label: "Proffessional", value: "proffessional" },
-                { label: "Expert", value: "expert" }
-              ]}
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "status"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "status" ? err_obj.detail : null
-              }
-            />
-            <InputField
-              type="text"
-              name="githubusername"
-              value={this.state.githubusername}
-              placeholder="Githubusername"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "githubusername"
-                  ? "input profile-form__input input__error"
-                  : "input profile-form__input"
-              }
-              info=""
-              error={
-                errors && err_obj.field === "githubusername"
-                  ? err_obj.detail
-                  : null
-              }
-            />
-            <InputTextArea
-              type="text"
-              name="bio"
-              value={this.state.bio}
-              placeholder="bio"
-              onChange={this.onChange}
-              classname={
-                errors && err_obj.field === "bio"
-                  ? "textarea profile-form__textarea textarea__error"
-                  : "textarea profile-form__textarea"
-              }
-              info=""
-              error={errors && err_obj.field === "bio" ? err_obj.detail : null}
-            />
+      <div>
+        <Header />
+        <div className="page-body">
+          <div className="page-main profile-form">
+            <h1 className="profile-form__title heading--pry">
+              Create your profile
+            </h1>
 
-            <div className="profile-form__socials">
-              <button
-                type="button"
-                className="btn btn--sec"
-                onClick={() => {
-                  this.setState(prevState => ({
-                    displaySocialInputs: !prevState.displaySocialInputs
-                  }));
-                }}
-              >
-                <i className="fa fa-plus"></i>
-                &nbsp; Socials
-              </button>
-              <small className="profile-form--opt">Optional</small>
-              {socials}
-            </div>
-            <input
-              type="submit"
-              value="Submit"
-              className="btn btn--pry profile-form__submit"
-            />
-          </form>
+            <form onSubmit={this.onSubmit}>
+              <InputField
+                type="text"
+                name="handle"
+                value={this.state.handle}
+                placeholder="Handle"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "handle"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "handle" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="text"
+                name="company"
+                value={this.state.company}
+                placeholder="Company"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "company"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "company" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="text"
+                name="website"
+                value={this.state.website}
+                placeholder="Website"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "website"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "website" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="text"
+                name="location"
+                value={this.state.location}
+                placeholder="Location"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "location"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "location" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="text"
+                name="skills"
+                value={this.state.skills}
+                placeholder="Skills"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "skills"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "skills" ? err_obj.detail : null
+                }
+              />
+              <InputSelect
+                name="status"
+                value={this.state.status}
+                options={[
+                  { label: "Junior", value: "junior" },
+                  { label: "Intermediate", value: "intermidiate" },
+                  { label: "Proffessional", value: "proffessional" },
+                  { label: "Expert", value: "expert" },
+                ]}
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "status"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "status" ? err_obj.detail : null
+                }
+              />
+              <InputField
+                type="text"
+                name="githubusername"
+                value={this.state.githubusername}
+                placeholder="Githubusername"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "githubusername"
+                    ? "input profile-form__input input__error"
+                    : "input profile-form__input"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "githubusername"
+                    ? err_obj.detail
+                    : null
+                }
+              />
+              <InputTextArea
+                type="text"
+                name="bio"
+                value={this.state.bio}
+                placeholder="bio"
+                onChange={this.onChange}
+                classname={
+                  errors && err_obj.field === "bio"
+                    ? "textarea profile-form__textarea textarea__error"
+                    : "textarea profile-form__textarea"
+                }
+                info=""
+                error={
+                  errors && err_obj.field === "bio" ? err_obj.detail : null
+                }
+              />
+
+              <div className="profile-form__socials">
+                <button
+                  type="button"
+                  className="btn btn--sec"
+                  onClick={() => {
+                    this.setState((prevState) => ({
+                      displaySocialInputs: !prevState.displaySocialInputs,
+                    }));
+                  }}
+                >
+                  <i className="fa fa-plus"></i>
+                  &nbsp; Socials
+                </button>
+                <small className="profile-form--opt">Optional</small>
+                {socials}
+              </div>
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn--pry profile-form__submit"
+              />
+            </form>
+          </div>
+          <SideNav />
         </div>
-        <SideNav />
       </div>
     );
   }
@@ -327,11 +333,11 @@ class CreateProfile extends Component {
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { postCurrentProfile })(
   withRouter(CreateProfile)

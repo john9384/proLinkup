@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import {
   getCurrentProfile,
   deleteAccount,
+  postBgImg,
+  postImg,
 } from "../../../redux/actions/profileActions";
 import Spinner from "../../common/spinner/Spinner";
 import ProfileActions from "./ProfileActions";
@@ -12,16 +14,27 @@ import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import Header from "../../Layouts/Header/Header";
-import PostBgImg from "./PostBgImg";
-import PostImg from "./PostImg";
+import ImageUploader from "react-images-upload";
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { image: null };
+    this.onDrop = this.onDropImg.bind(this);
+    this.onDrop = this.onDropBgImg.bind(this);
   }
   componentDidMount() {
     this.props.getCurrentProfile();
+  }
+  onDropImg(pictureFile) {
+    const formData = new FormData();
+    formData.append("image", pictureFile[0], pictureFile[0].name);
+    this.props.postImg(formData, this.props.history);
+  }
+  onDropBgImg(pictureFile) {
+    const formData = new FormData();
+    formData.append("image", pictureFile[0], pictureFile[0].name);
+    this.props.postBgImg(formData, this.props.history);
   }
 
   onDeleteClick(e) {
@@ -67,7 +80,16 @@ class Dashboard extends Component {
                 }`}
                 alt="bg"
               />
-              <PostBgImg history={this.props.history} />
+              <div className="dashboard__cover--bg-upload">
+                <ImageUploader
+                  withIcon={true}
+                  buttonText="Change Background"
+                  onChange={this.onDropBgImg}
+                  imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                  maxFileSize={5242880}
+                  singleImage={true}
+                />
+              </div>
               <div className="dashboard__cover--avatar">
                 <img
                   src={`${
@@ -77,7 +99,16 @@ class Dashboard extends Component {
                   }`}
                   alt="avatar"
                 />
-                <PostImg history={this.props.history} />
+                <div className="dashboard__cover--upload">
+                  <ImageUploader
+                    withIcon={true}
+                    buttonText="Change Background"
+                    onChange={this.onDropBgImg}
+                    imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                    maxFileSize={5242880}
+                    singleImage={true}
+                  />
+                </div>
               </div>
             </div>
             <div className="container">
@@ -135,10 +166,14 @@ const mapStateToProps = (state) => ({
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  postImg: PropTypes.func.isRequired,
+  postBgImg: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, {
   getCurrentProfile,
   deleteAccount,
+  postImg,
+  postBgImg,
 })(Dashboard);

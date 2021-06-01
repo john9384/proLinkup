@@ -708,10 +708,27 @@ a {
   position: relative; }
   .dashboard__cover--bg-img {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    object-fit: cover; }
+  .dashboard__cover--bg-upload {
+    width: max-content;
+    position: absolute;
+    right: 2rem;
+    bottom: 0; }
+    .dashboard__cover--bg-upload div {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      font-size: 1.6rem; }
+    .dashboard__cover--bg-upload img,
+    .dashboard__cover--bg-upload p {
+      display: none; }
+    .dashboard__cover--bg-upload button {
+      opacity: 0.8; }
   .dashboard__cover--avatar {
     width: 12rem;
     height: 12rem;
+    overflow: hidden;
     border-radius: 50%;
     position: absolute;
     bottom: -3.5rem;
@@ -720,6 +737,26 @@ a {
     transition: transform 0.5s; }
     .dashboard__cover--avatar:hover {
       transform: scale(1.01); }
+    .dashboard__cover--avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .dashboard__cover--upload {
+    width: max-content;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%); }
+    .dashboard__cover--upload div {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      font-size: 1.6rem; }
+    .dashboard__cover--upload img,
+    .dashboard__cover--upload p {
+      display: none; }
+    .dashboard__cover--upload button {
+      opacity: 0.8; }
 
 .dashboard__name {
   color: #000a22;
