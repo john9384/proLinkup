@@ -9,6 +9,10 @@ import { postCurrentProfile } from "../../../redux/actions/profileActions";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import hasError from "../../../helpers/validator";
 import Header from "../../Layouts/Header/Header";
+
+//fontawesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 class CreateProfile extends Component {
   constructor(props) {
     super(props);
@@ -70,7 +74,7 @@ class CreateProfile extends Component {
     let socials;
     if (displaySocialInputs) {
       socials = (
-        <div>
+        <div className="profile-form__socials--form">
           <div className="profile-form--group">
             <i className="fa fa-twitter profile-form--icon"></i>
             <input
@@ -157,7 +161,7 @@ class CreateProfile extends Component {
     }
 
     return (
-      <div>
+      <>
         <Header />
         <div className="page-body">
           <div className="page-main profile-form">
@@ -165,7 +169,7 @@ class CreateProfile extends Component {
               Create your profile
             </h1>
 
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="profile-form__body">
               <InputField
                 type="text"
                 name="handle"
@@ -304,15 +308,17 @@ class CreateProfile extends Component {
               <div className="profile-form__socials">
                 <button
                   type="button"
-                  className="btn btn--sec"
+                  className="btn btn--sec profile-form--opt-btn"
                   onClick={() => {
                     this.setState((prevState) => ({
                       displaySocialInputs: !prevState.displaySocialInputs,
                     }));
                   }}
                 >
-                  <i className="fa fa-plus"></i>
-                  &nbsp; Socials
+                  <span>
+                    <FontAwesomeIcon icon={faPlusSquare} />
+                  </span>
+                  <span>Socials</span>
                 </button>
                 <small className="profile-form--opt">Optional</small>
                 {socials}
@@ -326,7 +332,7 @@ class CreateProfile extends Component {
           </div>
           <SideNav />
         </div>
-      </div>
+      </>
     );
   }
 }

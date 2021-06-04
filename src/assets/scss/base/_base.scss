@@ -9,7 +9,8 @@
 html {
   max-width: 100vw;
   font-size: 62.5%;
-  overflow-x: hidden;
+  max-height: 100vh;
+  overflow: hidden;
   @media screen and (max-width: $res-tab) {
     font-size: 50%;
   }
@@ -27,6 +28,7 @@ html {
   display: flex;
   max-width: 114rem;
   margin: 0 auto;
+
   @media screen and (max-width: $res-tab) {
     padding: 0 5vw;
   }
@@ -37,4 +39,29 @@ html {
 
 .page-main {
   flex: 1;
+  border-right: 2px solid $color-white-shade;
+  max-height: (100vh - 7.255139056831923vh);
+  max-width: (114rem - 30rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-pry;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    opacity: 0.5;
+    width: 10px;
+  }
+
+  // Firefox
+  scrollbar-color: $color-pry transparent;
+  scrollbar-width: thin;
+  padding: 0;
 }

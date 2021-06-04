@@ -9,7 +9,7 @@ import Spinner from "../../common/spinner/Spinner";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import {
   getProfileByHandle,
-  getProfileById
+  getProfileById,
 } from "../../../redux/actions/profileActions";
 import isEmpty from "../../../helpers/isEmpty";
 
@@ -52,15 +52,15 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
   getProfileById: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, {
   getProfileByHandle,
-  getProfileById
+  getProfileById,
 })(Profile);
