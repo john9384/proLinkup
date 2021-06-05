@@ -5,7 +5,7 @@ if (!envDev) {
   throw new Error("⚠️  Couldn't find .env file  ⚠️");
 }
 
-export default {
+let dev = {
   env: "dev",
   appName: "ProlinkUP",
   port: 4000,
@@ -18,3 +18,5 @@ export default {
     prefix: "http://localhost:4000/api/v1",
   },
 };
+
+export default dev;

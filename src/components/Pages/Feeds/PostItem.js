@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {
   deletePost,
   addLike,
-  removeLike
+  removeLike,
 } from "../../../redux/actions/postActions";
 import Spinner from "../../common/spinner/Spinner";
 
@@ -24,7 +24,7 @@ class PostItem extends Component {
 
   findUserLike(likes) {
     const { auth } = this.props;
-    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+    if (likes.filter((like) => like.user === auth.user.id).length > 0) {
       return true;
     } else {
       return false;
@@ -33,7 +33,7 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props;
-    if (post == "undefined" || post == null) {
+    if (post === "undefined" || post == null) {
       return <Spinner />;
     } else {
       return (
@@ -90,7 +90,7 @@ class PostItem extends Component {
 }
 
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true,
 };
 
 PostItem.propTypes = {
@@ -98,11 +98,11 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { deletePost, addLike, removeLike })(

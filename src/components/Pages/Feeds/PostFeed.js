@@ -9,11 +9,11 @@ class PostFeed extends Component {
     if (typeof posts == "undefined") {
       return <Spinner />;
     } else {
-      let feeds = [];
-      for (let [key, value] of Object.entries(posts)) {
-        feeds.push(value);
-      }
-      const feedContent = feeds.map((feed) => (
+      // let feeds = [];
+      // for (let [key, value] of Object.entries(posts)) {
+      //   feeds.push(value);
+      // }
+      const feedContent = posts.map((feed) => (
         <PostItem key={feed.id} post={feed} />
       ));
       return <div className="u-margin-bottom-large">{feedContent}</div>;

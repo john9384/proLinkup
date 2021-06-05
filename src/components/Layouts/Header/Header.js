@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAddressCard,
   faCog,
-  faFileMedical,
   faHome,
   faRss,
   faSignOutAlt,

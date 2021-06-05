@@ -20,7 +20,7 @@ class AddExp extends Component {
       current: "",
       description: "",
       errors: {},
-      disabled: false
+      disabled: false,
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -41,7 +41,7 @@ class AddExp extends Component {
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
-      description: this.state.description
+      description: this.state.description,
     };
     this.props.addExp(expData, this.props.history);
   }
@@ -51,7 +51,7 @@ class AddExp extends Component {
   onCheck(e) {
     this.setState({
       disabled: !this.state.disabled,
-      current: !this.state.current
+      current: !this.state.current,
     });
   }
 
@@ -156,18 +156,17 @@ class AddExp extends Component {
                   End Date
                 </span>
                 <input
-                  className="add-cred__input input add-cred__date"
                   type="date"
                   placeholder="to"
                   name="to"
                   value={this.state.to}
                   onChange={this.onChange}
                   disabled={this.state.disabled ? "disabled" : ""}
-                  className={
+                  className={`add-cred__input input add-cred__date ${
                     errors && err_obj.field === "to"
                       ? "input add-cred__input add-cred__date input__error"
                       : "input add-cred__input add-cred__date"
-                  }
+                  }`}
                 />
                 <div>
                   {errors && err_obj.field === "to" ? (
@@ -177,16 +176,15 @@ class AddExp extends Component {
               </div>
             )}
             <InputTextArea
-              classname="add-cred__textarea textarea"
               placeholder="description"
               name="description"
               value={this.state.description}
               onChange={this.onChange}
-              classname={
+              classname={`add-cred__textarea textarea ${
                 errors && err_obj.field === "description"
                   ? "textarea add-cred__textarea input__error"
                   : "textarea add-cred__textarea"
-              }
+              }`}
             />
             <div>
               {errors && err_obj.field === "description" ? (
@@ -204,10 +202,10 @@ class AddExp extends Component {
 AddExp.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  addExp: PropTypes.func.isRequired
+  addExp: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.profile,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { addExp })(withRouter(AddExp));

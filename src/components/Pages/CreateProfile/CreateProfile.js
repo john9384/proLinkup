@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
-import InputSelect from "../../common/inputFieldGroup/InputSelect";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import hasError from "../../../helpers/validator";
@@ -250,15 +249,11 @@ class CreateProfile extends Component {
                   errors && err_obj.field === "skills" ? err_obj.detail : null
                 }
               />
-              <InputSelect
+              <InputField
+                type="text"
                 name="status"
                 value={this.state.status}
-                options={[
-                  { label: "Junior", value: "junior" },
-                  { label: "Intermediate", value: "intermidiate" },
-                  { label: "Proffessional", value: "proffessional" },
-                  { label: "Expert", value: "expert" },
-                ]}
+                placeholder="Job Title"
                 onChange={this.onChange}
                 classname={
                   errors && err_obj.field === "status"

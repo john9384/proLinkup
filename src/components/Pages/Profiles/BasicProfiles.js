@@ -23,7 +23,7 @@ class BasicProfiles extends Component {
       if (profiles.content.length > 0) {
         allProfiles = profiles.content;
         profileItems = allProfiles.map((profile) => (
-          <ProfileItems key={profile._id} profile={profile} />
+          <ProfileItems key={profile._id} profile={profile} loading={loading} />
         ));
       } else {
         profileItems = <Spinner />;
@@ -35,7 +35,6 @@ class BasicProfiles extends Component {
         <div className="page-body">
           <div className="page-main pros">
             <h1 className="heading--pry pros__title"> Explore Profiles</h1>
-            <p className="pros__note"> Browse and connect with pros</p>
             <div className="pros__search u-margin-bottom-medium">
               <input
                 type="text"
@@ -44,7 +43,7 @@ class BasicProfiles extends Component {
               />
               <i className="fa fa-search pros__search--icon"></i>
             </div>
-            {profileItems}
+            <div className="pros__grid">{profileItems}</div>
           </div>
           <SideNav />
         </div>

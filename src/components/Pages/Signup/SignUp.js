@@ -18,7 +18,7 @@ class SignUp extends Component {
       email: "",
       phone: "",
       password: "",
-      password2: "",
+      confirm_password: "",
       errors: {},
     };
     this.onChange = this.onChange.bind(this);
@@ -47,7 +47,7 @@ class SignUp extends Component {
       email: this.state.email,
       phone: this.state.phone,
       password: this.state.password,
-      password2: this.state.password2,
+      confirm_password: this.state.confirm_password,
     };
     this.props.signupUser(newUser, this.props.history);
   }
@@ -144,17 +144,17 @@ class SignUp extends Component {
               />
               <InputField
                 type="password"
-                name="password2"
+                name="confirm_password"
                 placeholder="Confirm Password"
-                value={this.state.password2}
+                value={this.state.confirm_password}
                 onChange={this.onChange}
                 classname={
-                  errors && err_obj.field === "password2"
+                  errors && err_obj.field === "confirm_password"
                     ? "input signup__input input__error"
                     : "input signup__input"
                 }
                 error={
-                  errors && err_obj.field === "password2"
+                  errors && err_obj.field === "confirm_password"
                     ? err_obj.detail
                     : null
                 }

@@ -1,109 +1,116 @@
 .pros {
+  margin: 0 auto;
+  &__grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    padding: 2rem 0 6rem 0;
+  }
+  &__title {
+    font-size: 3rem;
+    text-align: center;
+  }
   &__search {
+    width: 70%;
+    margin: 1rem auto;
     background-color: $color-heading-bg;
     padding-left: 0.2rem;
     padding-bottom: 0.2rem;
     border-radius: 5px;
     &--input {
       width: 93%;
-      @include resolution(tab) {
-        width: 90%;
-      }
     }
     &--icon {
       width: 7%;
       text-align: center;
       font-weight: 600;
-      @include resolution(tab) {
-        width: 10%;
+      color: white;
+    }
+  }
+  @media screen and (max-width: $res-tab) {
+    padding-right: 2rem;
+    &__search {
+      &--input {
+        width: 90%;
       }
-      @include resolution(tab) {
+      &--icon {
+        width: 10%;
         font-size: 2rem;
       }
     }
   }
+  @media screen and (max-width: $res-mobile-landscape) {
+    padding: 1rem 5vw;
+    // Reset padding to right changed by the media query tab
+    padding-right: 0;
+    padding-bottom: 6rem;
+  }
+  @media screen and (max-width: $res-mobile) {
+    &__search {
+      width: 100%;
+    }
+    // Reset padding to bottom changed by the media query mobile-landscape
+    padding-bottom: 0;
+  }
 }
 .pros-card {
+  width: 100%;
   background-color: $color-white-shade;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 5px;
   box-shadow: 0px 1px 10px rgba(grey, 0.3);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   animation: appear 0.5s;
+  display: flex;
+  flex-direction: column;
   &__img {
-    width: 17rem;
-    height: 17rem;
-    background-color: $color-white;
-    border: none;
+    width: 12rem;
+    height: 12rem;
+    margin: 0 auto;
     border-radius: 50%;
     box-shadow: 0px 1px 10px rgba(grey, 0.3);
-    @include resolution(laptops) {
-      width: 15rem;
-      height: 15rem;
-    }
-    @include resolution(tab) {
-      margin: 0 auto;
-    }
-  }
-  &__avatar {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    border: none;
-    border-radius: 50%;
-  }
-  &__details {
-    height: 16rem;
-    width: 35rem;
-    position: relative;
-    @include resolution(laptops) {
-      height: 15rem;
-      width: 25rem;
-    }
-    @include resolution(tab) {
+    overflow: hidden;
+    img {
       width: 100%;
-      text-align: center;
-      margin-top: 1.5rem;
+      height: 100%;
+      object-fit: cover;
     }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   &__name {
     color: $color-pry;
   }
   &__position {
     text-transform: capitalize;
+    span {
+      text-transform: lowercase !important;
+    }
   }
   &__location {
     text-transform: capitalize;
   }
   &__btn {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    @include resolution(tab) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    display: block;
+    text-align: center;
+    //width: 100%;
   }
   &__skills {
     width: 100%;
-    @include resolution(tab) {
-      display: none;
-    }
+    margin: 0.5rem auto;
+    padding: 0.5rem 0;
+    flex: 1;
+    text-align: center;
   }
   &__skills-head {
     background-color: $color-heading-bg;
     border-radius: 3px;
-    padding-left: 1rem;
-    @include resolution(tab) {
-      font-size: $h2-font-size-tab;
-    }
+    font-size: 2rem;
   }
   &__skills-list {
     list-style: none;
-  }
-  &__skill-item {
-    margin-left: 1rem;
   }
 }

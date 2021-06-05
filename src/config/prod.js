@@ -5,7 +5,7 @@ if (!envProd) {
   throw new Error("⚠️  Couldn't find .env file  ⚠️");
 }
 
-export default {
+let prod = {
   env: "prod",
   appName: "ProlinkUP",
   port: 4000,
@@ -18,3 +18,4 @@ export default {
     prefix: "https://floating-springs-14668.herokuapp.com/api/v1",
   },
 };
+export default prod;

@@ -8,7 +8,7 @@ class CommentForm extends Component {
     super(props);
     this.state = {
       text: "",
-      errors: {}
+      errors: {},
     };
 
     this.onChange = this.onChange.bind(this);
@@ -26,7 +26,7 @@ class CommentForm extends Component {
     const { postId } = this.props;
 
     const newComment = {
-      text: this.state.text
+      text: this.state.text,
     };
     this.props.addComment(postId, newComment);
     this.setState({ text: "" });
@@ -37,7 +37,7 @@ class CommentForm extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    // const { errors } = this.state;
     return (
       <form
         onSubmit={this.onSubmit}
@@ -61,11 +61,11 @@ class CommentForm extends Component {
 CommentForm.propTypes = {
   addPost: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  errors: state.errors
+const mapStateToProps = (state) => ({
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { addComment })(CommentForm);

@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import PostItem from "../Feeds/PostItem";
 import CommentForm from "./CommentForm";
@@ -54,13 +53,13 @@ class Post extends Component {
 Post.propTypes = {
   getPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   post: state.post,
-  auth: state.auth
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, {
-  getPost
+  getPost,
 })(Post);
