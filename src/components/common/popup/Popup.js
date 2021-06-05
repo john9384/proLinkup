@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import styles from "./Popup.module.css";
 import PropTypes from "prop-types";

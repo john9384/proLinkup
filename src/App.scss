@@ -1,0 +1,32 @@
+@import "assets/scss/abstracts/variables";
+@import "assets/scss/abstracts/mixins";
+@import "assets/scss/abstracts/functions";
+
+//======= Base =============================
+@import "assets/scss/base/animation";
+@import "assets/scss/base/base";
+@import "assets/scss/base/typography";
+
+// ====== Layouts================================
+@import "assets/scss/layout/header";
+@import "assets/scss/layout/grid";
+@import "assets/scss/layout/footer";
+@import "assets/scss/layout/sidenav";
+// ====== Components ============================
+@import "assets/scss/components/button";
+@import "assets/scss/components/inputfield";
+@import "assets/scss/components/creds";
+// ====== Pages===================================
+@import "assets/scss/pages/landing";
+@import "assets/scss/pages/login";
+@import "assets/scss/pages/signup";
+@import "assets/scss/pages/dashboard";
+@import "assets/scss/pages/addcredform";
+@import "assets/scss/pages/profileform";
+@import "assets/scss/pages/pros";
+@import "assets/scss/pages/profile";
+@import "assets/scss/pages/errpage";
+@import "assets/scss/pages/feeds";
+@import "assets/scss/pages/postspage";
+// ====== Utils =================================
+@import "assets/scss/utils/margins";

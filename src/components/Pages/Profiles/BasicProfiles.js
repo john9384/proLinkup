@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../../common/spinner/Spinner";
 import { getProfiles } from "../../../redux/actions/profileActions";
 import ProfileItems from "./ProfileItems";
 import SideNav from "../../Layouts/SideNav/SideNav";
+import Header from "../../Layouts/Header/Header";
 
 class BasicProfiles extends Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class BasicProfiles extends Component {
     } else {
       if (profiles.content.length > 0) {
         allProfiles = profiles.content;
-        profileItems = allProfiles.map(profile => (
+        profileItems = allProfiles.map((profile) => (
           <ProfileItems key={profile._id} profile={profile} />
         ));
       } else {
@@ -29,32 +30,35 @@ class BasicProfiles extends Component {
       }
     }
     return (
-      <div className="row">
-        <div className="col-2-of-3 pros">
-          <h1 className="heading--pry pros__title"> Explore Profiles</h1>
-          <p className="pros__note"> Browse and connect with pros</p>
-          <div className="pros__search u-margin-bottom-medium">
-            <input
-              type="text"
-              placeholder="Search profile"
-              className="input pros__search--input"
-            />
-            <i className="fa fa-search pros__search--icon"></i>
+      <>
+        <Header />
+        <div className="page-body">
+          <div className="page-main pros">
+            <h1 className="heading--pry pros__title"> Explore Profiles</h1>
+            <p className="pros__note"> Browse and connect with pros</p>
+            <div className="pros__search u-margin-bottom-medium">
+              <input
+                type="text"
+                placeholder="Search profile"
+                className="input pros__search--input"
+              />
+              <i className="fa fa-search pros__search--icon"></i>
+            </div>
+            {profileItems}
           </div>
-          {profileItems}
+          <SideNav />
         </div>
-        <SideNav />
-      </div>
+      </>
     );
   }
 }
 
 BasicProfiles.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfiles: PropTypes.func.isRequired
+  getProfiles: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getProfiles })(BasicProfiles);

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 //import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -10,7 +10,11 @@ class ProfileItems extends Component {
     return (
       <div className="pros-card u-margin-top-medium">
         <div className="pros-card__img">
-          <img src={profile.avatar} alt="" className="pros-card__avatar" />
+          <img
+            src={profile.imgUrl || profile.avatar}
+            alt=""
+            className="pros-card__avatar"
+          />
         </div>
         <div className="pros-card__details">
           <h3 className="pros-card__name"> {profile.username}</h3>
@@ -46,7 +50,7 @@ class ProfileItems extends Component {
   }
 }
 ProfileItems.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileItems;

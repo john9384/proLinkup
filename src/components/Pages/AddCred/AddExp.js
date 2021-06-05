@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";

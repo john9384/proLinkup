@@ -1,4 +1,3 @@
-import React from "react";
 import { Component } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -11,9 +10,7 @@ import { clearCurrentUserProfile } from "./redux/actions/profileActions";
 import PrivateRoute from "./helpers/PrivateRoute";
 
 import store from "./redux/store";
-import "./App.css";
-import Header from "./components/Layouts/Header/Header";
-import Footer from "./components/Layouts/Footer/Footer";
+import "./App.scss";
 import NotFound from "./components/Layouts/NotFound/NotFound";
 import LandingPage from "./components/Pages/LandingPage/LandingPage";
 import SignUp from "./components/Pages/Signup/SignUp";

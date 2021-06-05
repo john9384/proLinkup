@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import isEmpty from "../../../helpers/isEmpty";
 
 class ProfileHeader extends Component {

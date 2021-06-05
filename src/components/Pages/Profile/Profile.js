@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ProfileHeader from "./ProfileHeader";
@@ -11,7 +11,6 @@ import {
   getProfileByHandle,
   getProfileById,
 } from "../../../redux/actions/profileActions";
-import isEmpty from "../../../helpers/isEmpty";
 
 class Profile extends Component {
   componentDidMount() {
