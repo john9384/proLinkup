@@ -64,4 +64,9 @@ html {
   scrollbar-color: $color-pry transparent;
   scrollbar-width: thin;
   padding: 0;
+
+  @media screen and (max-width: $res-mobile-landscape) {
+    // remove border to the right from initial styling
+    border: none;
+  }
 }

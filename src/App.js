@@ -11,16 +11,16 @@ import PrivateRoute from "./helpers/PrivateRoute";
 
 import store from "./redux/store";
 import "./App.scss";
-import NotFound from "./components/Layouts/NotFound/NotFound";
-import LandingPage from "./components/Pages/LandingPage/LandingPage";
-import SignUp from "./components/Pages/Signup/SignUp";
-import Login from "./components/Pages/Login/Login";
+import NotFound from "./components/Pages/Common/NotFound";
+import LandingPage from "./components/Pages/Common/LandingPage";
+import SignUp from "./components/Pages/Auth/SignUp";
+import Login from "./components/Pages/Auth/Login";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
-import CreateProfile from "./components/Pages/CreateProfile/CreateProfile";
-import EditProfile from "./components/Pages/EditProfile/EditProfile";
-import AddExp from "./components/Pages/AddCred/AddExp";
-import AddEdu from "./components/Pages/AddCred/AddEdu";
-import BasicProfiles from "./components/Pages/Profiles/BasicProfiles";
+import CreateProfile from "./components/Pages/ProfileForms/CreateProfile";
+import EditProfile from "./components/Pages/ProfileForms/EditProfile";
+import AddExp from "./components/Pages/ProfileForms/AddExp";
+import AddEdu from "./components/Pages/ProfileForms/AddEdu";
+import ProfilesList from "./components/Pages/ProfilesList/ProfilesList";
 import Profile from "./components/Pages/Profile/Profile";
 import Posts from "./components/Pages/Feeds/Posts";
 import Post from "./components/Pages/Post/Post";
@@ -58,7 +58,7 @@ class App extends Component {
               component={Profile}
             />
             <PrivateRoute exact path="/profile/:user_id" component={Profile} />
-            <PrivateRoute exact path="/pros" component={BasicProfiles} />
+            <PrivateRoute exact path="/pros" component={ProfilesList} />
             <PrivateRoute
               exact
               path="/create-profile"
@@ -67,7 +67,7 @@ class App extends Component {
             <PrivateRoute exact path="/edit-profile" component={EditProfile} />
             <PrivateRoute exact path="/add-experience" component={AddExp} />
             <PrivateRoute exact path="/add-education" component={AddEdu} />
-            <PrivateRoute exact path="/profiles" component={BasicProfiles} />
+            <PrivateRoute exact path="/profiles" component={ProfilesList} />
             <PrivateRoute exact path="/feeds" component={Posts} />
             <PrivateRoute exact path="/post/:id" component={Post} />
           </Switch>

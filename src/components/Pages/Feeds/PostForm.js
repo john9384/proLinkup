@@ -11,7 +11,7 @@ class PostForm extends Component {
 
     this.state = {
       text: "",
-      error: {}
+      error: {},
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,7 +23,7 @@ class PostForm extends Component {
   }
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
   onSubmit(e) {
@@ -33,7 +33,7 @@ class PostForm extends Component {
     const newPost = {
       text: this.state.text,
       name: `${firstname} ${lastname}`,
-      avatar: avatar
+      avatar: avatar,
     };
 
     this.props.addPost(newPost);
@@ -62,12 +62,12 @@ class PostForm extends Component {
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { addPost })(PostForm);

@@ -7,7 +7,7 @@ import ProfileItems from "./ProfileItems";
 import SideNav from "../../Layouts/SideNav/SideNav";
 import Header from "../../Layouts/Header/Header";
 
-class BasicProfiles extends Component {
+class ProfilesList extends Component {
   componentDidMount() {
     this.props.getProfiles();
   }
@@ -52,7 +52,7 @@ class BasicProfiles extends Component {
   }
 }
 
-BasicProfiles.propTypes = {
+ProfilesList.propTypes = {
   profile: PropTypes.object.isRequired,
   getProfiles: PropTypes.func.isRequired,
 };
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(BasicProfiles);
+export default connect(mapStateToProps, { getProfiles })(ProfilesList);
