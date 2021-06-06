@@ -18,8 +18,8 @@ import Login from "./components/Pages/Auth/Login";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import CreateProfile from "./components/Pages/ProfileForms/CreateProfile";
 import EditProfile from "./components/Pages/ProfileForms/EditProfile";
-import AddExp from "./components/Pages/ProfileForms/AddExp";
-import AddEdu from "./components/Pages/ProfileForms/AddEdu";
+import { AddExp, AddEdu } from "./components/Pages/ProfileForms/AddCred";
+
 import ProfilesList from "./components/Pages/ProfilesList/ProfilesList";
 import Profile from "./components/Pages/Profile/Profile";
 import Posts from "./components/Pages/Feeds/Posts";

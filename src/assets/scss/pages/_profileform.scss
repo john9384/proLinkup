@@ -40,7 +40,6 @@
     margin: 0;
     transform: translateY(-0.125rem);
   }
-
   &--icon {
     color: $color-pry;
     width: 3rem;
@@ -78,21 +77,21 @@
   }
   @media screen and (max-width: $res-tab) {
     &__title {
-      text-align: center;
+      margin: 1rem 0;
     }
     &__body {
-      margin: 0 auto;
-      width: 70%;
-      padding: 3rem;
-      box-shadow: none;
+      width: 60%;
     }
   }
   @media screen and (max-width: $res-mobile-landscape) {
+    &__title {
+      text-align: center;
+      margin: 1rem auto;
+    }
     &__body {
+      margin: 0 auto;
       width: 70vw;
-      padding: 3rem;
       padding-bottom: 8rem;
-      box-shadow: none;
     }
     &--icon-name {
       display: inline-block;
@@ -108,7 +107,7 @@
     &__body {
       width: 100%;
       margin: 0;
-      padding: 3rem 5rem;
+      padding: 1rem 5rem;
     }
   }
 }

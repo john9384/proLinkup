@@ -8,8 +8,8 @@ export default function Spinner() {
         style={{
           width: "50px",
           height: "50px",
-          margin: "auto",
-          display: "block"
+          margin: "5rem auto",
+          display: "block",
         }}
         alt="spinner"
       />

@@ -28,7 +28,7 @@ html {
   display: flex;
   max-width: 114rem;
   margin: 0 auto;
-
+  transition: all 0.5s;
   @media screen and (max-width: $res-tab) {
     padding: 0 5vw;
   }

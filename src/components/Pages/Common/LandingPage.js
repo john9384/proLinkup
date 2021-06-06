@@ -16,7 +16,7 @@ class LandingPage extends Component {
       <div className="landing">
         <Header />
         <div className="container">
-          <div className="landing__main">
+          <div className="animate__animated animate__fadeIn landing__main">
             <p className="landing__title"> Prolinkup </p>
             <p className="landing__note">
               Welcome to the social network for Pro 's.

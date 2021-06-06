@@ -58,7 +58,7 @@ class SignUp extends Component {
       var err_obj = hasError(errors.content);
     }
     return (
-      <div className="signup">
+      <div className="animate__animated animate__fadeIn signup">
         <Link to="/" className="icon">
           <FontAwesomeIcon icon={faHome} />
         </Link>

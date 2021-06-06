@@ -33,7 +33,11 @@ class Dashboard extends Component {
     let dashboardContent;
 
     if (profile === null || loading) {
-      dashboardContent = <Spinner />;
+      dashboardContent = (
+        <div className="page-main">
+          <Spinner />
+        </div>
+      );
     } else {
       if (Object.keys(profile).length <= 0) {
         dashboardContent = (
@@ -56,7 +60,7 @@ class Dashboard extends Component {
         );
       } else {
         dashboardContent = (
-          <div className="page-main dashboard">
+          <div className="animate__animated animate__fadeIn page-main dashboard">
             {/* <h1 className=" heading--pry dashboard__title">Dashboard</h1> */}
             <div className="dashboard__cover">
               <img
