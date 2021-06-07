@@ -16,7 +16,7 @@ class Popup extends Component {
   componentDidMount() {
     this.setState({ errState: false });
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errState: true, errMessage: this.props.errors.message });
     }

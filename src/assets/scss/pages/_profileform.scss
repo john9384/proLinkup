@@ -1,7 +1,6 @@
 .profile-form {
   &__title {
     font-size: 3rem;
-    margin: 2rem 0;
   }
   &__body {
     width: 50%;
@@ -86,7 +85,7 @@
   @media screen and (max-width: $res-mobile-landscape) {
     &__title {
       text-align: center;
-      margin: 1rem auto;
+      margin: 0 auto;
     }
     &__body {
       margin: 0 auto;
@@ -102,7 +101,6 @@
   @media screen and (max-width: $res-mobile) {
     &__title {
       font-size: 3rem;
-      margin-top: 2rem;
     }
     &__body {
       width: 100%;

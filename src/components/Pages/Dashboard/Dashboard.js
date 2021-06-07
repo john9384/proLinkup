@@ -29,17 +29,17 @@ class Dashboard extends Component {
   }
   render() {
     const { firstname, lastname } = this.props.auth.user.payload;
-    const { profile, loading } = this.props.profile;
+    const { user, loading } = this.props.profile;
     let dashboardContent;
 
-    if (profile === null || loading) {
+    if (user === null || loading) {
       dashboardContent = (
         <div className="page-main">
           <Spinner />
         </div>
       );
     } else {
-      if (Object.keys(profile).length <= 0) {
+      if (Object.keys(user).length <= 0) {
         dashboardContent = (
           <div className="page-main dashboard">
             <div className="dashboard__no-profile u-center-text">
@@ -66,7 +66,7 @@ class Dashboard extends Component {
               <img
                 className="dashboard__cover--bg-img"
                 src={`${
-                  profile.content.bgImgUrl ||
+                  user.content.bgImgUrl ||
                   "https://images.unsplash.com/photo-1504966981333-1ac8809be1ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
                 }`}
                 alt="bg"
@@ -74,11 +74,7 @@ class Dashboard extends Component {
               <PostBgImg history={this.props.history} />
               <div className="dashboard__cover--avatar">
                 <img
-                  src={`${
-                    profile.content.imgUrl ||
-                    profile.content.avatar ||
-                    "https://th.bing.com/th/id/OIP.w5dy8Ty-r7VnqxXv5-xi3QHaHU?pid=ImgDet&rs=1"
-                  }`}
+                  src={`${user.content.imgUrl || user.content.avatar}`}
                   alt="avatar"
                 />
                 <PostImg history={this.props.history} />
@@ -88,13 +84,13 @@ class Dashboard extends Component {
               <p className="dashboard__name">
                 {firstname} {lastname}
               </p>
-              {profile.content.handle ? (
+              {user.content.handle ? (
                 <div>
                   <Link
                     to={`/profile/${this.props.auth.user.payload.id}`}
                     className="dashboard__handle u-margin-top-smaller"
                   >
-                    @{profile.content.handle}
+                    @{user.content.handle}
                   </Link>
                 </div>
               ) : null}
@@ -108,8 +104,8 @@ class Dashboard extends Component {
               </div>
 
               <ProfileActions />
-              <ExpCard experience={profile.content.experience} />
-              <EduCard education={profile.content.education} />
+              <ExpCard experience={user.content.experience} />
+              <EduCard education={user.content.education} />
               <button
                 onClick={this.onDeleteClick.bind(this)}
                 className="btn btn--danger u-margin-bottom-large"

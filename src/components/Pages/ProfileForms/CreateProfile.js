@@ -36,7 +36,7 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -163,7 +163,7 @@ class CreateProfile extends Component {
       <>
         <Header />
         <div className="page-body">
-          <div className="page-main profile-form">
+          <div className="animate__animated animate__fadeInDown page-main profile-form">
             <h1 className="profile-form__title heading--pry">
               Create your profile
             </h1>

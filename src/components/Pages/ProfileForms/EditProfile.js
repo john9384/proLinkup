@@ -38,13 +38,13 @@ class EditProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.setState({ errors: false });
   }
   componentDidMount() {
     this.props.getCurrentProfile();
   }
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -225,7 +225,7 @@ class EditProfile extends Component {
       <div>
         <Header />
         <div className="page-body">
-          <div className="page-main profile-form">
+          <div className="animate__animated animate__fadeInDown page-main profile-form">
             <h1 className="profile-form__title heading--pry">
               Edit your profile
             </h1>

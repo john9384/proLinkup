@@ -5,8 +5,8 @@ import {
   GET_PROFILES,
 } from "../actions/types";
 const initialState = {
-  profile: null,
-  profiles: null,
+  user: null,
+  list: null,
   loading: false,
 };
 
@@ -20,19 +20,19 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE:
       return {
         ...state,
-        profile: action.payload,
+        user: action.payload,
         loading: false,
       };
     case GET_PROFILES:
       return {
         ...state,
-        profiles: action.payload,
+        list: action.payload,
         loading: false,
       };
     case CLEAR_CURRENT_PROFILE:
       return {
         ...state,
-        profile: null,
+        user: null,
       };
     default:
       return state;

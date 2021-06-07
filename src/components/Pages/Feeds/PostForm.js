@@ -16,7 +16,7 @@ class PostForm extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (newProps.errors) {
       this.setState({ error: newProps.errors });
     }
