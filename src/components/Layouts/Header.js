@@ -2,9 +2,9 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { logoutUser } from "../../../redux/actions/authActions";
-import { clearCurrentUserProfile } from "../../../redux/actions/profileActions";
-import logo from "../../../assets/img/logo3.PNG";
+import { logoutUser } from "../../redux/actions/authActions";
+import { clearCurrentUserProfile } from "../../redux/actions/profileActions";
+import logo from "../../assets/img/logo3.PNG";
 
 //fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

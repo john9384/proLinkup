@@ -28,7 +28,6 @@
     }
   }
   @media screen and (max-width: $res-tab) {
-    padding-right: 2rem;
     &__search {
       &--input {
         width: 90%;
@@ -39,18 +38,18 @@
       }
     }
   }
+  @media screen and (min-width: $res-mobile-landscape) and (max-width: $res-tab) {
+    padding-right: 2rem;
+  }
   @media screen and (max-width: $res-mobile-landscape) {
     padding: 1rem 5vw;
-    // Reset padding to right changed by the media query tab
-    padding-right: 0;
+    padding-right: 4vw;
     padding-bottom: 6rem;
   }
   @media screen and (max-width: $res-mobile) {
     &__search {
       width: 100%;
     }
-    // Reset padding to bottom changed by the media query mobile-landscape
-    padding-bottom: 0;
   }
 }
 .pros-card {

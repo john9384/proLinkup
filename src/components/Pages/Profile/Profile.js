@@ -6,8 +6,8 @@ import ProfileAbout from "./ProfileAbout";
 import ProfileCreds from "./ProfileCreds";
 //import ProfileGithub from "./ProfileGithub";
 import Spinner from "../../common/spinner/Spinner";
-import Header from "../../Layouts/Header/Header";
-import SideNav from "../../Layouts/SideNav/SideNav";
+import Header from "../../Layouts/Header";
+import SideNav from "../../Layouts/SideNav";
 import {
   getProfileByHandle,
   getProfileById,
@@ -24,12 +24,6 @@ const Test = (props) => {
     } else if (user_id) {
       dispatch(getProfileById(user_id));
     }
-
-    // return () => {
-    //   if (user === null) {
-    //     props.history.push("/not-found");
-    //   }
-    // };
   }, [dispatch, props]);
 
   return (

@@ -11,7 +11,14 @@ const ProfileHeader = ({ profile }) => {
   const { content } = profile;
   return (
     <div className="profile__header">
-      <img src={content.bgImgUrl} alt="" className="profile__header-bg" />
+      <img
+        src={
+          content.bgImgUrl ||
+          "https://images.unsplash.com/photo-1504966981333-1ac8809be1ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+        }
+        alt=""
+        className="profile__header-bg"
+      />
       <div className="profile__header-img">
         <img
           src={content.imgUrl || content.avatar}
@@ -34,32 +41,32 @@ const ProfileHeader = ({ profile }) => {
       </div>
       {/* Todo: add the icons for social links and website */}
       <div className="profile__header-socials">
-        {content && !content.social.github ? (
+        {content && content.social.github ? (
           <a href={content.social.github}>
             <FaGithub />
           </a>
         ) : null}
-        {content && !content.social.linkedin ? (
+        {content && content.social.linkedin ? (
           <a href={content.social.linkedin}>
             <FaLinkedin />
           </a>
         ) : null}
-        {content && !content.social.twitter ? (
+        {content && content.social.twitter ? (
           <a href={content.social.twitter}>
             <FaTwitter />
           </a>
         ) : null}
-        {content && !content.social.facebook ? (
+        {content && content.social.facebook ? (
           <a href={content.social.facebook}>
             <FaFacebook />
           </a>
         ) : null}
-        {content && !content.social.instagram ? (
+        {content && content.social.instagram ? (
           <a href={content.social.instagram}>
             <FaInstagram />
           </a>
         ) : null}
-        {content && !content.social.youtube ? (
+        {content && content.social.youtube ? (
           <a href={content.social.youtube}>
             <FaYoutube />
           </a>

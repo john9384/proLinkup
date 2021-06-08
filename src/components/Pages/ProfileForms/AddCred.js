@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import { addExp, addEdu } from "../../../redux/actions/profileActions";
-import SideNav from "../../Layouts/SideNav/SideNav";
-import Header from "../../Layouts/Header/Header";
-
+import Header from "../../Layouts/Header";
+import SideNav from "../../Layouts/SideNav";
 const checkErrorField = (error, field) =>
   error && error.content && error.content.field === field ? true : false;
 

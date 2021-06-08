@@ -4,14 +4,15 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
-import SideNav from "../../Layouts/SideNav/SideNav";
+import Header from "../../Layouts/Header";
+import SideNav from "../../Layouts/SideNav";
 import hasError from "../../../helpers/validator";
 import {
   postCurrentProfile,
   getCurrentProfile,
 } from "../../../redux/actions/profileActions";
 import isEmpty from "../../../helpers/isEmpty";
-import Header from "../../Layouts/Header/Header";
+
 //fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";

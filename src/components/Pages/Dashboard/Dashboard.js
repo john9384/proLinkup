@@ -10,8 +10,8 @@ import Spinner from "../../common/spinner/Spinner";
 import ProfileActions from "./ProfileActions";
 import ExpCard from "./ExpCard";
 import EduCard from "./EduCard";
-import SideNav from "../../Layouts/SideNav/SideNav";
-import Header from "../../Layouts/Header/Header";
+import SideNav from "../../Layouts/SideNav";
+import Header from "../../Layouts/Header";
 import PostBgImg from "./PostBgImg";
 import PostImg from "./PostImg";
 
@@ -61,7 +61,6 @@ class Dashboard extends Component {
       } else {
         dashboardContent = (
           <div className="animate__animated animate__fadeIn page-main dashboard">
-            {/* <h1 className=" heading--pry dashboard__title">Dashboard</h1> */}
             <div className="dashboard__cover">
               <img
                 className="dashboard__cover--bg-img"

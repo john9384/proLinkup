@@ -5,9 +5,8 @@ const InputTextArea = ({
   placeholder,
   value,
   error,
-  info,
   onChange,
-  classname
+  classname,
 }) => {
   return (
     <div>
@@ -17,9 +16,10 @@ const InputTextArea = ({
         name={name}
         value={value}
         onChange={onChange}
+        error={error}
       ></textarea>
 
-      <small className="input__info">{info}</small>
+      <small className="input__info">{error}</small>
     </div>
   );
 };
@@ -28,7 +28,7 @@ InputTextArea.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.string.isRequired,
-  classname: PropTypes.string
+  classname: PropTypes.string,
 };
 
 export default InputTextArea;

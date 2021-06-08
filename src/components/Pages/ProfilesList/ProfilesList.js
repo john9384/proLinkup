@@ -4,29 +4,29 @@ import PropTypes from "prop-types";
 import Spinner from "../../common/spinner/Spinner";
 import { getProfiles } from "../../../redux/actions/profileActions";
 import ProfileItems from "./ProfileItems";
-import SideNav from "../../Layouts/SideNav/SideNav";
-import Header from "../../Layouts/Header/Header";
-
+import SideNav from "../../Layouts/SideNav";
+import Header from "../../Layouts/Header";
+import { Redirect } from "react-router-dom";
 class ProfilesList extends Component {
   componentDidMount() {
     this.props.getProfiles();
   }
   render() {
-    const { profiles, loading } = this.props.profile;
+    const { list, loading } = this.props.profile;
 
     let allProfiles;
     let profileItems;
 
-    if (profiles === null || loading) {
+    if (list === null || loading) {
       profileItems = <Spinner />;
     } else {
-      if (profiles.content.length > 0) {
-        allProfiles = profiles.content;
+      if (list.content.length > 0) {
+        allProfiles = list.content;
         profileItems = allProfiles.map((profile) => (
           <ProfileItems key={profile._id} profile={profile} loading={loading} />
         ));
       } else {
-        profileItems = <Spinner />;
+        profileItems = <Redirect to="/not-found" />;
       }
     }
     return (

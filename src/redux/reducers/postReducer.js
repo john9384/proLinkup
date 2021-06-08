@@ -7,8 +7,8 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  posts: [],
-  post: {},
+  list: [],
+  single: {},
   loading: false,
 };
 
@@ -22,24 +22,24 @@ const postReducer = (state = initialState, action) => {
     case GET_POSTS:
       return {
         ...state,
-        posts: action.payload,
+        list: action.payload,
         loading: false,
       };
     case GET_POST:
       return {
         ...state,
-        post: action.payload,
+        single: action.payload,
         loading: false,
       };
     case ADD_POST:
       return {
         ...state,
-        posts: action.payload,
+        list: action.payload,
       };
     case DELETE_POST:
       return {
         ...state,
-        posts: action.payload,
+        list: action.payload,
       };
     default:
       return state;

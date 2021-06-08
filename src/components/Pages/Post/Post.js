@@ -6,7 +6,7 @@ import CommentForm from "./CommentForm";
 import CommentFeed from "./CommentFeed";
 import Spinner from "../../common/spinner/Spinner";
 import { getPost } from "../../../redux/actions/postActions";
-import SideNav from "../../Layouts/SideNav/SideNav";
+import SideNav from "../../Layouts/SideNav";
 
 class Post extends Component {
   componentDidMount() {

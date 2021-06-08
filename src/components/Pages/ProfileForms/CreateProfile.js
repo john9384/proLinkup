@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import InputField from "../../common/inputFieldGroup/InputTextField";
 import InputTextArea from "../../common/inputFieldGroup/InputTextArea";
 import { postCurrentProfile } from "../../../redux/actions/profileActions";
-import SideNav from "../../Layouts/SideNav/SideNav";
+import Header from "../../Layouts/Header";
+import SideNav from "../../Layouts/SideNav";
 import hasError from "../../../helpers/validator";
-import Header from "../../Layouts/Header/Header";
 
 //fontawesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
