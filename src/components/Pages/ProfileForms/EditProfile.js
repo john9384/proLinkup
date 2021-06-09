@@ -388,7 +388,7 @@ class EditProfile extends Component {
             </form>
           </div>
 
-          <SideNav />
+          {window.innerWidth > 767 ? <SideNav /> : null}
         </div>
       </div>
     );

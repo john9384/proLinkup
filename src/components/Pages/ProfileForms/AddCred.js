@@ -367,7 +367,7 @@ export const AddEdu = (props) => {
             <input type="submit" value="submit" className="btn btn--pry " />
           </form>
         </div>
-        <SideNav />
+        {window.innerWidth > 767 ? <SideNav /> : null}
       </div>
     </>
   );

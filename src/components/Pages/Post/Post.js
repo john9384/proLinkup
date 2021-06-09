@@ -44,7 +44,7 @@ class Post extends Component {
     return (
       <div className="row">
         {postContent}
-        <SideNav />
+        {window.innerWidth > 767 ? <SideNav /> : null}
       </div>
     );
   }

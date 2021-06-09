@@ -325,7 +325,7 @@ class CreateProfile extends Component {
               />
             </form>
           </div>
-          <SideNav />
+          {window.innerWidth > 767 ? <SideNav /> : null}
         </div>
       </>
     );

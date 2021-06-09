@@ -36,7 +36,7 @@ const Posts = () => {
           <h1 className="heading--sec feeds__head-2">Latest Feeds</h1>
           {postContent}
         </div>
-        <SideNav />
+        {window.innerWidth > 767 ? <SideNav /> : null}
       </div>
     </>
   );

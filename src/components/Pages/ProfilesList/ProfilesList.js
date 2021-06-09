@@ -45,7 +45,7 @@ class ProfilesList extends Component {
             </div>
             <div className="pros__grid">{profileItems}</div>
           </div>
-          <SideNav />
+          {window.innerWidth > 767 ? <SideNav /> : null}
         </div>
       </>
     );

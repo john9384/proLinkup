@@ -46,7 +46,7 @@ const Test = (props) => {
             <Spinner />
           </div>
         )}
-        <SideNav />
+        {window.innerWidth > 767 ? <SideNav /> : null}
       </div>
     </div>
   );
