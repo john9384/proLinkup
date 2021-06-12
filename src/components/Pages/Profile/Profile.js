@@ -24,7 +24,7 @@ const Test = (props) => {
     } else if (user_id) {
       dispatch(getProfileById(user_id));
     }
-  }, [dispatch, props]);
+  }, [dispatch, handle, user_id]);
 
   return (
     <div>

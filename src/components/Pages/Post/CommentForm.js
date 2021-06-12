@@ -1,71 +1,48 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../../../redux/actions/postActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
-class CommentForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-      errors: {},
-    };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  UNSAFE_componentWillReceiveProps(newProps) {
-    if (newProps.errors) {
-      this.setState({ errors: newProps.errors });
-    }
-  }
-
-  onSubmit(e) {
+const CommentForm = ({ postId }) => {
+  const [textInput, setTextInput] = useState("");
+  const errors = useSelector((state) => state.errors);
+  const dispatch = useDispatch();
+  const dispatchComment = (post_id, new_comment) =>
+    dispatch(addComment(post_id, new_comment));
+  const onSubmit = (e) => {
     e.preventDefault();
-    const { postId } = this.props;
 
     const newComment = {
-      text: this.state.text,
+      text: textInput,
     };
-    this.props.addComment(postId, newComment);
-    this.setState({ text: "" });
-  }
+    dispatchComment(postId, newComment);
+    setTextInput("");
+  };
+  const onChange = (e) => {
+    setTextInput(e.target.value);
+  };
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="post__comment-form u-margin-top-medium"
+    >
+      <input
+        className="input post__comment-form--input"
+        placeholder="Comment on post"
+        name="text"
+        value={textInput}
+        onChange={onChange}
+      />
+      <button type="submit" className="btn btn--pry post__comment-form--btn">
+        <FontAwesomeIcon icon={faPaperPlane} />
+      </button>
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  render() {
-    // const { errors } = this.state;
-    return (
-      <form
-        onSubmit={this.onSubmit}
-        className="post__comment-form u-margin-top-medium"
-      >
-        <input
-          className="input post__comment-form--input"
-          placeholder="Comment on post"
-          name="text"
-          value={this.state.text}
-          onChange={this.onChange}
-        />
-        <button type="submit" className="btn btn--pry post__comment-form--btn">
-          Post
-        </button>
-      </form>
-    );
-  }
-}
-
-CommentForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
-  postId: PropTypes.string.isRequired,
-  errors: PropTypes.object.isRequired,
+      {errors && errors.content ? (
+        <small className="input__info"> {errors.contetn.detail}</small>
+      ) : null}
+    </form>
+  );
 };
 
-const mapStateToProps = (state) => ({
-  errors: state.errors,
-});
-
-export default connect(mapStateToProps, { addComment })(CommentForm);
+export default CommentForm;

@@ -32,6 +32,9 @@ html {
   @media screen and (max-width: $res-tab) {
     padding: 0 5vw;
   }
+  @media screen and (max-width: $res-mobile-landscape) and (min-width: $res-mobile) {
+    padding-bottom: 15rem;
+  }
   @media screen and (max-width: $res-mobile-landscape) {
     padding: 0;
   }

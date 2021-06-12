@@ -117,7 +117,7 @@ class Dashboard extends Component {
       }
     }
     return (
-      <div>
+      <div className="body">
         <Header />
         <div className="page-body">
           {dashboardContent} {window.innerWidth > 767 ? <SideNav /> : null}

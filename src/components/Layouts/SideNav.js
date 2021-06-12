@@ -18,7 +18,6 @@ const SideNav = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setState(data);
         setLoading(false);
       })
