@@ -42,32 +42,32 @@ const ProfileHeader = ({ profile }) => {
       {/* Todo: add the icons for social links and website */}
       <div className="profile__header-socials">
         {content && content.social.github ? (
-          <a href={content.social.github}>
+          <a href={content.social.github} target="_blank" rel="noreferrer">
             <FaGithub />
           </a>
         ) : null}
         {content && content.social.linkedin ? (
-          <a href={content.social.linkedin}>
+          <a href={content.social.linkedin} target="_blank" rel="noreferrer">
             <FaLinkedin />
           </a>
         ) : null}
         {content && content.social.twitter ? (
-          <a href={content.social.twitter}>
+          <a href={content.social.twitter} target="_blank" rel="noreferrer">
             <FaTwitter />
           </a>
         ) : null}
         {content && content.social.facebook ? (
-          <a href={content.social.facebook}>
+          <a href={content.social.facebook} target="_blank" rel="noreferrer">
             <FaFacebook />
           </a>
         ) : null}
         {content && content.social.instagram ? (
-          <a href={content.social.instagram}>
+          <a href={content.social.instagram} target="_blank" rel="noreferrer">
             <FaInstagram />
           </a>
         ) : null}
         {content && content.social.youtube ? (
-          <a href={content.social.youtube}>
+          <a href={content.social.youtube} target="_blank" rel="noreferrer">
             <FaYoutube />
           </a>
         ) : null}

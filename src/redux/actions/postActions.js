@@ -76,7 +76,7 @@ export const deletePost = (id) => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) =>
+    .catch(() =>
       dispatch({
         type: DELETE_POST,
         payload: id,
@@ -130,7 +130,7 @@ export const addComment = (postId, commentData) => (dispatch) => {
 };
 
 // Delete Comment
-export const deleteComment = (postId, commentId) => (dispatch) => {
+export const deleteComment = (postId, commentId, history) => (dispatch) => {
   axios
     .delete(`${config.api.prefix}/post/comment/${postId}/${commentId}`)
     .then((res) =>
@@ -139,12 +139,15 @@ export const deleteComment = (postId, commentId) => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) =>
+    .then(() => {
+      history.push(`/post/${postId}`);
+    })
+    .catch((err) => {
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
-      })
-    );
+        payload: postId,
+      });
+    });
 };
 
 // Set loading state

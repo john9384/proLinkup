@@ -39,7 +39,7 @@ const CommentForm = ({ postId }) => {
       </button>
 
       {errors && errors.content ? (
-        <small className="input__info"> {errors.contetn.detail}</small>
+        <small className="input__info"> {errors.content.detail}</small>
       ) : null}
     </form>
   );

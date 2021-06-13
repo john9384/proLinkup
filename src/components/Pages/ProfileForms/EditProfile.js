@@ -49,8 +49,8 @@ class EditProfile extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-    if (nextProps.profile.profile) {
-      const profile = nextProps.profile.profile.content;
+    if (nextProps.profile.user) {
+      const profile = nextProps.profile.user.content;
 
       const skillsCSV = profile.skills.join(",");
 
@@ -395,7 +395,6 @@ class EditProfile extends Component {
   }
 }
 EditProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired,
   getCurrrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,

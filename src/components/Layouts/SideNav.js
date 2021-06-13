@@ -28,7 +28,10 @@ const SideNav = () => {
     ? state.map((news) => {
         return (
           <div key={news.id} className="news-card">
-            <h2 className="news-card__title">{news.Title.slice(0, 40)}...</h2>
+            <h2 className="news-card__title">
+              {news.Title.slice(0, 40)}
+              {news.Title.length > 40 ? "..." : null}
+            </h2>
             <img src={news.Image} alt="" className="news-card__img" />
             <p className="news-card__summary">
               {news.Summary.slice(0, 100)}...

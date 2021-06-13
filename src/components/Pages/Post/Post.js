@@ -43,6 +43,7 @@ const Post = (props) => {
             comments={single.content.comments}
             postId={single.content._id}
             auth={auth}
+            history={props.history}
           />
         </div>
       </div>
