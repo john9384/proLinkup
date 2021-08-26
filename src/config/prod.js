@@ -15,7 +15,7 @@ let prod = {
     level: process.env.LOG_LEVEL || "silly",
   },
   api: {
-    prefix: "https://floating-springs-14668.herokuapp.com/api/v1",
+    prefix: "https://prolinup-api.herokuapp.com/api/v1",
   },
 };
 export default prod;
