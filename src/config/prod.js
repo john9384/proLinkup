@@ -1,3 +1,10 @@
+import * as dotenv from "dotenv";
+
+const envProd = dotenv.config({ path: ".env" });
+if (!envProd) {
+  throw new Error("⚠️  Couldn't find .env file  ⚠️");
+}
+
 let prod = {
   env: "prod",
   appName: "ProlinkUP",
